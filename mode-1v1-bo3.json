@@ -1,0 +1,38 @@
+{
+	"gameName": "Riftbound",
+	"name": "1v1 (best of 3)",
+	"version": "1.0.0",
+	"players": 2,
+	"games": 3,
+	"points": 8,
+	"leaders": 1,
+	"chosens": 1,
+	"sites": {
+		"minimumSize": 3,
+		"maximumSize": 3,
+		"choose": "unique"
+	},
+	"mainDeck": {
+		"minimumSize": 40,
+		"copyLimit": 3,
+		"setupDraw": [
+			4,
+			4
+		],
+		"setupMulligan": 2,
+		"turnDraw": 1
+	},
+	"manaDeck": {
+		"minimumSize": 12,
+		"maximumSize": 12,
+		"firstTurnDraw": [
+			2,
+			3
+		],
+		"turnDraw": 2
+	},
+	"sideboard": {
+		"minimumSize": 0,
+		"maximumSize": 8
+	}
+}
