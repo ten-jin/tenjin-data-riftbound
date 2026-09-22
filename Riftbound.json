@@ -1,7 +1,16 @@
 {
 	"name": "Riftbound",
-	"version": "4.0.0",
-	"sets": ["OGN", "OGS", "SFD", "UNL", "VEN"],
+	"version": "4.1.0",
+	"sets": {
+		"OGN": "2025-10-31",
+		"OGS": "2025-10-31",
+		"SFD": "2026-02-13",
+		"UNL": "2026-05-08",
+		"VEN": "2026-07-31",
+		"RAD": "2026-10-23",
+		"LGC": "2027-01-29",
+		"REC": "2027-04-30"
+	},
 	"banned": {
 		"Called Shot": "2026-03-31",
 		"Draven, Vanquisher": "2026-03-31",
@@ -12,7 +21,9 @@
 		"Scrapheap": "2026-03-31",
 		"Aspirant's Climb": "2026-07-24",
 		"Stealthy Pursuer": "2026-07-24",
-		"The Arena's Greatest": "2026-07-24"
+		"The Arena's Greatest": "2026-07-24",
+		"Ekko, Recurrent": "2026-09-18",
+		"Stacked Deck": "2026-09-18"
 	},
 	"colors": {
 		"mainDeck": "#052f5d",
@@ -3187,7 +3198,7 @@
 			"manaTap": 5,
 			"manaRecycle": 1,
 			"colors": ["G"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/70734e8833bfbbdb2736407c449f418553e3cf7c-744x1039.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c6cc55639ad87cf9c8a74d6b3e5292d0b192c9b8-744x1039.png",
 			"variants": {
 				"OGN-078a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d34a98faacd3f7d32afd6fad99c806f202aa9dad-744x1039.png"
 			},
@@ -9853,7 +9864,7 @@
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["R", "B"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a576472c7bb00f475882ac814e1d8f9be233b402-744x1040.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3ea826277086945a2cdfda4e41b771075aa8b15b-744x1039.png",
 			"variants": {
 				"OGN-299": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/57e13462b8fea9a5cfa1b424d3ad3005f37b00ad-1488x2078.png",
 				"OGN-299*": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ae8e68af43400f61f7391c0a6ee339fd718a7540-1488x2078.png"
@@ -10014,7 +10025,7 @@
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["R", "O"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f1842ef373434db3e8109d8959832f9d184866c3-744x1040.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8ef9c1827ccbba313d4591275e831854afffa5b1-744x1039.png",
 			"variants": {
 				"OGN-300": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34aa11c88735be28266dbc61486a557454fd6b4c-1488x2078.png",
 				"OGN-300*": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d5a629ce373a6add09bfacc4b584e509c6332334-1488x2078.png"
@@ -10332,7 +10343,7 @@
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["G", "B"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fbce641f5e4d8cdf2956e8ead5884b6cd3ccd90d-744x1040.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56457c7986d3f140b7123a988149cc30a83493a7-744x1039.png",
 			"variants": {
 				"OGN-303": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dc89c6a2415debd5bf504ed46843f5dcc1d9b815-1488x2078.png",
 				"OGN-303*": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e5fe571a8f09c0a9e76345ec32b446480f54617c-1488x2078.png"
@@ -10532,12 +10543,12 @@
 			"id": "OGN-259",
 			"name": "Unforgiven",
 			"types": ["legend", "yasuo"],
-			"description": "[2], [T]: Move a friendly unit to or from its base.",
+			"description": "[2], [E]: Move a friendly unit to or from its base.",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["G", "P"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68e4d3230b785738ae9d86f780f7f5607ef11807-744x1040.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33e3d5596de0f560087d40414d62b8245d1dbb0d-744x1039.png",
 			"variants": {
 				"OGN-305": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2c804ec513085702763a9145fac93a8adb6c4783-1488x2078.png",
 				"OGN-305*": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a06599a299b15175984c1e38d27a3be21258fbe-1488x2078.png"
@@ -10988,7 +10999,7 @@
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["O", "P"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cc11261fcdbf0851525030bd9e835b718efad3bc-744x1040.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0635cebc3dd8ee5355dbbc090ca27ebeacebad7-744x1039.png",
 			"variants": {
 				"OGN-309": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f4b7f334f442d30ccea4743c641760c5533804b4-1488x2078.png",
 				"OGN-309*": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/37153cce7f58b2fceb28ea9ff91deb0411f849e2-1488x2078.png"
@@ -15493,6 +15504,7 @@
 									"area": "inPlay"
 								}
 							},
+							"initiatingPlayer": "self",
 							"effect": {
 								"modifiers": [
 									{
@@ -15512,6 +15524,7 @@
 									"area": "inPlay"
 								}
 							},
+							"initiatingPlayer": "self",
 							"effect": {
 								"modifiers": [
 									{
@@ -19789,6 +19802,7 @@
 									"area": "inPlay"
 								}
 							},
+							"initiatingPlayer": "self",
 							"effect": {
 								"draw": 1
 							}
@@ -21662,7 +21676,7 @@
 		},
 		{
 			"id": "SFD-179",
-			"name": "Corina Veraza",
+			"name": "Corinna Veraza",
 			"types": ["unit", "zaun"],
 			"description": "[Accelerate] (You may pay [1] [C] as an additional cost to have me enter ready.)\nWhen I move to a battlefield, play three 1 [S] Recruit unit tokens here.",
 			"strength": 6,
@@ -28606,6 +28620,11 @@
 				"effects": {
 					"passiveModifiers": [
 						{
+							"sourceQuery": {
+								"source": {
+									"area": "site"
+								}
+							},
 							"targetQuery": {
 								"source": {
 									"area": "here",
@@ -31925,12 +31944,23 @@
 			"id": "UNL-157",
 			"name": "Scrutinizing Sergeant",
 			"types": ["unit", "demacia", "elite"],
-			"description": "",
+			"description": "When you play me, gain 1 XP for each friendly unit.",
 			"strength": 6,
 			"manaTap": 6,
 			"manaRecycle": 0,
 			"colors": ["Y"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/18a034ba1f4eaf7204312ca68ffb413012f6cf6b-744x1039.png"
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/18a034ba1f4eaf7204312ca68ffb413012f6cf6b-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"gainXP": 1
+							}
+						}
+					]
+				}
+			}
 		},
 		{
 			"id": "UNL-158",
@@ -43626,7 +43656,7 @@
 									"cardTypes": ["unit"],
 									"conditional": [
 										{
-											"type": "combat"
+											"type": "showdown"
 										}
 									]
 								},
@@ -43672,7 +43702,7 @@
 									"cardTypes": ["unit"],
 									"conditional": [
 										{
-											"type": "combat"
+											"type": "showdown"
 										}
 									]
 								},
@@ -45443,7 +45473,7 @@
 		},
 		{
 			"id": "VEN-T04",
-			"name": "Recruit (NX)",
+			"name": "Recruit",
 			"types": ["unit", "token", "recruit"],
 			"description": "",
 			"strength": 1,
