@@ -1,6 +1,6 @@
 {
 	"name": "Riftbound",
-	"version": "4.1.0",
+	"version": "4.1.1",
 	"sets": {
 		"OGN": "2025-10-31",
 		"OGS": "2025-10-31",
@@ -3165,6 +3165,10 @@
 								"players": "team"
 							},
 							"effect": {
+								"heals": true,
+								"readies": {
+									"action": "exhaust"
+								},
 								"moves": {
 									"type": "recall",
 									"onFailure": "killTarget"
@@ -3179,9 +3183,6 @@
 											"amount": 1
 										}
 									]
-								},
-								"readies": {
-									"action": "exhaust"
 								}
 							}
 						}
@@ -11103,6 +11104,10 @@
 								}
 							],
 							"effect": {
+								"heals": true,
+								"readies": {
+									"action": "exhaust"
+								},
 								"moves": {
 									"type": "recall",
 									"onFailure": "killTarget"
@@ -11124,9 +11129,6 @@
 									]
 								},
 								"addBuff": -1,
-								"readies": {
-									"action": "exhaust"
-								},
 								"optional": true
 							}
 						}
@@ -15226,21 +15228,14 @@
 				"effects": {
 					"wouldDie": [
 						{
-							"targetQuery": {
-								"players": "self"
-							},
 							"effect": {
+								"heals": true,
+								"readies": {
+									"action": "exhaust"
+								},
 								"moves": {
 									"type": "recall",
 									"onFailure": "killTarget"
-								},
-								"costs": {
-									"costs": [
-										{
-											"type": "tapSelf",
-											"amount": 1
-										}
-									]
 								},
 								"kills": {
 									"canSave": false,
@@ -18348,7 +18343,7 @@
 						{
 							"conditionalsTarget": [
 								{
-									"type": "conquers",
+									"type": "conquersThisTurn",
 									"max": 1
 								}
 							],
@@ -21419,15 +21414,16 @@
 								}
 							],
 							"effect": {
+								"heals": true,
+								"readies": {
+									"action": "exhaust"
+								},
 								"moves": {
 									"type": "recall",
 									"onFailure": "killTarget"
 								},
 								"routing": {
 									"affectingCard": "eventSubject"
-								},
-								"readies": {
-									"action": "exhaust"
 								}
 							}
 						}
@@ -34877,6 +34873,10 @@
 								}
 							],
 							"effect": {
+								"heals": true,
+								"readies": {
+									"action": "exhaust"
+								},
 								"moves": {
 									"type": "recall",
 									"onFailure": "killTarget"
@@ -34891,9 +34891,6 @@
 											"amount": 3
 										}
 									]
-								},
-								"readies": {
-									"action": "exhaust"
 								},
 								"optional": true
 							}
