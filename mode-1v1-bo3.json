@@ -13,23 +13,17 @@
 		"choose": "unique"
 	},
 	"mainDeck": {
-		"minimumSize": 40,
-		"copyLimit": 3,
-		"setupDraw": [
-			4,
-			4
-		],
+		"setupDraw": [4, 4],
 		"setupMulligan": 2,
-		"turnDraw": 1
+		"turnDraw": 1,
+		"minimumSize": 40,
+		"copyLimit": 3
 	},
 	"manaDeck": {
+		"firstTurnDraw": [2, 3],
+		"turnDraw": 2,
 		"minimumSize": 12,
-		"maximumSize": 12,
-		"firstTurnDraw": [
-			2,
-			3
-		],
-		"turnDraw": 2
+		"maximumSize": 12
 	},
 	"sideboard": {
 		"minimumSize": 0,

@@ -1,9 +1,7 @@
 {
 	"gameName": "Riftbound",
-	"name": "1v1 (bo1 unrestricted)",
+	"name": "1v1 (bo1)",
 	"version": "1.0.0",
-	"sets": {},
-	"banned": {},
 	"players": 2,
 	"games": 1,
 	"points": 8,
@@ -19,12 +17,17 @@
 		"setupMulligan": 2,
 		"turnDraw": 1,
 		"minimumSize": 40,
-		"copyLimit": 3
+		"copyLimit": 3,
+		"maximumSize": 40
 	},
 	"manaDeck": {
 		"firstTurnDraw": [2, 3],
 		"turnDraw": 2,
 		"minimumSize": 12,
 		"maximumSize": 12
+	},
+	"sideboard": {
+		"minimumSize": 0,
+		"maximumSize": 10
 	}
 }
