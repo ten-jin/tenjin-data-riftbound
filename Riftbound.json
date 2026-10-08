@@ -1,6 +1,6 @@
 {
 	"name": "Riftbound",
-	"version": "4.3.0",
+	"version": "4.4.0",
 	"sets": {
 		"OGN": "2025-10-31",
 		"OGS": "2025-10-31",
@@ -332,7 +332,7 @@
 			"id": "OGN-007",
 			"name": "Fury Rune",
 			"types": ["rune"],
-			"description": "",
+			"description": "[T]: [Reaction] — Add [1].\nRecycle this: [Reaction] — Add [R].",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -340,7 +340,51 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/12bcd0cde5d9ff4640e82945001e9fef863530f1-744x1039.png",
 			"variants": {
 				"OGN-007a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/09da06c69d07d4e72dde703737ef167472c715af-1488x2078.png",
-				"RAD-R01a": "https://cdn.piltoverarchive.com/temporary/1790981076013-en4kanormmk.png"
+				"RAD-R01": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0337944fa56c357ab3b9a822064a8f58ead8315-744x1039.png",
+				"RAD-R01a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55f5b003c67cd821895bc78a0a0c36322af53e11-744x1039.png",
+				"VEN-R01": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f95ed6ba0c4d4d357c45bf5bdb1a8e540af1f85f-744x1039.png"
+			},
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "recycleSelf",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["R"]
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					}
+				]
 			}
 		},
 		{
@@ -473,8 +517,9 @@
 					"enters": [
 						{
 							"targetQuery": {
+								"cardTypes": ["unit"],
 								"players": "team",
-								"exclude": ["affectingCard", "previousSelection"]
+								"exclude": "effectSource"
 							},
 							"effect": {
 								"modifiers": [
@@ -769,9 +814,8 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/037647d0decc94ff4a5d53b11cf36afe9d849533-744x1039.png",
 			"ability": {
 				"effects": {
-					"onDiscard": [
+					"passiveModifiers": [
 						{
-							"initiatingPlayer": "self",
 							"conditionalsSource": [
 								{
 									"min": 1,
@@ -790,14 +834,10 @@
 							"effect": {
 								"modifiers": [
 									{
-										"type": "assault",
-										"duration": "combat",
-										"replaceID": "onDiscard"
+										"type": "assault"
 									},
 									{
-										"type": "ganking",
-										"duration": "combat",
-										"replaceID": "onDiscard"
+										"type": "ganking"
 									}
 								]
 							}
@@ -1385,6 +1425,14 @@
 					"played": [
 						{
 							"effect": {
+								"damage": {
+									"amount": 6
+								},
+								"flow": {
+									"unless": {
+										"draw": 2
+									}
+								},
 								"select": {
 									"query": {
 										"cardTypes": ["unit"],
@@ -1394,14 +1442,6 @@
 										}
 									},
 									"count": 1
-								},
-								"damage": {
-									"amount": 6
-								},
-								"flow": {
-									"unless": {
-										"draw": 2
-									}
 								}
 							}
 						}
@@ -1780,14 +1820,59 @@
 			"id": "OGN-042",
 			"name": "Calm Rune",
 			"types": ["rune"],
-			"description": "",
+			"description": "[T]: [Reaction] — Add [1].\nRecycle this: [Reaction] — Add [G].",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0a0e8c3d16c2595e2f8efcc2b1466226539b506c-744x1039.png",
 			"variants": {
-				"OGN-042a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88187b586b9b3cc2f48fd20c806dd5fc5e1bfc71-1488x2078.png"
+				"OGN-042a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88187b586b9b3cc2f48fd20c806dd5fc5e1bfc71-1488x2078.png",
+				"RAD-R02": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34661f9fff9e12addbfa320a88b794fcffd6652f-744x1039.png",
+				"RAD-R02a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34b4e5127ca68f78ad43e824af61728cfc7fbc19-744x1039.png",
+				"VEN-R02": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b70aa1b334728a3e8beeea0c9154a2d0f79b1eb-744x1039.png"
+			},
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "recycleSelf",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["G"]
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					}
+				]
 			}
 		},
 		{
@@ -3531,6 +3616,7 @@
 						{
 							"sourceArea": "site",
 							"targetQuery": {
+								"players": "self",
 								"cardTypes": ["spell"]
 							},
 							"effect": {
@@ -3648,14 +3734,59 @@
 			"id": "OGN-089",
 			"name": "Mind Rune",
 			"types": ["rune"],
-			"description": "",
+			"description": "[T]: [Reaction] — Add [1].\nRecycle this: [Reaction] — Add [B].",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["B"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f99aa4874baaebd2e81798c8a3aa01c5900f6d30-744x1039.png",
 			"variants": {
-				"OGN-089a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ecf8c8632c728520b51cd4bc79036677e96ebdfd-1488x2078.png"
+				"OGN-089a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ecf8c8632c728520b51cd4bc79036677e96ebdfd-1488x2078.png",
+				"RAD-R03": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/10804d84483e8813a6b5277e4527ac148bbabdd0-744x1039.png",
+				"RAD-R03a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7216a84b4c3c2446e9f96f1dae02cb4fd96283d8-744x1039.png",
+				"VEN-R03": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33df1c56c6e76f9cb783c19161f16fcdbdc20f98-744x1039.png"
+			},
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "recycleSelf",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["B"]
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					}
+				]
 			}
 		},
 		{
@@ -5192,14 +5323,59 @@
 			"id": "OGN-126",
 			"name": "Body Rune",
 			"types": ["rune"],
-			"description": "",
+			"description": "[T]: [Reaction] — Add [1].\nRecycle this: [Reaction] — Add [O].",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["O"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3b3c3c07626d6180457c849047e0228dc0d19539-744x1039.png",
 			"variants": {
-				"OGN-126a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/011081f82cab36f8ec0d6874492512fd7859f59e-1488x2078.png"
+				"OGN-126a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/011081f82cab36f8ec0d6874492512fd7859f59e-1488x2078.png",
+				"RAD-R04": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d78f8e8cf237cc19a8546184501d4be97df29fd-744x1039.png",
+				"RAD-R04a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/90b2706af9f1eaf167065087a09a8451f303ffe1-744x1039.png",
+				"VEN-R04": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3313c73c5b31daa482073bfefbf4d2255a89d7d0-744x1039.png"
+			},
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "recycleSelf",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["O"]
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					}
+				]
 			}
 		},
 		{
@@ -5665,6 +5841,7 @@
 					"onCosts": [
 						{
 							"targetQuery": {
+								"players": "self",
 								"cardTypes": ["dragon"]
 							},
 							"effect": {
@@ -6345,7 +6522,6 @@
 								]
 							}
 						],
-						"usage": "oncePerTurn",
 						"effect": {
 							"choice": {
 								"mode": "effect",
@@ -6401,7 +6577,8 @@
 											}
 										]
 									}
-								]
+								],
+								"usage": "oncePerTurn"
 							}
 						}
 					}
@@ -6425,6 +6602,7 @@
 				"effects": {
 					"moved": [
 						{
+							"eventMultiplicity": "perBatch",
 							"targetQuery": {
 								"source": {
 									"area": "site"
@@ -6792,14 +6970,59 @@
 			"id": "OGN-166",
 			"name": "Chaos Rune",
 			"types": ["rune"],
-			"description": "",
+			"description": "[T]: [Reaction] — Add [1].\nRecycle this: [Reaction] — Add [P].",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["P"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/daf23b0deaa5e1a5a5d310b59e9ad25d1bd70363-744x1039.png",
 			"variants": {
-				"OGN-166a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fbcde2f71fcc06fb8afc83855e24447a393f8943-1488x2078.png"
+				"OGN-166a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fbcde2f71fcc06fb8afc83855e24447a393f8943-1488x2078.png",
+				"RAD-R05": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f420625850dc43c96e29b6d85b6581c7ccb6126c-744x1039.png",
+				"RAD-R05a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8ad4d5345a7316ba76689988bcd211d63f66098-744x1039.png",
+				"VEN-R05": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3861fc566891a70c21cf3d3075adec716deb7080-744x1039.png"
+			},
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "recycleSelf",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["P"]
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					}
+				]
 			}
 		},
 		{
@@ -7270,25 +7493,25 @@
 					"played": [
 						{
 							"effect": {
+								"modifiers": [
+									{
+										"type": "temporary"
+									}
+								],
 								"select": {
 									"query": {
+										"cardTypes": ["unit", "gear"],
+										"players": "all",
 										"source": {
 											"area": "inPlay"
-										},
-										"players": "all",
-										"cardTypes": ["unit", "gear"]
+										}
 									},
 									"count": 1,
 									"cardTypeAreas": {
 										"unit": "site",
 										"gear": "inPlay"
 									}
-								},
-								"modifiers": [
-									{
-										"type": "temporary"
-									}
-								]
+								}
 							}
 						}
 					]
@@ -8712,7 +8935,7 @@
 			"id": "OGN-214",
 			"name": "Order Rune",
 			"types": ["rune"],
-			"description": "",
+			"description": "[T]: [Reaction] — Add [1].\nRecycle this: [Reaction] — Add [Y].",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -8720,7 +8943,51 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/35ec6fdd2124324bb7052cba31c8c44f2e98f3ae-744x1039.png",
 			"variants": {
 				"OGN-214a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0e4904221c3bbbfcfde1734bc414dbe97c67e295-1488x2078.png",
-				"RAD-R06a": "https://cdn.piltoverarchive.com/temporary/1790981006735-own1y6pz5fa.png"
+				"RAD-R06": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/402fa10965dbee64aa1ddef654e4b9d9a5ccd28e-744x1039.png",
+				"RAD-R06a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/689797f63857003c7f21c478e86a811040c463c2-744x1039.png",
+				"VEN-R06": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/71e7d71ebadb81ccad7ca4cb8b3fb85d2f5fd4bf-744x1039.png"
+			},
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "recycleSelf",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"addResource": {
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["Y"]
+									}
+								]
+							}
+						},
+						"actionWindows": ["contesting", "response"]
+					}
+				]
 			}
 		},
 		{
@@ -9208,12 +9475,12 @@
 								"addBuff": 1,
 								"select": {
 									"query": {
+										"cardTypes": ["unit"],
+										"exclude": ["affectingCard", "previousSelection"],
 										"players": "team",
 										"source": {
 											"area": "inPlay"
-										},
-										"cardTypes": ["unit"],
-										"exclude": ["affectingCard", "previousSelection"]
+										}
 									},
 									"count": 1
 								}
@@ -9451,7 +9718,7 @@
 		{
 			"id": "OGN-235",
 			"name": "Karma, Channeler",
-			"types": ["unit", "champion", "ionia", "vi"],
+			"types": ["unit", "champion", "ionia", "karma"],
 			"description": "[Vision] (When you play me, look at the top card of your Main Deck. You may recycle it.)\nWhen you recycle one or more cards to your Main Deck, buff a friendly unit. (If it doesn't have a buff, it gets a +1 [S] buff. Runes aren't cards.)",
 			"strength": 6,
 			"manaTap": 6,
@@ -10967,7 +11234,13 @@
 									"sequence": {
 										"timing": "nextResolution",
 										"effect": {
-											"moves": true,
+											"moves": {
+												"to": {
+													"card": {
+														"from": "previousSelection"
+													}
+												}
+											},
 											"select": {
 												"query": {
 													"cardTypes": ["unit"],
@@ -10978,10 +11251,7 @@
 												},
 												"count": 1
 											},
-											"optional": true,
-											"routing": {
-												"subject": ["previousSelection", "selection"]
-											}
+											"optional": true
 										}
 									}
 								}
@@ -11825,7 +12095,7 @@
 					"beginning": [
 						{
 							"targetQuery": {
-								"players": "self"
+								"players": "all"
 							},
 							"conditionalsSource": [
 								{
@@ -11840,7 +12110,11 @@
 							],
 							"effect": {
 								"drawMana": {
-									"amount": 1
+									"amount": 1,
+									"isReady": true
+								},
+								"routing": {
+									"resolvingPlayer": "eventPlayer"
 								}
 							}
 						}
@@ -12032,7 +12306,7 @@
 					"beginning": [
 						{
 							"targetQuery": {
-								"players": "self"
+								"players": "all"
 							},
 							"conditionalsSource": [
 								{
@@ -12046,7 +12320,10 @@
 								}
 							],
 							"effect": {
-								"addPoints": 1
+								"addPoints": 1,
+								"routing": {
+									"resolvingPlayer": "eventPlayer"
+								}
 							}
 						}
 					]
@@ -13152,10 +13429,12 @@
 										"min": 4,
 										"query": {
 											"cardTypes": ["unit"],
+											"players": "self",
 											"source": {
-												"area": "site"
-											},
-											"includeSource": true
+												"location": {
+													"card": "eventSubject"
+												}
+											}
 										}
 									}
 								}
@@ -13358,21 +13637,17 @@
 					}
 				],
 				"effects": {
-					"enters": [
+					"played": [
 						{
-							"targetQuery": {
-								"players": "team"
-							},
 							"effect": {
-								"modifiers": [
+								"passiveModifiers": [
 									{
-										"type": "ready"
+										"type": "ready",
+										"cardType": "unit"
 									}
 								]
 							}
-						}
-					],
-					"played": [
+						},
 						{
 							"effect": {
 								"spawn": {
@@ -15135,7 +15410,8 @@
 													"success": {
 														"zoneChanges": [
 															{
-																"to": "hand"
+																"to": "hand",
+																"event": "draw"
 															}
 														],
 														"routing": {
@@ -15454,7 +15730,6 @@
 				"effects": {
 					"attached": [
 						{
-							"usage": "oncePerTurn",
 							"targetQuery": {
 								"cardTypes": ["equipment"]
 							},
@@ -15494,7 +15769,8 @@
 												"count": 1
 											}
 										}
-									]
+									],
+									"usage": "oncePerTurn"
 								}
 							}
 						}
@@ -15978,6 +16254,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -16016,6 +16293,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -17237,31 +17515,36 @@
 								"flow": {
 									"branch": {
 										"success": {
-											"play": {
-												"subject": "selection",
-												"payment": {
-													"waive": ["mana"]
-												}
-											},
-											"select": {
-												"timing": "privateChoice",
+											"modifierGrant": {
 												"query": {
 													"cardTypes": ["gear"],
 													"source": {
 														"area": "hand"
-													}
-												},
-												"costsThreshold": {
-													"costs": [
+													},
+													"conditional": [
 														{
-															"amount": 7,
-															"type": "mana"
+															"max": 7,
+															"type": "amount",
+															"amount": {
+																"stat": "mana",
+																"card": "recipient"
+															}
 														}
 													]
 												},
-												"count": 1
-											},
-											"optional": true
+												"modifiers": [
+													{
+														"type": "mana",
+														"amount": {
+															"stat": "mana",
+															"card": "recipient"
+														}
+													}
+												],
+												"uses": 1,
+												"consumeOn": "finalized",
+												"duration": "turn"
+											}
 										}
 									}
 								}
@@ -18875,7 +19158,11 @@
 									"count": 1
 								}
 							},
-							"conqueredUncontrolled": true
+							"conditionalsTarget": [
+								{
+									"type": "uncontrolledConquest"
+								}
+							]
 						}
 					]
 				},
@@ -19178,6 +19465,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -20445,21 +20733,7 @@
 							"targetQuery": {
 								"players": "self"
 							},
-							"conditionalsTarget": [
-								{
-									"max": 0,
-									"type": "amount",
-									"amount": {
-										"playerStat": {
-											"stat": "winCombat",
-											"player": {
-												"controllerOf": "recipient"
-											},
-											"window": "turn"
-										}
-									}
-								}
-							],
+							"usage": "oncePerTurn",
 							"effect": {
 								"addPoints": 1
 							}
@@ -21324,6 +21598,7 @@
 								"register": {
 									"onPlayed": [
 										{
+											"duration": "turn",
 											"targetQuery": {
 												"cardTypes": ["unit"],
 												"players": "team"
@@ -23356,6 +23631,7 @@
 					],
 					"onKill": [
 						{
+							"eventMultiplicity": "perBatch",
 							"targetQuery": {
 								"cardTypes": ["unit"],
 								"players": "opponent"
@@ -24645,7 +24921,7 @@
 							},
 							"conditionalsTarget": [
 								{
-									"type": "combat"
+									"type": "showdownActive"
 								}
 							],
 							"effect": {
@@ -25779,6 +26055,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -26726,6 +27003,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -26793,6 +27071,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -26895,19 +27174,20 @@
 								"register": {
 									"onPlayed": [
 										{
+											"duration": "turn",
 											"targetQuery": {
 												"cardTypes": ["unit"],
 												"players": "self"
 											},
 											"consumes": true,
 											"effect": {
+												"readies": {
+													"action": "ready"
+												},
 												"routing": {
 													"subject": "eventSubject"
 												},
-												"addBuff": 1,
-												"readies": {
-													"action": "ready"
-												}
+												"addBuff": 1
 											}
 										}
 									]
@@ -27594,6 +27874,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -27891,35 +28172,94 @@
 					"played": [
 						{
 							"effect": {
-								"damage": {
-									"amount": 4
+								"routing": {
+									"subject": "selection"
 								},
 								"select": {
 									"query": {
-										"players": "opponent",
+										"players": "all",
 										"source": {
-											"area": "site"
+											"area": "faceUp"
 										},
-										"cardTypes": ["unit"]
+										"includeSites": true,
+										"conditional": [
+											{
+												"type": "amount",
+												"amount": {
+													"count": {
+														"query": {
+															"cardTypes": ["battlefield"],
+															"includeSites": true,
+															"players": "all",
+															"includeSource": true,
+															"source": {
+																"cards": {
+																	"from": "selection"
+																},
+																"area": "site"
+															}
+														}
+													}
+												}
+											},
+											{
+												"type": "amount",
+												"amount": {
+													"count": {
+														"query": {
+															"cardTypes": ["unit"],
+															"players": "opponent",
+															"includeSource": true,
+															"source": {
+																"cards": {
+																	"from": "selection",
+																	"index": 1
+																},
+																"area": "inPlay"
+															}
+														}
+													}
+												}
+											}
+										]
 									},
-									"count": 1
+									"count": 2,
+									"constraints": {
+										"locationRelation": "same",
+										"playersByIndex": ["all", "opponent"]
+									}
 								},
 								"flow": {
 									"sequence": {
 										"effect": {
 											"damage": {
-												"amount": 1
+												"amount": 4
 											},
-											"targetQuery": {
-												"cardTypes": ["unit"],
-												"exclude": "previousSelection",
-												"players": "opponent",
-												"source": {
-													"location": {
-														"card": {
-															"from": "previousSelection"
+											"routing": {
+												"instructions": {
+													"damage": {
+														"from": "previousSelection",
+														"index": 1
+													}
+												}
+											},
+											"flow": {
+												"sequence": {
+													"effect": {
+														"damage": {
+															"amount": 1
 														},
-														"previous": true
+														"targetQuery": {
+															"exclude": "previousSelection",
+															"players": "opponent",
+															"source": {
+																"location": {
+																	"card": {
+																		"from": "previousSelection"
+																	}
+																}
+															}
+														}
 													}
 												}
 											}
@@ -27963,6 +28303,7 @@
 								"register": {
 									"onKill": [
 										{
+											"duration": "turn",
 											"consumes": true,
 											"captureTargets": true,
 											"targetQuery": {
@@ -28226,7 +28567,7 @@
 			},
 			"ability": {
 				"effects": {
-					"combat": [
+					"showdownStart": [
 						{
 							"sourceArea": "site",
 							"effect": {
@@ -28274,6 +28615,7 @@
 											"zoneChanges": [
 												{
 													"to": "hand",
+													"event": "draw",
 													"source": {
 														"query": {
 															"source": {
@@ -29144,6 +29486,7 @@
 								"register": {
 									"winCombat": [
 										{
+											"duration": "turn",
 											"targetQuery": {
 												"players": "self"
 											},
@@ -29700,16 +30043,61 @@
 					"played": [
 						{
 							"effect": {
-								"gainXP": 1,
+								"routing": {
+									"subject": "selection"
+								},
 								"select": {
 									"query": {
-										"cardTypes": ["unit"],
-										"players": "team",
+										"players": "all",
 										"source": {
-											"area": "site"
-										}
+											"area": "faceUp"
+										},
+										"includeSites": true,
+										"conditional": [
+											{
+												"type": "amount",
+												"amount": {
+													"count": {
+														"query": {
+															"cardTypes": ["unit"],
+															"players": "team",
+															"includeSource": true,
+															"source": {
+																"cards": {
+																	"from": "selection"
+																},
+																"area": "inPlay"
+															}
+														}
+													}
+												}
+											},
+											{
+												"type": "amount",
+												"amount": {
+													"count": {
+														"query": {
+															"cardTypes": ["battlefield"],
+															"includeSites": true,
+															"players": "all",
+															"includeSource": true,
+															"source": {
+																"cards": {
+																	"from": "selection",
+																	"index": 1
+																},
+																"area": "site"
+															}
+														}
+													}
+												}
+											}
+										]
 									},
-									"count": 1
+									"count": 2,
+									"constraints": {
+										"playersByIndex": ["team", "all"]
+									}
 								},
 								"flow": {
 									"sequence": {
@@ -29717,40 +30105,41 @@
 											"moves": {
 												"to": "base"
 											},
-											"select": {
-												"timing": "programmatic",
-												"query": {
-													"players": "opponent",
-													"source": {
-														"area": "site",
-														"location": {
-															"card": {
-																"from": "previousSelection"
-															}
+											"targetQuery": {
+												"cardTypes": ["unit"],
+												"source": {
+													"location": {
+														"card": {
+															"from": "previousSelection",
+															"index": 1
 														}
-													},
-													"cardTypes": ["unit"],
-													"conditional": [
-														{
-															"compare": {
-																"operator": "<",
-																"value": {
-																	"stat": "strength",
-																	"card": {
-																		"from": "previousSelection"
-																	},
-																	"previous": true
-																}
-															},
-															"type": "amount",
-															"amount": {
+													}
+												},
+												"players": "opponent",
+												"conditional": [
+													{
+														"compare": {
+															"operator": "<",
+															"value": {
 																"stat": "strength",
-																"card": "recipient"
+																"card": {
+																	"from": "previousSelection"
+																},
+																"previous": true
 															}
+														},
+														"type": "amount",
+														"amount": {
+															"stat": "strength",
+															"card": "recipient"
 														}
-													],
-													"exclude": {
-														"from": "previousSelection"
+													}
+												]
+											},
+											"flow": {
+												"sequence": {
+													"effect": {
+														"gainXP": 1
 													}
 												}
 											}
@@ -30621,8 +31010,7 @@
 										"players": "opponent",
 										"source": {
 											"area": "site"
-										},
-										"excludeLocation": "base"
+										}
 									},
 									"count": 1
 								},
@@ -31905,7 +32293,7 @@
 							},
 							"conditionalsSource": [
 								{
-									"type": "combat"
+									"type": "showdown"
 								}
 							],
 							"effect": {
@@ -33567,6 +33955,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -33786,7 +34175,6 @@
 				"effects": {
 					"played": [
 						{
-							"usage": "oncePerTurn",
 							"effect": {
 								"choice": {
 									"mode": "effect",
@@ -33843,7 +34231,8 @@
 												"count": 1
 											}
 										}
-									]
+									],
+									"usage": "oncePerTurn"
 								}
 							}
 						}
@@ -34399,6 +34788,7 @@
 					"enters": [
 						{
 							"targetQuery": {
+								"cardTypes": ["unit"],
 								"players": "self"
 							},
 							"effect": {
@@ -34859,7 +35249,11 @@
 										"amount": 1
 									}
 								],
-								"onlyDuringShowdown": true
+								"conditionals": [
+									{
+										"type": "showdownActive"
+									}
+								]
 							}
 						},
 						"actionWindows": ["contesting", "response"]
@@ -35281,15 +35675,32 @@
 								"select": {
 									"query": {
 										"cardTypes": ["unit"],
-										"players": "all",
+										"players": "team",
 										"source": {
 											"area": "inPlay"
 										}
 									},
-									"constraints": {
-										"playersByIndex": ["team", "opponent"]
-									},
-									"count": 2
+									"count": 1
+								},
+								"flow": {
+									"sequence": {
+										"effect": {
+											"moves": true,
+											"selectLocation": {
+												"area": "inPlay"
+											},
+											"select": {
+												"query": {
+													"cardTypes": ["unit"],
+													"players": "opponent",
+													"source": {
+														"area": "inPlay"
+													}
+												},
+												"count": 1
+											}
+										}
+									}
 								}
 							}
 						}
@@ -35752,7 +36163,7 @@
 					"beginning": [
 						{
 							"targetQuery": {
-								"players": "self"
+								"players": "all"
 							},
 							"effect": {
 								"damage": {
@@ -36026,6 +36437,7 @@
 								"register": {
 									"onCosts": [
 										{
+											"duration": "turn",
 											"targetQuery": {
 												"excludeCardTypes": ["token"],
 												"cardTypes": ["unit"],
@@ -37784,6 +38196,7 @@
 															"source": {
 																"area": "here"
 															},
+															"isAtSite": true,
 															"cardTypes": ["unit"],
 															"exclude": "recipient"
 														},
@@ -38124,7 +38537,8 @@
 													"success": {
 														"zoneChanges": [
 															{
-																"to": "hand"
+																"to": "hand",
+																"event": "draw"
 															}
 														],
 														"routing": {
@@ -38564,7 +38978,7 @@
 								"select": {
 									"query": {
 										"cardTypes": ["spell"],
-										"players": "opponent",
+										"players": "all",
 										"source": {
 											"area": "chain"
 										},
@@ -38573,7 +38987,11 @@
 											{
 												"type": "eventCount",
 												"event": "played",
+												"player": {
+													"controllerOf": "effectSource"
+												},
 												"stage": "initiated",
+												"relation": "opponent",
 												"cardTypes": ["spell"],
 												"exclude": "recipient",
 												"typesFrom": "current"
@@ -39450,20 +39868,20 @@
 					"onCosts": [
 						{
 							"targetQuery": {
-								"players": "self",
-								"cardTypes": ["spell"]
+								"cardTypes": ["spell"],
+								"players": "self"
 							},
 							"effect": {
 								"costs": {
 									"costs": [
 										{
-											"amount": 1,
 											"type": "mana",
+											"amount": 1,
 											"minimumCost": 1
 										},
 										{
-											"amount": 1,
-											"type": "manaRecycle"
+											"type": "manaRecycle",
+											"amount": 1
 										}
 									],
 									"cardTypes": ["spell"]
@@ -39833,10 +40251,11 @@
 							"select": {
 								"query": {
 									"cardTypes": ["gear"],
+									"exclude": ["affectingCard", "previousSelection"],
+									"players": "all",
 									"source": {
 										"area": "inPlay"
-									},
-									"exclude": ["affectingCard", "previousSelection"]
+									}
 								},
 								"count": 1
 							},
@@ -43092,11 +43511,11 @@
 							"effect": {
 								"select": {
 									"query": {
+										"cardTypes": ["unit"],
 										"players": "all",
 										"source": {
 											"area": "inPlay"
-										},
-										"cardTypes": ["unit"]
+										}
 									},
 									"count": 1
 								},
@@ -43170,6 +43589,7 @@
 											"source": {
 												"area": "here"
 											},
+											"isAtSite": true,
 											"cardTypes": ["unit"],
 											"exclude": "recipient"
 										},
@@ -43735,23 +44155,41 @@
 						"type": "noDamageDelivered",
 						"conditional": [
 							{
-								"compare": {
-									"operator": "!=",
-									"value": 1
-								},
-								"type": "amount",
-								"amount": {
-									"count": {
-										"query": {
-											"cardTypes": ["unit"],
-											"source": {
-												"area": "here"
-											},
-											"exclude": "recipient"
-										},
-										"card": "recipient"
+								"type": "all",
+								"conditional": [
+									{
+										"type": "amount",
+										"amount": {
+											"count": {
+												"query": {
+													"source": {
+														"area": "site",
+														"cards": "affectingCard"
+													}
+												},
+												"card": "recipient"
+											}
+										}
+									},
+									{
+										"min": 1,
+										"max": 1,
+										"type": "amount",
+										"amount": {
+											"count": {
+												"query": {
+													"cardTypes": ["unit"],
+													"source": {
+														"area": "here"
+													},
+													"exclude": "affectingCard"
+												},
+												"card": "recipient"
+											}
+										}
 									}
-								}
+								],
+								"not": true
 							}
 						]
 					}
@@ -44602,18 +45040,8 @@
 											"subject": "previousSelection"
 										},
 										"flow": {
-											"branch": {
-												"success": {
-													"readies": {
-														"action": "ready"
-													},
-													"routing": {
-														"instructions": {
-															"readies": "previousSelection"
-														}
-													}
-												},
-												"failure": {
+											"sequence": {
+												"effect": {
 													"readies": {
 														"action": "ready"
 													},
@@ -45105,6 +45533,7 @@
 											"register": {
 												"onKill": [
 													{
+														"duration": "turn",
 														"consumes": true,
 														"captureTargets": true,
 														"targetQuery": {
@@ -45126,6 +45555,7 @@
 								"register": {
 									"onKill": [
 										{
+											"duration": "turn",
 											"consumes": true,
 											"captureTargets": true,
 											"targetQuery": {
@@ -45837,6 +46267,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -46022,7 +46453,11 @@
 											"type": "manaRecycle"
 										}
 									],
-									"onlyDuringShowdown": true
+									"conditionals": [
+										{
+											"type": "showdownActive"
+										}
+									]
 								}
 							}
 						}
@@ -46272,72 +46707,6 @@
 					]
 				}
 			}
-		},
-		{
-			"id": "VEN-R01",
-			"name": "Fury Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["R"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f95ed6ba0c4d4d357c45bf5bdb1a8e540af1f85f-744x1039.png"
-		},
-		{
-			"id": "VEN-R02",
-			"name": "Calm Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["G"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b70aa1b334728a3e8beeea0c9154a2d0f79b1eb-744x1039.png"
-		},
-		{
-			"id": "VEN-R03",
-			"name": "Mind Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["B"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33df1c56c6e76f9cb783c19161f16fcdbdc20f98-744x1039.png"
-		},
-		{
-			"id": "VEN-R04",
-			"name": "Body Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["O"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3313c73c5b31daa482073bfefbf4d2255a89d7d0-744x1039.png"
-		},
-		{
-			"id": "VEN-R05",
-			"name": "Chaos Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["P"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3861fc566891a70c21cf3d3075adec716deb7080-744x1039.png"
-		},
-		{
-			"id": "VEN-R06",
-			"name": "Order Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["Y"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/71e7d71ebadb81ccad7ca4cb8b3fb85d2f5fd4bf-744x1039.png"
 		},
 		{
 			"id": "VEN-T04",
@@ -46596,9 +46965,266 @@
 			}
 		},
 		{
+			"id": "RAD-006",
+			"name": "Scorched Earth",
+			"types": ["spell"],
+			"description": "[Action] (Play on your turn or in showdowns.)\nDeal 5 damage split among units at a single battlefield.",
+			"strength": 0,
+			"manaTap": 4,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e646f9850571e20eca22e07af5d4dd68813fdd19-744x1039.png",
+			"ability": {
+				"actionWindows": ["contesting"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"damage": {
+									"amount": 5,
+									"distribution": "split"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"source": {
+											"area": "site"
+										},
+										"players": "all"
+									},
+									"min": 1,
+									"count": 5,
+									"constraints": {
+										"locationRelation": "same"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-007",
+			"name": "Rally for War",
+			"types": ["spell"],
+			"description": "Choose an occupied enemy battlefield. Play three 1 [S] Recruit unit tokens there.",
+			"strength": 0,
+			"manaTap": 3,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/09c0fc35d8f4b72f58a95d1745b99c4133d02513-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"select": {
+									"query": {
+										"cardTypes": ["battlefield"],
+										"players": "opponent",
+										"includeSites": true,
+										"siteControl": true,
+										"conditional": [
+											{
+												"min": 1,
+												"type": "amount",
+												"amount": {
+													"count": {
+														"query": {
+															"cardTypes": ["unit"],
+															"players": "all",
+															"source": {
+																"location": {
+																	"card": "recipient"
+																}
+															},
+															"includeSource": true
+														}
+													}
+												}
+											}
+										]
+									},
+									"count": 1
+								},
+								"routing": {
+									"subject": "selection"
+								},
+								"spawn": {
+									"name": "recruit",
+									"count": 3,
+									"to": "here"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-008",
+			"name": "War Scout",
+			"types": ["unit", "demacia", "yordle"],
+			"description": "[Accelerate] (You may pay [1] [C] as an additional cost to have me enter ready.)\nWhen you play me, give a unit +2 [S] this turn.",
+			"strength": 2,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3adae96f4731752074cf2145507a175dee800411-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": 2,
+										"duration": "turn"
+									}
+								],
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								}
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "haste"
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-009",
+			"name": "Antagonistic Apparatus",
+			"types": ["unit", "bandle city", "yordle", "mech"],
+			"description": "I enter ready.\nWhen you play me, play a ready 3 [S] Mech unit token here.",
+			"strength": 3,
+			"manaTap": 6,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5be775464c8b897501317c6d32fd60c8b962b5c2-744x1039.png",
+			"ability": {
+				"effects": {
+					"enters": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								]
+							}
+						}
+					],
+					"played": [
+						{
+							"effect": {
+								"spawn": {
+									"name": "mech",
+									"to": "here",
+									"statuses": ["ready"]
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-010",
+			"name": "Forbidden Technique",
+			"types": ["spell"],
+			"description": "Ready a unit.\nWhen you play a card with Energy cost [7] or more, you may play this from your trash for [1] [C] [C]. Then banish this.",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["R"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-010.webp",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"readies": {
+									"action": "ready"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								}
+							}
+						}
+					],
+					"onPlayed": [
+						{
+							"sourceArea": "discard",
+							"targetQuery": {
+								"players": "self",
+								"conditional": [
+									{
+										"min": 7,
+										"type": "amount",
+										"amount": {
+											"stat": "mana",
+											"card": "recipient"
+										}
+									}
+								]
+							},
+							"effect": {
+								"optional": true,
+								"play": {
+									"mode": "replay",
+									"subject": "effectSource",
+									"sourceArea": "discard",
+									"costs": {
+										"costs": [
+											{
+												"type": "mana",
+												"amount": 1
+											},
+											{
+												"type": "manaRecycle",
+												"amount": 1,
+												"matching": ["C"]
+											},
+											{
+												"type": "manaRecycle",
+												"amount": 1,
+												"matching": ["C"]
+											}
+										]
+									},
+									"exit": "banished"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-012",
 			"name": "Runeblade Anvil",
-			"types": ["unit", "gear"],
+			"types": ["gear"],
 			"description": "When you play this or when this leaves the board, banish the top card of your Main Deck. Until your next Ending Phase, you may play that card. (You still pay its costs.)\n[2] [C], [T]: Kill this.",
 			"strength": 0,
 			"manaTap": 1,
@@ -46904,7 +47530,7 @@
 		{
 			"id": "RAD-016",
 			"name": "Coalesced Energy",
-			"types": ["spell", "unit"],
+			"types": ["unit"],
 			"description": "At the end of your turn, recycle all your runes, then channel 4 runes exhausted.",
 			"strength": 4,
 			"manaTap": 4,
@@ -46958,7 +47584,7 @@
 			"manaTap": 4,
 			"manaRecycle": 1,
 			"colors": ["R"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790980936078-urbkq0os81.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0cd07e77e69a53b78486b07dd7610183c953d581-744x1039.png",
 			"ability": {
 				"effects": {
 					"hold": [
@@ -47021,6 +47647,269 @@
 			}
 		},
 		{
+			"id": "RAD-018",
+			"name": "Drakehound Packmaster",
+			"types": ["unit", "noxus"],
+			"description": "When you play me, reveal the top card of each opponent's Main Deck. Choose one and banish it, then play it, ignoring its cost. Recycle the rest.",
+			"strength": 9,
+			"manaTap": 9,
+			"manaRecycle": 2,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9ddc2759cf8b039bc1ee77e32326c5475cc001e8-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"reveal": {
+									"target": "opponent",
+									"deck": "mainDeck",
+									"amount": 1,
+									"visibility": "public"
+								},
+								"select": {
+									"timing": "resolutionChoice",
+									"query": {
+										"players": "opponent",
+										"source": {
+											"area": "mainDeck"
+										}
+									},
+									"count": 1,
+									"remainder": true
+								},
+								"zoneChanges": [
+									{
+										"to": "banished",
+										"source": {
+											"query": {
+												"source": {
+													"cards": "selection"
+												}
+											}
+										}
+									},
+									{
+										"to": "mainDeck"
+									}
+								],
+								"flow": {
+									"sequence": {
+										"effect": {
+											"play": {
+												"subject": "previousSelection"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-019",
+			"name": "Firebrand Raider",
+			"types": ["unit", "freljord"],
+			"description": "I enter ready.\nWhen you play me, ready all enemy units.\nOther units enter ready.\nUnits don't ready during the Awaken Phase.",
+			"strength": 6,
+			"manaTap": 6,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/922ef5a266378fa8ebd7e75bf83435bacd1a75d8-744x1039.png",
+			"ability": {
+				"effects": {
+					"enters": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								]
+							}
+						},
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"exclude": "effectSource"
+							},
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								]
+							}
+						}
+					],
+					"played": [
+						{
+							"effect": {
+								"readies": {
+									"action": "ready"
+								},
+								"select": {
+									"timing": "programmatic",
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "opponent",
+										"source": {
+											"area": "inPlay"
+										}
+									}
+								}
+							}
+						}
+					],
+					"canReady": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"]
+							},
+							"phase": "awaken"
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-020",
+			"name": "Mordekaiser, Twice Slain",
+			"types": ["unit", "champion", "mordekaiser", "noxus", "spirit"],
+			"description": "[Accelerate] (You may pay [1] [C] as an additional cost to have me enter ready.)\n[Assault 3] (+3 [S] while I'm an attacker.)\nOnce each turn, if I would die, you may kill a friendly unit to heal me, exhaust me, and recall me instead.",
+			"strength": 5,
+			"manaTap": 7,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/66db9510de566ac43157ecdcc96f33b5f553a38d-744x1039.png",
+			"variants": {
+				"RAD-020a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/30e0267246c161d62eebb264cd6f1c07228ae749-744x1039.png"
+			},
+			"ability": {
+				"effects": {
+					"wouldDie": [
+						{
+							"usage": "oncePerTurn",
+							"effect": {
+								"routing": {
+									"subject": "eventSubject"
+								},
+								"heals": true,
+								"readies": {
+									"action": "exhaust"
+								},
+								"moves": {
+									"type": "recall",
+									"onFailure": "killTarget"
+								},
+								"costs": {
+									"costs": [
+										{
+											"type": "killSelect",
+											"amount": 1,
+											"matching": ["unit"]
+										}
+									]
+								},
+								"optional": true
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "haste"
+					},
+					{
+						"type": "assault",
+						"amount": 3
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-021",
+			"name": "Ekko, Revolutionary",
+			"types": ["unit", "champion", "zaun", "ekko"],
+			"description": "I enter ready.\n[Assault] (+1 [S] while I'm an attacker.)\n[Action] [>] Discard 1, [1] [C]: Banish me, then play me to your base, ignoring my cost.",
+			"strength": 4,
+			"manaTap": 5,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d13964c46506f9f36430dfe91ee02d258a304908-744x1039.png",
+			"variants": {
+				"RAD-021a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b4e49d03e297db4593a6ebc0d7e6c165dff6dcfe-744x1039.png",
+				"RAD-177": "https://cdn.piltoverarchive.com/temporary/1791720697892-ez2e0lxqd9l.png"
+			},
+			"ability": {
+				"effects": {
+					"enters": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								]
+							}
+						}
+					]
+				},
+				"activatableEffects": [
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "hand",
+										"amount": 1
+									}
+								]
+							},
+							{
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							},
+							{
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1,
+										"matching": ["C"]
+									}
+								]
+							}
+						],
+						"effect": {
+							"banishes": true,
+							"flow": {
+								"sequence": {
+									"effect": {
+										"play": {
+											"subject": "affectingCard",
+											"destination": "base"
+										}
+									}
+								}
+							}
+						},
+						"actionWindows": ["contesting"]
+					}
+				],
+				"playModifiers": [
+					{
+						"type": "assault"
+					}
+				]
+			}
+		},
+		{
 			"id": "RAD-023",
 			"name": "Ziggs, Short-Fused",
 			"types": ["unit", "champion", "ziggs", "bandle city"],
@@ -47049,6 +47938,7 @@
 					],
 					"bonusDamage": [
 						{
+							"targetQuery": {},
 							"eventSourceQuery": {
 								"players": "team",
 								"cardTypes": ["gear"]
@@ -47096,8 +47986,8 @@
 					],
 					"winCombat": [
 						{
-							"initiatingPlayer": "self",
 							"targetQuery": {
+								"players": "self",
 								"source": {
 									"area": "here"
 								}
@@ -47113,7 +48003,7 @@
 		{
 			"id": "RAD-025",
 			"name": "Consult the Heavens",
-			"types": ["unit", "spell"],
+			"types": ["spell"],
 			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a unit [Shield 2] this turn. (+2 [S] while it's a defender.)\n[Predict]. (Look at the top card of your Main Deck. You may recycle it.)",
 			"strength": 0,
 			"manaTap": 1,
@@ -47210,12 +48100,12 @@
 			"id": "RAD-027",
 			"name": "Iridescent Avian",
 			"types": ["unit", "bird", "ixtal"],
-			"description": "[T]: [Buff] a friendly unit. If it's already buffed, give it +2[S] this turn instead. \n(To buff a unit, give it a +1[S] buff if it doesn't have one.)",
+			"description": "[T]: [Buff] a unit. If it's already buffed, give it +2 [S] this turn instead. (To buff a unit, give it a +1 [S] buff if it doesn't have one.)",
 			"strength": 3,
 			"manaTap": 3,
 			"manaRecycle": 0,
 			"colors": ["G"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790943510236-bx7m617wsk.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/73fde9189b222313dcf8c2abe79b38082c76961e-744x1039.png",
 			"ability": {
 				"activatableEffects": [
 					{
@@ -47224,7 +48114,7 @@
 							"select": {
 								"query": {
 									"cardTypes": ["unit"],
-									"players": "team",
+									"players": "all",
 									"source": {
 										"area": "inPlay"
 									}
@@ -47276,9 +48166,186 @@
 			}
 		},
 		{
+			"id": "RAD-028",
+			"name": "Ki Burst",
+			"types": ["spell"],
+			"description": "[Action] (Play on your turn or in showdowns.)\nAs an additional cost to play this, exhaust a friendly unit.\n[Stun] a unit. (It doesn't deal combat damage this turn.)",
+			"strength": 0,
+			"manaTap": 1,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33af916b50007c01b33e78aef3dc99b757edc3f2-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "tapSelect",
+								"amount": 1,
+								"matching": ["unit"]
+							}
+						]
+					}
+				],
+				"actionWindows": ["contesting"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "stun",
+										"duration": "turn"
+									}
+								],
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-029",
+			"name": "Life from Stone",
+			"types": ["spell"],
+			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nAs an additional cost to play this, exhaust a friendly unit.\nDraw 1 and channel 1 rune exhausted.",
+			"strength": 0,
+			"manaTap": 1,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a849c0425f0fecb8d00e1b9494e975c4dbbba75-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "tapSelect",
+								"amount": 1,
+								"matching": ["unit"]
+							}
+						]
+					}
+				],
+				"actionWindows": ["contesting", "response"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"draw": 1,
+								"flow": {
+									"sequence": {
+										"effect": {
+											"drawMana": {
+												"amount": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-030",
+			"name": "Sanctum Conservator",
+			"types": ["unit", "shurima"],
+			"description": "When you play a card with Energy cost [7] or more, ready me.",
+			"strength": 5,
+			"manaTap": 5,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/776973101613a15a7d0a2fc90587d19098ecc894-744x1039.png",
+			"ability": {
+				"effects": {
+					"onPlayed": [
+						{
+							"targetQuery": {
+								"players": "self"
+							},
+							"conditionalsTarget": [
+								{
+									"min": 7,
+									"type": "amount",
+									"amount": {
+										"stat": "mana",
+										"card": "recipient"
+									}
+								}
+							],
+							"initiatingPlayer": "self",
+							"effect": {
+								"readies": {
+									"action": "ready"
+								},
+								"routing": {
+									"instructions": {
+										"readies": "affectingCard"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-031",
+			"name": "Stoic Ferryman",
+			"types": ["unit", "sentinel", "bilgewater"],
+			"description": "[Shield 3] (+3 [S] while I'm a defender.)\nWhen you play me to a battlefield, you may move another unit you control here to your base.",
+			"strength": 2,
+			"manaTap": 4,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-031.webp",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"sourceArea": "site",
+							"effect": {
+								"moves": {
+									"to": "base"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"source": {
+											"area": "here"
+										},
+										"exclude": ["affectingCard", "previousSelection"]
+									},
+									"count": 1
+								},
+								"optional": true
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "shield",
+						"amount": 3
+					}
+				]
+			}
+		},
+		{
 			"id": "RAD-033",
 			"name": "Command: Attack",
-			"types": ["gear", "spell"],
+			"types": ["spell"],
 			"description": "Choose one —* Move a friendly gear with [Deploy] to a battlefield.* Look at the top 5 cards of your Main Deck. You may reveal a gear from among them and draw it. Recycle the rest.",
 			"strength": 0,
 			"manaTap": 1,
@@ -47330,6 +48397,7 @@
 											"zoneChanges": [
 												{
 													"to": "hand",
+													"event": "draw",
 													"source": {
 														"query": {
 															"source": {
@@ -47402,7 +48470,7 @@
 		{
 			"id": "RAD-035",
 			"name": "Invigorating Bloom",
-			"types": ["unit", "gear"],
+			"types": ["gear"],
 			"description": "When you play this, give a friendly unit +3 [S] this turn.\nExhaust a friendly [Mighty] unit, [T]: Draw 1. (A unit is Mighty while it has 5+ [S].)",
 			"strength": 0,
 			"manaTap": 3,
@@ -47437,7 +48505,6 @@
 				},
 				"activatableEffects": [
 					{
-						"taps": true,
 						"costs": [
 							{
 								"costs": [
@@ -47445,26 +48512,21 @@
 										"type": "tapSelect",
 										"amount": 1,
 										"matching": ["unit"],
-										"query": {
-											"players": "team",
-											"source": {
-												"area": "inPlay"
-											},
-											"conditional": [
-												{
-													"min": 5,
-													"type": "amount",
-													"amount": {
-														"stat": "strength",
-														"card": "recipient"
-													}
+										"conditional": [
+											{
+												"min": 5,
+												"type": "amount",
+												"amount": {
+													"stat": "strength",
+													"card": "recipient"
 												}
-											]
-										}
+											}
+										]
 									}
 								]
 							}
 						],
+						"taps": true,
 						"effect": {
 							"draw": 1
 						}
@@ -47491,13 +48553,13 @@
 								"players": "opponent",
 								"source": {
 									"area": "here"
-								},
-								"conditional": [
-									{
-										"type": "stunned"
-									}
-								]
+								}
 							},
+							"conditionalsTarget": [
+								{
+									"type": "stunned"
+								}
+							],
 							"effect": {
 								"draw": 1
 							}
@@ -47555,7 +48617,7 @@
 			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cf3c6a5963ad27976960977b0a51ea185f551696-744x1039.png",
 			"variants": {
-				"RAD-SP1": "https://cdn.piltoverarchive.com/temporary/1790987694408-134qeoalrdi.png"
+				"RAD-SP1": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e4be56cd7dc8075298567c5b28ecc3e46b87bc57-744x1039.png"
 			},
 			"ability": {
 				"effects": {
@@ -47602,6 +48664,295 @@
 										"duration": "turn"
 									}
 								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-039",
+			"name": "Ephemeral Ward",
+			"types": ["gear"],
+			"description": "Your units have +2 [S].\nWhen you play a unit, kill this.",
+			"strength": 0,
+			"manaTap": 4,
+			"manaRecycle": 2,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d2e562a1b69a42ebd9c8f95a9420750f45aca5dc-744x1039.png",
+			"ability": {
+				"effects": {
+					"passiveModifiers": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "self",
+								"source": {
+									"area": "inPlay"
+								}
+							},
+							"effect": {
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": 2
+									}
+								]
+							}
+						}
+					],
+					"onPlayed": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "self"
+							},
+							"effect": {
+								"kills": true
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-040",
+			"name": "Heartening Soul",
+			"types": ["unit", "shadow isles", "spirit"],
+			"description": "When you play me, ready a friendly legend.\nFriendly legends have \"[T]: Give a unit +3 [S] this turn.\"",
+			"strength": 7,
+			"manaTap": 7,
+			"manaRecycle": 1,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0a5f9ab3216462356f6ddf8f172284dca6be21e9-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"readies": {
+									"action": "ready"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["legend"],
+										"players": "team",
+										"source": {
+											"area": "faceUp"
+										}
+									},
+									"count": 1
+								}
+							}
+						}
+					],
+					"passiveModifiers": [
+						{
+							"targetQuery": {
+								"cardTypes": ["legend"],
+								"players": "team",
+								"source": {
+									"area": "faceUp"
+								}
+							},
+							"effect": {
+								"grantAbilities": {
+									"activatableEffects": [
+										{
+											"taps": true,
+											"effect": {
+												"modifiers": [
+													{
+														"type": "strength",
+														"amount": 3,
+														"duration": "turn"
+													}
+												],
+												"select": {
+													"query": {
+														"cardTypes": ["unit"],
+														"players": "all",
+														"source": {
+															"area": "inPlay"
+														}
+													},
+													"count": 1
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-041",
+			"name": "Hush",
+			"types": ["spell"],
+			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nCounter a spell with Power cost [A] [A] or more.",
+			"strength": 0,
+			"manaTap": 1,
+			"manaRecycle": 2,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b9c1b9441e42639805b715466938ccd26b89892d-744x1039.png",
+			"ability": {
+				"actionWindows": ["contesting", "response"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"changeEffect": {
+									"type": "disable"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["spell"],
+										"conditional": [
+											{
+												"min": 2,
+												"type": "amount",
+												"amount": {
+													"stat": "manaRecycle",
+													"card": "recipient"
+												}
+											}
+										],
+										"players": "all",
+										"source": {
+											"area": "chain"
+										},
+										"exclude": "affectingCard"
+									},
+									"count": 1
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-042",
+			"name": "Orianna, Exquisite",
+			"types": ["unit", "champion", "piltover", "orianna"],
+			"description": "[Shield] (+1 [S] while I'm a defender.)\nI don't deal combat damage unless there's a friendly gear here.",
+			"strength": 4,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-042.webp",
+			"variants": {
+				"RAD-042a": "https://cdn.piltoverarchive.com/cards/RAD-042a.webp"
+			},
+			"ability": {
+				"playModifiers": [
+					{
+						"type": "shield"
+					},
+					{
+						"type": "noDamageDelivered",
+						"conditional": [
+							{
+								"min": 1,
+								"type": "amount",
+								"amount": {
+									"count": {
+										"query": {
+											"cardTypes": ["gear"],
+											"players": "team",
+											"source": {
+												"area": "here"
+											}
+										},
+										"card": "recipient"
+									}
+								},
+								"not": true
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-043",
+			"name": "Riven, Broken Blade",
+			"types": ["unit", "champion", "riven", "noxus"],
+			"description": "When I become exhausted, choose one that hasn't been chosen this turn —* [Buff] me. (Give me a +1 [S] buff if I don't have one.)* Spend my buff to [Stun] an enemy unit. (It doesn't deal combat damage this turn.)* Spend my buff to ready me.",
+			"strength": 4,
+			"manaTap": 4,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0c9ac0da1c144f46a1e0c5423f51f9b8f6ba295b-744x1039.png",
+			"variants": {
+				"RAD-043a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9870e0f591e2ca04bea2274209e8df3d4435213b-744x1039.png"
+			},
+			"ability": {
+				"effects": {
+					"onExhaust": [
+						{
+							"effect": {
+								"choice": {
+									"mode": "effect",
+									"options": [
+										{
+											"addBuff": 1
+										},
+										{
+											"costs": {
+												"costs": [
+													{
+														"type": "buffSelf",
+														"amount": 1
+													}
+												]
+											},
+											"modifiers": [
+												{
+													"type": "stun",
+													"duration": "turn"
+												}
+											],
+											"select": {
+												"query": {
+													"cardTypes": ["unit"],
+													"players": "opponent",
+													"source": {
+														"area": "inPlay"
+													}
+												},
+												"count": 1
+											}
+										},
+										{
+											"costs": {
+												"costs": [
+													{
+														"type": "buffSelf",
+														"amount": 1
+													}
+												]
+											},
+											"readies": {
+												"action": "ready"
+											},
+											"routing": {
+												"instructions": {
+													"readies": "affectingCard"
+												}
+											}
+										}
+									],
+									"usage": "oncePerTurn"
+								}
+							},
+							"targetQuery": {
+								"source": {
+									"cards": "effectSource"
+								}
 							}
 						}
 					]
@@ -47659,7 +49010,7 @@
 		{
 			"id": "RAD-046",
 			"name": "Resplendent Rostrum",
-			"types": ["spell", "gear"],
+			"types": ["gear"],
 			"description": "[T]: Draw 1 and channel 1 rune exhausted.\nWhen I become exhausted, give a friendly unit +3 [S] this turn.",
 			"strength": 0,
 			"manaTap": 8,
@@ -47734,11 +49085,11 @@
 								"register": {
 									"onPlayed": [
 										{
-											"initiatingPlayer": "self",
-											"targetQuery": {
-												"cardTypes": ["unit"]
-											},
 											"duration": "turn",
+											"targetQuery": {
+												"cardTypes": ["unit"],
+												"players": "self"
+											},
 											"remainingUses": 3,
 											"effect": {
 												"draw": 1
@@ -47812,6 +49163,289 @@
 			}
 		},
 		{
+			"id": "RAD-049",
+			"name": "Industrious Mechsmith",
+			"types": ["unit", "zaun"],
+			"description": "When you play me, play a 3 [S] Mech unit token here.",
+			"strength": 1,
+			"manaTap": 4,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c8f6b4191874f23b522566f8ebeeb6e5ee18eb7f-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"spawn": {
+									"name": "mech",
+									"to": "here"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-050",
+			"name": "Mysterious Chronomancer",
+			"types": ["unit", "shurima"],
+			"description": "When you play me, [Predict 2]. (Look at the top 2 cards of your Main Deck. Recycle any of them and put the rest back in any order.)\n[Disarm 2] (When I attack, give an enemy unit here -2 [S] this turn.)",
+			"strength": 4,
+			"manaTap": 5,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72828b0fe019b2e03069510f781dfa8f5759ac12-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"reveal": {
+									"deck": "mainDeck",
+									"amount": 2
+								},
+								"select": {
+									"min": 0,
+									"count": 2,
+									"query": {
+										"source": {
+											"area": "mainDeck"
+										}
+									},
+									"timing": "privateChoice"
+								},
+								"zoneChanges": [
+									{
+										"to": "mainDeck"
+									}
+								],
+								"routing": {
+									"subject": "selection"
+								}
+							}
+						}
+					],
+					"combat": [
+						{
+							"combatRole": "attacking",
+							"effect": {
+								"select": {
+									"count": 1,
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "opponent",
+										"source": {
+											"area": "here"
+										}
+									}
+								},
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": -2,
+										"duration": "turn"
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-051",
+			"name": "Parallel Convergence",
+			"types": ["spell"],
+			"description": "As an additional cost to play this, return a friendly unit to its owner's hand.\nDeal 5 to a unit at a battlefield.",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 1,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55e382346c6fa890936a1cf14abaf57b8ee0b8f2-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "returnToHandSelect",
+								"amount": 1,
+								"matching": ["unit"]
+							}
+						]
+					}
+				],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"damage": {
+									"amount": 5
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"source": {
+											"area": "site"
+										},
+										"players": "all"
+									},
+									"count": 1
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-052",
+			"name": "Resource Extractor",
+			"types": ["gear", "deploy"],
+			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nAt the end of your turn, if you control this battlefield, play a Gold gear token exhausted. (It has \"[Reaction] [>] Kill this, [T]: [Add] [A].\")",
+			"strength": 0,
+			"manaTap": 1,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d5cc2f85febe2260e51b88bddfeab6ce700c85dd-744x1039.png",
+			"ability": {
+				"effects": {
+					"hold": [
+						{
+							"targetQuery": {
+								"players": "opponent",
+								"source": {
+									"area": "here"
+								}
+							},
+							"effect": {
+								"kills": true,
+								"routing": {
+									"subject": "effectSource"
+								}
+							}
+						}
+					],
+					"ending": [
+						{
+							"effect": {
+								"spawn": {
+									"name": "gold",
+									"to": "base"
+								},
+								"requirements": {
+									"cards": {
+										"query": {
+											"cardTypes": ["battlefield"],
+											"players": "self",
+											"siteControl": true,
+											"includeSites": true,
+											"source": {
+												"area": "here",
+												"location": {
+													"card": "affectingCard"
+												}
+											},
+											"includeSource": true
+										}
+									}
+								}
+							},
+							"turnPlayer": "self"
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-053",
+			"name": "Strigian Oracle",
+			"types": ["unit", "bird", "freljord"],
+			"description": "When I become exhausted, [Predict]. (Look at the top card of your Main Deck. You may recycle it.)",
+			"strength": 2,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-053.webp",
+			"ability": {
+				"effects": {
+					"onExhaust": [
+						{
+							"effect": {
+								"reveal": {
+									"deck": "mainDeck",
+									"amount": 1
+								},
+								"select": {
+									"min": 0,
+									"count": 1,
+									"query": {
+										"source": {
+											"area": "mainDeck"
+										}
+									},
+									"timing": "privateChoice"
+								},
+								"zoneChanges": [
+									{
+										"to": "mainDeck"
+									}
+								],
+								"routing": {
+									"subject": "selection"
+								}
+							},
+							"targetQuery": {
+								"source": {
+									"cards": "effectSource"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-054",
+			"name": "Trinket Peddler",
+			"types": ["unit", "yordle", "bandle city"],
+			"description": "[Disarm] (When I attack, give an enemy unit here -1 [S] this turn.)",
+			"strength": 3,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cdn.piltoverarchive.com/temporary/1791545467178-38suok1h2zd.png",
+			"ability": {
+				"effects": {
+					"combat": [
+						{
+							"combatRole": "attacking",
+							"effect": {
+								"select": {
+									"count": 1,
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "opponent",
+										"source": {
+											"area": "here"
+										}
+									}
+								},
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": -1,
+										"duration": "turn"
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-055",
 			"name": "Clanging Sentry",
 			"types": ["unit"],
@@ -47826,8 +49460,11 @@
 					"passiveModifiers": [
 						{
 							"targetQuery": {
+								"cardTypes": ["mech"],
 								"players": "self",
-								"cardTypes": ["mech"]
+								"source": {
+									"area": "inPlay"
+								}
 							},
 							"effect": {
 								"grantAbilities": {
@@ -47867,7 +49504,7 @@
 		{
 			"id": "RAD-056",
 			"name": "Improvised Projectile",
-			"types": ["gear", "spell"],
+			"types": ["spell"],
 			"description": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly gear. Deal damage equal to its Energy cost to a unit at a battlefield.",
 			"strength": 0,
 			"manaTap": 3,
@@ -47934,7 +49571,9 @@
 				"effects": {
 					"onPlayed": [
 						{
-							"initiatingPlayer": "self",
+							"targetQuery": {
+								"players": "self"
+							},
 							"effect": {
 								"modifiers": [
 									{
@@ -47999,7 +49638,7 @@
 		{
 			"id": "RAD-059",
 			"name": "Supernova",
-			"types": ["unit", "spell"],
+			"types": ["spell"],
 			"description": "Deal 10 to a unit. Draw 2.",
 			"strength": 0,
 			"manaTap": 9,
@@ -48028,6 +49667,112 @@
 									"sequence": {
 										"effect": {
 											"draw": 2
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-060",
+			"name": "The Empyrean",
+			"types": ["unit", "dragon", "ionia"],
+			"description": "[Show Off] a card. (As you play me, you may reveal a card from hand or pick another friendly one.)\nWhen you play me, if you showed off a card, [Predict] equal to its Power cost, then draw 2. (Look at that many cards from your Main Deck. Recycle any of them and put the rest back in any order.)",
+			"strength": 8,
+			"manaTap": 8,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b7cd2e475834863bf4e66994118a835ba4377d16-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"source": {
+										"area": "hand"
+									},
+									"exclude": "effectSource"
+								}
+							},
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"players": "team",
+									"source": {
+										"area": "inPlay"
+									},
+									"exclude": "effectSource"
+								}
+							}
+						],
+						"chooseOne": true,
+						"optionality": "optional"
+					}
+				],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"reveal": {
+									"deck": "mainDeck",
+									"amount": {
+										"stat": "manaRecycle",
+										"card": {
+											"from": "costSelection",
+											"cost": "revealSelect",
+											"index": 0
+										}
+									}
+								},
+								"select": {
+									"min": 0,
+									"count": {
+										"stat": "manaRecycle",
+										"card": {
+											"from": "costSelection",
+											"cost": "revealSelect",
+											"index": 0
+										}
+									},
+									"query": {
+										"source": {
+											"area": "mainDeck"
+										}
+									},
+									"timing": "privateChoice"
+								},
+								"zoneChanges": [
+									{
+										"to": "mainDeck"
+									}
+								],
+								"routing": {
+									"subject": "selection"
+								},
+								"flow": {
+									"sequence": {
+										"effect": {
+											"draw": 2
+										}
+									}
+								},
+								"requirements": {
+									"cards": {
+										"query": {
+											"source": {
+												"cards": {
+													"from": "costSelection",
+													"cost": "revealSelect"
+												}
+											},
+											"includeSource": true
 										}
 									}
 								}
@@ -48067,6 +49812,70 @@
 						"type": "ganking"
 					}
 				]
+			}
+		},
+		{
+			"id": "RAD-062",
+			"name": "Gravity Field",
+			"types": ["gear", "deploy"],
+			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nOpponents must pay [1] [A] to move one or more units to this battlefield.\n[Deathknell] [>] Draw 1. (When I die, get the effect.)",
+			"strength": 0,
+			"manaTap": 5,
+			"manaRecycle": 1,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/51f589e5ed0f7316b6cb64ebc93c4ef3e75b7f46-744x1039.png",
+			"ability": {
+				"effects": {
+					"hold": [
+						{
+							"targetQuery": {
+								"players": "opponent",
+								"source": {
+									"area": "here"
+								}
+							},
+							"effect": {
+								"kills": true,
+								"routing": {
+									"subject": "effectSource"
+								}
+							}
+						}
+					],
+					"moveCost": [
+						{
+							"sourceArea": "site",
+							"targetQuery": {
+								"players": "opponent"
+							},
+							"moveTo": [
+								{
+									"action": "allow",
+									"scope": "here",
+									"costs": {
+										"costs": [
+											{
+												"type": "mana",
+												"amount": 1
+											},
+											{
+												"type": "manaRecycle",
+												"amount": 1
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"deathKeyword": [
+						{
+							"effect": {
+								"draw": 1
+							}
+						}
+					]
+				}
 			}
 		},
 		{
@@ -48130,6 +49939,220 @@
 										"value": "response"
 									}
 								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-064",
+			"name": "Scrutinizing Scope",
+			"types": ["gear"],
+			"description": "[1], [T]: Choose an opponent. They guess a card type. Reveal the top card of your Main Deck. If it has that type, recycle it. Otherwise, draw it. (Unit, gear, and spell are types.)",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6a028fc372c14dda73864aba3d3e84063f6da98d-744x1039.png",
+			"ability": {
+				"activatableEffects": [
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"taps": true,
+						"effect": {
+							"naming": {
+								"type": "type"
+							},
+							"routing": {
+								"resolvingPlayer": "opponent"
+							},
+							"flow": {
+								"sequence": {
+									"timing": "nextResolution",
+									"effect": {
+										"reveal": {
+											"deck": "mainDeck",
+											"amount": 1,
+											"visibility": "public"
+										},
+										"select": {
+											"query": {
+												"source": {
+													"area": "mainDeck"
+												}
+											},
+											"count": 1,
+											"timing": "programmatic"
+										},
+										"flow": {
+											"sequence": {
+												"effect": {
+													"requirements": {
+														"cards": {
+															"query": {
+																"named": "type",
+																"source": {
+																	"cards": "previousSelection"
+																},
+																"includeSource": true
+															}
+														}
+													},
+													"flow": {
+														"branch": {
+															"success": {
+																"zoneChanges": [
+																	{
+																		"to": "mainDeck"
+																	}
+																],
+																"routing": {
+																	"subject": "previousSelection"
+																}
+															},
+															"failure": {
+																"zoneChanges": [
+																	{
+																		"to": "hand",
+																		"event": "draw"
+																	}
+																],
+																"routing": {
+																	"subject": "previousSelection"
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-065",
+			"name": "Seraphine, Inspiring",
+			"types": ["unit", "champion", "piltover", "seraphine"],
+			"description": "[Disarm 2] (When I attack, give an enemy unit here -2 [S] this turn.)\nOnce each turn, when you exhaust three or more friendly units at the same time, you may draw 1.",
+			"strength": 3,
+			"manaTap": 4,
+			"manaRecycle": 1,
+			"colors": ["B"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-065.webp",
+			"variants": {
+				"RAD-065a": "https://cdn.piltoverarchive.com/cards/RAD-065a.webp"
+			},
+			"ability": {
+				"effects": {
+					"combat": [
+						{
+							"combatRole": "attacking",
+							"effect": {
+								"select": {
+									"count": 1,
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "opponent",
+										"source": {
+											"area": "here"
+										}
+									}
+								},
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": -2,
+										"duration": "turn"
+									}
+								]
+							}
+						}
+					],
+					"onExhaust": [
+						{
+							"eventMultiplicity": "perBatch",
+							"minimumEventAmount": 3,
+							"usage": "oncePerTurn",
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "team"
+							},
+							"effect": {
+								"draw": 1,
+								"optional": true
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-066",
+			"name": "Spirit of the Forge",
+			"types": ["unit", "spirit", "freljord"],
+			"description": "You may return a friendly gear to its owner's hand as an additional cost to play me.\nWhen you play me, if you paid the additional cost, ready me and give me +[S] this turn equal to the Energy cost of the gear you returned.",
+			"strength": 4,
+			"manaTap": 6,
+			"manaRecycle": 1,
+			"colors": ["B"],
+			"image": "https://cdn.piltoverarchive.com/temporary/1791597831855-togpgq64949.webp",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "returnToHandSelect",
+								"amount": 1,
+								"matching": ["gear"]
+							}
+						],
+						"optionality": "optional"
+					}
+				],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"readies": {
+									"action": "ready"
+								},
+								"routing": {
+									"instructions": {
+										"readies": "affectingCard"
+									}
+								},
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": {
+											"stat": "mana",
+											"card": {
+												"from": "costSelection",
+												"cost": "returnToHandSelect",
+												"index": 0
+											}
+										},
+										"duration": "turn"
+									}
+								],
+								"requirements": {
+									"additionalCostPaid": true
+								}
 							}
 						}
 					]
@@ -48266,14 +50289,15 @@
 							"costSource": "cardPlay",
 							"effect": {
 								"costs": {
-									"costs": [
+									"costs": [],
+									"costReduction": [
 										{
 											"type": "mana",
-											"amount": -1
+											"amount": 1
 										},
 										{
 											"type": "manaRecycle",
-											"amount": -1
+											"amount": 1
 										}
 									]
 								},
@@ -48287,7 +50311,7 @@
 		{
 			"id": "RAD-069",
 			"name": "Zero Point Inflection",
-			"types": ["spell", "gear"],
+			"types": ["gear"],
 			"description": "When you play a card, draw 2. \nWhen you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent. They score 1 point.",
 			"strength": 0,
 			"manaTap": 9,
@@ -48373,14 +50397,6 @@
 				"effects": {
 					"reduceCost": [
 						{
-							"conditionalsSource": [
-								{
-									"type": "eventCount",
-									"event": "played",
-									"cardTypes": ["unit", "gear"],
-									"isAtSite": true
-								}
-							],
 							"effect": {
 								"costs": {
 									"costs": [
@@ -48390,7 +50406,16 @@
 										}
 									]
 								}
-							}
+							},
+							"conditionalsTarget": [
+								{
+									"type": "eventCount",
+									"event": "played",
+									"stage": "initiated",
+									"cardTypes": ["unit", "gear"],
+									"isAtSite": true
+								}
+							]
 						}
 					],
 					"played": [
@@ -48432,16 +50457,22 @@
 			"attachDescription": "[Shield 2] (+2 [S] while I'm a defender.)",
 			"strengthBonus": 0,
 			"ability": {
-				"playModifiers": [
+				"activatableEffects": [
 					{
-						"type": "equips",
-						"costs": {
-							"costs": [
-								{
-									"type": "mana",
-									"amount": 1
-								}
-							]
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"attaches": {
+								"equipment": "affectingCard"
+							}
 						}
 					}
 				]
@@ -48466,7 +50497,7 @@
 		{
 			"id": "RAD-072",
 			"name": "Overloaded Traveler",
-			"types": ["spell", "unit"],
+			"types": ["unit"],
 			"description": "While there's a friendly gear with [Deploy] at my battlefield, I have +1 [S].",
 			"strength": 2,
 			"manaTap": 2,
@@ -48549,10 +50580,10 @@
 					"conquered": [
 						{
 							"targetQuery": {
-								"players": "self",
 								"source": {
 									"area": "here"
-								}
+								},
+								"players": "self"
 							},
 							"effect": {
 								"addBuff": 1,
@@ -48570,6 +50601,236 @@
 						}
 					]
 				}
+			}
+		},
+		{
+			"id": "RAD-074",
+			"name": "Raving Witness",
+			"types": ["unit", "freljord"],
+			"description": "When I move, reveal the top card of your Main Deck. If it's [Mighty], draw it. Otherwise, recycle it. (A unit is Mighty while it has 5+ [S].)",
+			"strength": 3,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["O"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/778e70b353d7f28eae9b54b1a37af3853238ba04-744x1039.png",
+			"ability": {
+				"effects": {
+					"moved": [
+						{
+							"effect": {
+								"reveal": {
+									"deck": "mainDeck",
+									"amount": 1,
+									"visibility": "public"
+								},
+								"select": {
+									"query": {
+										"source": {
+											"area": "mainDeck"
+										}
+									},
+									"count": 1,
+									"timing": "programmatic"
+								},
+								"flow": {
+									"sequence": {
+										"effect": {
+											"requirements": {
+												"cards": {
+													"query": {
+														"source": {
+															"cards": "previousSelection"
+														},
+														"conditional": [
+															{
+																"min": 5,
+																"type": "amount",
+																"amount": {
+																	"stat": "strength",
+																	"card": "recipient"
+																}
+															}
+														],
+														"includeSource": true
+													}
+												}
+											},
+											"flow": {
+												"branch": {
+													"success": {
+														"zoneChanges": [
+															{
+																"to": "hand",
+																"event": "draw"
+															}
+														],
+														"routing": {
+															"subject": "previousSelection"
+														}
+													},
+													"failure": {
+														"zoneChanges": [
+															{
+																"to": "mainDeck"
+															}
+														],
+														"routing": {
+															"subject": "previousSelection"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-075",
+			"name": "Skystrike Squadron",
+			"types": ["unit", "bird", "elite", "demacia"],
+			"description": "You may return a friendly gear to its owner's hand as an additional cost to play me. If you do, I cost [2] less.\n[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)",
+			"strength": 4,
+			"manaTap": 5,
+			"manaRecycle": 0,
+			"colors": ["O"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/694a362579d3f2e9805cac0da4814ea911423033-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "returnToHandSelect",
+								"amount": 1,
+								"matching": ["gear"]
+							}
+						],
+						"optionality": "optional",
+						"costReduction": [
+							{
+								"type": "mana",
+								"amount": 2
+							}
+						]
+					}
+				],
+				"playModifiers": [
+					{
+						"type": "deflect"
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-076",
+			"name": "Sneaky Zeebles",
+			"types": ["unit", "mount targon"],
+			"description": "When I conquer, [Add] [A]. (Abilities that add resources can't be reacted to.)",
+			"strength": 1,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["O"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c04963c90ab2b338883c980ac947b8c9d80a7427-744x1039.png",
+			"ability": {
+				"effects": {
+					"conquered": [
+						{
+							"effect": {
+								"addResource": {
+									"costs": [
+										{
+											"type": "manaRecycle",
+											"amount": 1
+										}
+									]
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-077",
+			"name": "Wrath of the Freljord",
+			"types": ["unit", "freljord", "spirit"],
+			"description": "I enter ready.\n[Shield 3] (+3 [S] while I'm a defender.)",
+			"strength": 7,
+			"manaTap": 9,
+			"manaRecycle": 0,
+			"colors": ["O"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/531b923f3437f497b858bf186b46b4ac88460da6-744x1039.png",
+			"ability": {
+				"effects": {
+					"enters": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								]
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "shield",
+						"amount": 3
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-078",
+			"name": "Armored Tusker",
+			"types": ["unit", "noxus"],
+			"description": "[Shield 3] (+3 [S] while I'm a defender.)\n[Tank] (I must be assigned combat damage first.)\nWhen I move, you may deal damage equal to my [Shield] to a unit at a battlefield.",
+			"strength": 4,
+			"manaTap": 6,
+			"manaRecycle": 1,
+			"colors": ["O"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-078.webp",
+			"ability": {
+				"effects": {
+					"moved": [
+						{
+							"effect": {
+								"damage": {
+									"amount": {
+										"stat": "shield",
+										"card": "affectingCard"
+									}
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"source": {
+											"area": "site"
+										},
+										"players": "all"
+									},
+									"count": 1
+								},
+								"optional": true
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "shield",
+						"amount": 3
+					},
+					{
+						"type": "tank"
+					}
+				]
 			}
 		},
 		{
@@ -48604,10 +50865,46 @@
 			}
 		},
 		{
+			"id": "RAD-080",
+			"name": "Bloodscent Swarm",
+			"types": ["unit", "shurima"],
+			"description": "I cost [2] less for each battlefield you've conquered this turn.",
+			"strength": 8,
+			"manaTap": 8,
+			"manaRecycle": 2,
+			"colors": ["O"],
+			"image": "https://cdn.piltoverarchive.com/temporary/1791597706495-9o06ruyxm38.jpg",
+			"ability": {
+				"effects": {
+					"reduceCost": [
+						{
+							"effect": {
+								"costs": {
+									"costs": [
+										{
+											"type": "mana",
+											"amount": 2,
+											"multiplier": {
+												"playerStat": {
+													"stat": "conquers",
+													"player": "self",
+													"window": "turn"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-081",
 			"name": "Elnuk Herd",
 			"types": ["unit"],
-			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, give another friendly unit +3 [S] this turn, then recycle me if I was played from face down.",
+			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, give a friendly unit +3 [S] this turn, then recycle me if I was played from face down.",
 			"strength": 5,
 			"manaTap": 6,
 			"manaRecycle": 0,
@@ -48638,8 +50935,7 @@
 										"players": "team",
 										"source": {
 											"area": "inPlay"
-										},
-										"exclude": "affectingCard"
+										}
 									},
 									"count": 1
 								},
@@ -48935,7 +51231,8 @@
 						{
 							"effect": {
 								"drawMana": {
-									"amount": 1
+									"amount": 1,
+									"isReady": true
 								}
 							}
 						}
@@ -48961,7 +51258,7 @@
 			"manaTap": 2,
 			"manaRecycle": 0,
 			"colors": ["O"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790916764470-eh42cpbtx54.jpg",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dba5c879aae5c614198eb8408e0104a1b0618102-744x1039.png",
 			"ability": {
 				"effects": {
 					"hold": [
@@ -49024,6 +51321,89 @@
 										"type": "ganking"
 									}
 								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-088",
+			"name": "Staunch Survivor",
+			"types": ["unit", "freljord"],
+			"description": "[Assault 2], [Shield 2] (+2 [S] while I'm an attacker or defender.)",
+			"strength": 2,
+			"manaTap": 2,
+			"manaRecycle": 1,
+			"colors": ["O"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/91c4670531d7773cae9e7b4bfd5ac4e259602162-744x1039.png",
+			"ability": {
+				"playModifiers": [
+					{
+						"type": "assault",
+						"amount": 2
+					},
+					{
+						"type": "shield",
+						"amount": 2
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-089",
+			"name": "Titanic Shrine",
+			"types": ["gear"],
+			"description": "When you play a unit with Might greater than each other unit on the board, exhaust me to draw 1.",
+			"strength": 0,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["O"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d027f4e30df4f7141799709f9fb785835adefed-744x1039.png",
+			"ability": {
+				"effects": {
+					"onPlayed": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "self"
+							},
+							"conditionalsTarget": [
+								{
+									"compare": {
+										"operator": ">",
+										"value": {
+											"aggregate": {
+												"operation": "max",
+												"stat": "strength",
+												"query": {
+													"cardTypes": ["unit"],
+													"players": "all",
+													"source": {
+														"area": "inPlay"
+													},
+													"exclude": "recipient"
+												}
+											}
+										}
+									},
+									"type": "amount",
+									"amount": {
+										"stat": "strength",
+										"card": "recipient"
+									}
+								}
+							],
+							"effect": {
+								"costs": {
+									"costs": [
+										{
+											"type": "tapSelf",
+											"amount": 1
+										}
+									]
+								},
+								"draw": 1
 							}
 						}
 					]
@@ -49131,6 +51511,32 @@
 										}
 									}
 								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-092",
+			"name": "Seraphic Wyvern",
+			"types": ["unit", "dragon", "mount targon"],
+			"description": "If you would channel runes, channel that many runes plus 1 exhausted rune instead.",
+			"strength": 7,
+			"manaTap": 7,
+			"manaRecycle": 0,
+			"colors": ["O"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-092.webp",
+			"ability": {
+				"effects": {
+					"passiveModifiers": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "channelAddition"
+									}
+								]
 							}
 						}
 					]
@@ -49295,7 +51701,7 @@
 		{
 			"id": "RAD-097",
 			"name": "Siren of the Shallows",
-			"types": ["spell", "unit"],
+			"types": ["unit"],
 			"description": "[Disarm] (When I attack, give an enemy unit here -1 [S] this turn.)\n[Ganking] (I can move from battlefield to battlefield.)",
 			"strength": 1,
 			"manaTap": 2,
@@ -49362,9 +51768,419 @@
 										"players": "opponent",
 										"source": {
 											"area": "inPlay"
+										},
+										"conditional": [
+											{
+												"min": 1,
+												"type": "amount",
+												"amount": {
+													"count": {
+														"event": "moved",
+														"card": "recipient",
+														"role": "subject",
+														"window": "turn",
+														"currentObject": true
+													}
+												}
+											}
+										]
+									},
+									"count": 1
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-099",
+			"name": "Suave Negotiator",
+			"types": ["unit", "demon", "bilgewater"],
+			"description": "When you play me, choose an opponent. You and that player each draw 1.",
+			"strength": 3,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/20e2752ddf0af274d26a3c25c737ccea2c353e39-744x1039.png",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"draw": 1,
+								"targetQuery": {
+									"players": "all"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-100",
+			"name": "The Waters' Wage",
+			"types": ["spell"],
+			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nPlay a Gold gear token exhausted. If it's your turn and you played this from face down, play three ready Gold gear tokens instead. (Gold tokens have \"[Reaction] [>] Kill this, [T]: [Add] [A].\")",
+			"strength": 0,
+			"manaTap": 1,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0552932562db1dd48f14c74779999a645d62cc0d-744x1039.png",
+			"ability": {
+				"canFacedown": true,
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "manaRecycle",
+								"amount": 1
+							}
+						],
+						"optionality": "replaces",
+						"facedown": true,
+						"selectArea": "siteControlled"
+					}
+				],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"requirements": {
+									"turnPlayer": "self",
+									"cards": [
+										{
+											"query": {
+												"source": {
+													"cards": "effectSource"
+												},
+												"conditional": [
+													{
+														"type": "wasFacedown"
+													}
+												],
+												"includeSource": true
+											}
+										}
+									]
+								},
+								"flow": {
+									"branch": {
+										"success": {
+											"spawn": {
+												"name": "gold",
+												"to": "base",
+												"count": 3,
+												"statuses": ["ready"]
+											}
+										},
+										"failure": {
+											"spawn": {
+												"name": "gold",
+												"to": "base"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-101",
+			"name": "An Offer You Can't Refuse",
+			"types": ["spell"],
+			"description": "[Action] (Play on your turn or in showdowns.)\nKill a gear. Its controller plays a Gold gear token exhausted. (It has \"[Reaction] [>] Kill this, [T]: [Add] [A].\")",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f724f95257abeacee82c774eff64973b56035357-744x1039.png",
+			"ability": {
+				"actionWindows": ["contesting"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"kills": true,
+								"select": {
+									"query": {
+										"cardTypes": ["gear"],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
 										}
 									},
 									"count": 1
+								},
+								"flow": {
+									"sequence": {
+										"timing": "nextResolution",
+										"effect": {
+											"spawn": {
+												"name": "gold",
+												"to": "base"
+											},
+											"routing": {
+												"resolvingPlayer": "selectedController"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-102",
+			"name": "Demon Shade",
+			"types": ["spell"],
+			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nChoose a friendly unit, then choose one —* Move it to an open battlefield. * Give it [Ganking] this turn if there are no open battlefields. (It can move from battlefield to battlefield.)",
+			"strength": 0,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e9dd313886624aafc7e0c7f9e1689225c042b484-744x1039.png",
+			"ability": {
+				"canFacedown": true,
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "manaRecycle",
+								"amount": 1
+							}
+						],
+						"optionality": "replaces",
+						"facedown": true,
+						"selectArea": "siteControlled"
+					}
+				],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "team",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								},
+								"routing": {
+									"subject": "selection"
+								},
+								"flow": {
+									"sequence": {
+										"effect": {
+											"choice": {
+												"mode": "effect",
+												"options": [
+													{
+														"moves": true,
+														"selectLocation": {
+															"area": "site",
+															"query": {
+																"siteController": "open"
+															}
+														},
+														"routing": {
+															"instructions": {
+																"moves": "previousSelection"
+															}
+														}
+													},
+													{
+														"modifiers": [
+															{
+																"type": "ganking",
+																"duration": "turn"
+															}
+														],
+														"routing": {
+															"subject": "previousSelection"
+														},
+														"requirements": {
+															"cards": {
+																"min": 0,
+																"max": 0,
+																"query": {
+																	"cardTypes": ["battlefield"],
+																	"conditional": [
+																		{
+																			"not": true,
+																			"type": "amount",
+																			"amount": {
+																				"count": {
+																					"query": {
+																						"cardTypes": ["unit"],
+																						"players": "all",
+																						"source": {
+																							"location": {
+																								"card": "recipient"
+																							}
+																						},
+																						"includeSource": true
+																					}
+																				}
+																			}
+																		},
+																		{
+																			"type": "any",
+																			"conditional": [
+																				{
+																					"min": 1,
+																					"type": "amount",
+																					"amount": {
+																						"count": {
+																							"query": {
+																								"players": "team",
+																								"source": {
+																									"cards": "recipient"
+																								},
+																								"includeSites": true,
+																								"includeSource": true
+																							},
+																							"card": "affectingCard"
+																						}
+																					}
+																				},
+																				{
+																					"min": 1,
+																					"type": "amount",
+																					"amount": {
+																						"count": {
+																							"query": {
+																								"players": "opponent",
+																								"source": {
+																									"cards": "recipient"
+																								},
+																								"includeSites": true,
+																								"includeSource": true
+																							},
+																							"card": "affectingCard"
+																						}
+																					}
+																				}
+																			],
+																			"not": true
+																		}
+																	],
+																	"includeSites": true,
+																	"source": {
+																		"area": "site"
+																	},
+																	"players": "all",
+																	"includeSource": true
+																}
+															}
+														}
+													}
+												]
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-103",
+			"name": "Gutter Guardian",
+			"types": ["unit", "zaun"],
+			"description": "[Hidden] (Hide now for [A] to react later for [0].)\n[Show Off] a card with [Hidden]. (As you play me, you may reveal such a card from your hand or pick another friendly one on the board.)\nWhen you play me, if you showed off, Add [A].",
+			"strength": 3,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-103.webp",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "manaRecycle",
+								"amount": 1
+							}
+						],
+						"optionality": "replaces",
+						"facedown": true,
+						"selectArea": "siteControlled"
+					},
+					{
+						"costs": [
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"source": {
+										"area": "hand"
+									},
+									"conditional": [
+										{
+											"type": "playsFacedown"
+										}
+									],
+									"exclude": "effectSource"
+								}
+							},
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"players": "team",
+									"source": {
+										"area": "inPlay"
+									},
+									"conditional": [
+										{
+											"type": "playsFacedown"
+										}
+									],
+									"exclude": "effectSource"
+								}
+							}
+						],
+						"chooseOne": true,
+						"optionality": "optional"
+					}
+				],
+				"canFacedown": true,
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"addResource": {
+									"costs": [
+										{
+											"type": "manaRecycle",
+											"amount": 1
+										}
+									]
+								},
+								"requirements": {
+									"cards": {
+										"query": {
+											"source": {
+												"cards": {
+													"from": "costSelection",
+													"cost": "revealSelect"
+												}
+											},
+											"includeSource": true
+										}
+									}
 								}
 							}
 						}
@@ -49455,10 +52271,10 @@
 						},
 						{
 							"targetQuery": {
-								"players": "self",
 								"source": {
 									"area": "here"
-								}
+								},
+								"players": "self"
 							},
 							"effect": {
 								"zoneChanges": [
@@ -49591,6 +52407,78 @@
 			}
 		},
 		{
+			"id": "RAD-108",
+			"name": "Bushwhack Trap",
+			"types": ["gear", "deploy"],
+			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhile you or an ally control this battlefield, that player may hide an additional card here.",
+			"strength": 0,
+			"manaTap": 1,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/120762e23a599ee14d3f88856fcf707154338fb0-744x1039.png",
+			"ability": {
+				"effects": {
+					"hold": [
+						{
+							"targetQuery": {
+								"players": "opponent",
+								"source": {
+									"area": "here"
+								}
+							},
+							"effect": {
+								"kills": true,
+								"routing": {
+									"subject": "effectSource"
+								}
+							}
+						}
+					],
+					"passiveModifiers": [
+						{
+							"targetQuery": {
+								"cardTypes": ["battlefield"],
+								"source": {
+									"area": "here"
+								},
+								"includeSites": true
+							},
+							"conditionalsSource": [
+								{
+									"type": "amount",
+									"amount": {
+										"count": {
+											"query": {
+												"cardTypes": ["battlefield"],
+												"players": "team",
+												"includeSites": true,
+												"siteControl": true,
+												"source": {
+													"area": "here",
+													"location": {
+														"card": "affectingCard"
+													}
+												}
+											},
+											"card": "recipient"
+										}
+									}
+								}
+							],
+							"effect": {
+								"modifiers": [
+									{
+										"type": "facedownCapacity",
+										"amount": 1
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-109",
 			"name": "Evelynn, In Control",
 			"types": ["unit", "champion", "evelynn"],
@@ -49660,34 +52548,298 @@
 			"manaRecycle": 0,
 			"colors": ["P"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/defd09480671a1e394725f21b6c3448ebec77913-744x1039.png",
+			"variants": {
+				"RAD-110-Skirmish": "https://cdn.piltoverarchive.com/temporary/1791230501153-5rki33b8lj.png"
+			},
 			"ability": {
 				"effects": {
 					"moved": [
 						{
 							"effect": {
-								"optional": true,
-								"select": {
-									"query": {
-										"cardTypes": ["unit"],
-										"players": "all",
-										"source": {
-											"area": "inPlay"
-										},
-										"exclude": "effectSource"
-									},
-									"count": 1
-								},
 								"modifiers": [
 									{
 										"type": "baseStrength",
 										"amount": 4,
 										"duration": "turn"
 									}
+								],
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"exclude": ["affectingCard", "previousSelection"],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								},
+								"optional": true
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-111",
+			"name": "Mechanical Bandit",
+			"types": ["gear"],
+			"description": "At the start of your Beginning Phase, each player reveals the top card of their Main Deck. If you revealed a card with the lowest Energy cost, draw it. Recycle the rest.",
+			"strength": 0,
+			"manaTap": 4,
+			"manaRecycle": 1,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cb2a419b61b6f1e6d138c3c3b07b393a4037237b-744x1039.png",
+			"ability": {
+				"effects": {
+					"beginning": [
+						{
+							"targetQuery": {
+								"players": "self"
+							},
+							"effect": {
+								"reveal": {
+									"target": "all",
+									"deck": "mainDeck",
+									"amount": 1,
+									"visibility": "public"
+								},
+								"select": {
+									"timing": "programmatic",
+									"min": 0,
+									"query": {
+										"players": "all",
+										"source": {
+											"area": "mainDeck"
+										}
+									}
+								},
+								"zoneChanges": [
+									{
+										"to": "hand",
+										"event": "draw",
+										"source": {
+											"query": {
+												"players": "self",
+												"source": {
+													"cards": "selection"
+												},
+												"conditional": [
+													{
+														"compare": {
+															"value": {
+																"aggregate": {
+																	"operation": "min",
+																	"stat": "mana",
+																	"query": {
+																		"source": {
+																			"cards": "selection"
+																		}
+																	}
+																}
+															}
+														},
+														"type": "amount",
+														"amount": {
+															"stat": "mana",
+															"card": "recipient"
+														}
+													}
+												]
+											}
+										}
+									},
+									{
+										"to": "mainDeck",
+										"source": {
+											"query": {
+												"source": {
+													"cards": "selection",
+													"area": "mainDeck"
+												}
+											}
+										}
+									}
 								]
 							}
 						}
 					]
 				}
+			}
+		},
+		{
+			"id": "RAD-112",
+			"name": "Ziggs, Explosive",
+			"types": ["unit", "champion", "ziggs", "zaun", "yordle"],
+			"description": "[1], [T]: Play a Bomb gear token to a battlefield. (It has [Deploy]. When it dies, deal 2 to an enemy there and kill your other Bombs there.)\nWhen I defend, you may kill a friendly gear to give me +2 [S] this turn.",
+			"strength": 4,
+			"manaTap": 4,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f0c1f1f3b69b31a69f9637ece841b5ee1029cdd3-744x1039.png",
+			"variants": {
+				"RAD-112a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/080e606b0ae3ac048e3d4e90451ac84767cb2864-744x1039.png"
+			},
+			"ability": {
+				"effects": {
+					"combat": [
+						{
+							"combatRole": "defending",
+							"effect": {
+								"costs": {
+									"costs": [
+										{
+											"type": "killSelect",
+											"amount": 1,
+											"matching": ["gear"]
+										}
+									]
+								},
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": 2,
+										"duration": "turn"
+									}
+								],
+								"optional": true
+							}
+						}
+					]
+				},
+				"activatableEffects": [
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"taps": true,
+						"effect": {
+							"selectLocation": {
+								"area": "site"
+							},
+							"spawn": {
+								"name": "bomb"
+							}
+						}
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-113",
+			"name": "Angler Wyrm",
+			"types": ["unit", "dragon", "bilgewater"],
+			"description": "[Deflect] (Opponents must pay [A] to choose me with a spell of ability.)\n[T]: Choose an opponent. They must move a unit they control to my battlefield.",
+			"strength": 8,
+			"manaTap": 8,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-113.webp",
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"moves": {
+								"to": "here"
+							},
+							"select": {
+								"timing": "resolutionChoice",
+								"query": {
+									"cardTypes": ["unit"],
+									"source": {
+										"area": "inPlay"
+									},
+									"excludeLocation": "here"
+								},
+								"count": 1
+							},
+							"routing": {
+								"resolvingPlayer": "opponent"
+							}
+						}
+					}
+				],
+				"playModifiers": [
+					{
+						"type": "deflect"
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-114",
+			"name": "Riven, Deserter",
+			"types": ["unit", "champion", "riven", "noxus"],
+			"description": "When another friendly unit becomes exhausted, give me +1 [S] this turn.\nExhaust a friendly unit: Ready a unit. Use this ability only once each turn.",
+			"strength": 5,
+			"manaTap": 5,
+			"manaRecycle": 1,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/59c080321a697164c9eeb6f0ad297ff0d0b85808-744x1039.png",
+			"variants": {
+				"RAD-114a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/91c0933495342ab5c1a86c8809316f736feb0629-744x1039.png"
+			},
+			"ability": {
+				"effects": {
+					"onExhaust": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "team",
+								"exclude": ["affectingCard", "previousSelection"]
+							},
+							"effect": {
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": 1,
+										"duration": "turn"
+									}
+								]
+							}
+						}
+					]
+				},
+				"activatableEffects": [
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "tapSelect",
+										"amount": 1,
+										"matching": ["unit"]
+									}
+								]
+							}
+						],
+						"usage": "oncePerTurn",
+						"effect": {
+							"readies": {
+								"action": "ready"
+							},
+							"select": {
+								"query": {
+									"cardTypes": ["unit"],
+									"players": "all",
+									"source": {
+										"area": "inPlay"
+									}
+								},
+								"count": 1
+							}
+						}
+					}
+				]
 			}
 		},
 		{
@@ -49703,7 +52855,6 @@
 			"ability": {
 				"activatableEffects": [
 					{
-						"taps": true,
 						"costs": [
 							{
 								"costs": [
@@ -49715,7 +52866,13 @@
 								]
 							}
 						],
+						"taps": true,
 						"effect": {
+							"zoneChanges": [
+								{
+									"to": "hand"
+								}
+							],
 							"select": {
 								"query": {
 									"cardTypes": ["unit"],
@@ -49726,23 +52883,18 @@
 								},
 								"count": 1
 							},
-							"zoneChanges": [
-								{
-									"to": "hand"
-								}
-							],
 							"routing": {
 								"subject": "selection"
 							},
 							"flow": {
 								"sequence": {
 									"effect": {
+										"play": {
+											"subject": "selection"
+										},
 										"select": {
-											"timing": "resolutionChoice",
+											"timing": "privateChoice",
 											"query": {
-												"source": {
-													"area": "hand"
-												},
 												"cardTypes": ["unit"],
 												"conditional": [
 													{
@@ -49762,14 +52914,14 @@
 															"card": "recipient"
 														}
 													}
-												]
+												],
+												"source": {
+													"area": "hand"
+												}
 											},
-											"count": 1,
-											"min": 0
+											"count": 1
 										},
-										"play": {
-											"subject": "selection"
-										}
+										"optional": true
 									}
 								}
 							}
@@ -49815,25 +52967,23 @@
 											"type": "mana",
 											"amount": 1
 										}
-									],
-									"kind": "payment"
+									]
 								},
-								"optional": true,
 								"spawn": {
 									"name": "recruit",
-									"baseStrength": 1,
 									"to": "base"
-								}
+								},
+								"optional": true
 							}
 						}
 					],
 					"conquered": [
 						{
 							"targetQuery": {
-								"players": "self",
 								"source": {
 									"area": "here"
-								}
+								},
+								"players": "self"
 							},
 							"effect": {
 								"costs": {
@@ -49842,15 +52992,13 @@
 											"type": "mana",
 											"amount": 1
 										}
-									],
-									"kind": "payment"
+									]
 								},
-								"optional": true,
 								"spawn": {
 									"name": "recruit",
-									"baseStrength": 1,
 									"to": "base"
-								}
+								},
+								"optional": true
 							}
 						}
 					]
@@ -49959,12 +53107,12 @@
 			"id": "RAD-119",
 			"name": "Hunting Dog",
 			"types": ["unit", "dog", "demacia"],
-			"description": "[Deathknell] Play a 1 [S] Bird unit token with [Deflect] to your base. (When I die, get the effect. Opponents must pay [A] to choose a [Deflect] unit with a spell or ability.)",
+			"description": "[Deathknell] [>] Play a 1 [S] Bird unit token with [Deflect] to your base. (When I die, get the effect. Opponents must pay [A] to choose a [Deflect] unit with a spell or ability.)",
 			"strength": 3,
 			"manaTap": 3,
 			"manaRecycle": 0,
 			"colors": ["Y"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790898736232-cr9lsvqsa2m.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/cefd575150527670879748a7212f80a1f4c1c4fc-744x1039.png",
 			"ability": {
 				"effects": {
 					"deathKeyword": [
@@ -49974,6 +53122,308 @@
 									"name": "bird",
 									"to": "base"
 								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-120",
+			"name": "Meticulous Restorationist",
+			"types": ["unit", "piltover"],
+			"description": "When you play a card with Energy cost [7] or more, you may play me from your trash for [C].",
+			"strength": 2,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["Y"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ee50fbf5e902e7109a3d54b417edc440b5a37198-744x1039.png",
+			"ability": {
+				"effects": {
+					"onPlayed": [
+						{
+							"sourceArea": "discard",
+							"targetQuery": {
+								"players": "self",
+								"conditional": [
+									{
+										"min": 7,
+										"type": "amount",
+										"amount": {
+											"stat": "mana",
+											"card": "recipient"
+										}
+									}
+								]
+							},
+							"effect": {
+								"optional": true,
+								"play": {
+									"mode": "replay",
+									"subject": "effectSource",
+									"sourceArea": "discard",
+									"costs": {
+										"costs": [
+											{
+												"type": "manaRecycle",
+												"amount": 1,
+												"matching": ["C"]
+											}
+										]
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-121",
+			"name": "One-Two Punch",
+			"types": ["spell"],
+			"description": "[Action] (Play on your turn or in showdowns.)\n[Buff] a friendly unit and [Stun] an enemy unit. (Give the friendly unit a +1 [S] buff if it doesn't have one. The enemy unit doesn't deal combat damage this turn.)",
+			"strength": 0,
+			"manaTap": 3,
+			"manaRecycle": 0,
+			"colors": ["Y"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1f246286c658d44dc4e7d51c158b2f822da39825-744x1039.png",
+			"ability": {
+				"actionWindows": ["contesting"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"addBuff": 1,
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "team",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								},
+								"flow": {
+									"sequence": {
+										"effect": {
+											"modifiers": [
+												{
+													"type": "stun",
+													"duration": "turn"
+												}
+											],
+											"select": {
+												"query": {
+													"cardTypes": ["unit"],
+													"players": "opponent",
+													"source": {
+														"area": "inPlay"
+													}
+												},
+												"count": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-122",
+			"name": "Party Crasher",
+			"types": ["unit", "zaun"],
+			"description": "I cost [1] less for each exhausted unit you control.\n[Tank] (I must be assigned combat damage first.)",
+			"strength": 6,
+			"manaTap": 9,
+			"manaRecycle": 1,
+			"colors": ["Y"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3413fc46086d559c2a60657e4729f22475bbdec0-744x1039.png",
+			"ability": {
+				"effects": {
+					"reduceCost": [
+						{
+							"effect": {
+								"costs": {
+									"costs": [
+										{
+											"type": "mana",
+											"amount": 1,
+											"multiplier": {
+												"count": {
+													"query": {
+														"cardTypes": ["unit"],
+														"source": {
+															"area": "inPlay"
+														},
+														"conditional": [
+															{
+																"type": "tapped"
+															}
+														]
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "tank"
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-123",
+			"name": "Protector's Shield",
+			"types": ["gear", "equipment"],
+			"description": "[Quick-Draw] (This has [Reaction]. When you play it, attach it to a unit you control.)\n[Equip] [1] ([1]: Attach this to a unit you control.)",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 1,
+			"colors": ["Y"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-123.webp",
+			"attachDescription": "[Tank] (I must be assigned combat damage first.)",
+			"strengthBonus": 1,
+			"ability": {
+				"activatableEffects": [
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "mana",
+										"amount": 1
+									}
+								]
+							}
+						],
+						"effect": {
+							"attaches": {
+								"equipment": "affectingCard"
+							}
+						}
+					}
+				],
+				"playModifiers": [
+					{
+						"type": "quick"
+					}
+				]
+			},
+			"attach": {
+				"effects": {
+					"passiveModifiers": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "tank"
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-124",
+			"name": "Burn Away",
+			"types": ["spell"],
+			"description": "Banish a unit with 3 [S] or less or a gear. [Burn 2]. (Put the top 2 cards of your Main Deck into your trash.)",
+			"strength": 0,
+			"manaTap": 3,
+			"manaRecycle": 1,
+			"colors": ["Y"],
+			"image": "https://cdn.piltoverarchive.com/temporary/1791597623574-c2b4sg8s4sl.webp",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"banishes": true,
+								"select": {
+									"query": {
+										"cardTypes": ["unit", "gear"],
+										"conditional": [
+											{
+												"type": "any",
+												"conditional": [
+													{
+														"type": "amount",
+														"amount": {
+															"count": {
+																"query": {
+																	"cardTypes": ["unit"],
+																	"source": {
+																		"cards": "recipient"
+																	},
+																	"conditional": [
+																		{
+																			"max": 3,
+																			"type": "amount",
+																			"amount": {
+																				"stat": "strength",
+																				"card": "recipient"
+																			}
+																		}
+																	]
+																},
+																"card": "recipient"
+															}
+														}
+													},
+													{
+														"type": "amount",
+														"amount": {
+															"count": {
+																"query": {
+																	"cardTypes": ["gear"],
+																	"source": {
+																		"cards": "recipient"
+																	}
+																},
+																"card": "recipient"
+															}
+														}
+													}
+												]
+											}
+										],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								}
+							}
+						},
+						{
+							"effect": {
+								"zoneChanges": [
+									{
+										"to": "discard",
+										"source": {
+											"query": {
+												"source": {
+													"area": "mainDeck"
+												}
+											},
+											"count": 2
+										}
+									}
+								]
 							}
 						}
 					]
@@ -50132,7 +53582,6 @@
 							"effect": {
 								"spawn": {
 									"name": "recruit",
-									"baseStrength": 1,
 									"count": 4,
 									"to": "base"
 								}
@@ -50162,7 +53611,6 @@
 							"effect": {
 								"spawn": {
 									"name": "recruit",
-									"baseStrength": 1,
 									"count": 2,
 									"to": "base"
 								}
@@ -50264,6 +53712,7 @@
 								"zoneChanges": [
 									{
 										"to": "hand",
+										"event": "draw",
 										"source": {
 											"query": {
 												"source": {
@@ -50291,7 +53740,7 @@
 			"manaTap": 3,
 			"manaRecycle": 0,
 			"colors": ["Y"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790934179743-fiangvnwvig.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eb04c39763de8fb8e56153d1f0e4f799e15dced9-744x1039.png",
 			"ability": {
 				"effects": {
 					"onKill": [
@@ -50328,6 +53777,43 @@
 			}
 		},
 		{
+			"id": "RAD-131",
+			"name": "Demacian Illuminators",
+			"types": ["unit", "demacia"],
+			"description": "When one or more friendly units die, [Buff] a friendly unit. (Give it a +1 [S] buff if it doesn't have one.)",
+			"strength": 3,
+			"manaTap": 3,
+			"manaRecycle": 1,
+			"colors": ["Y"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/127c2700ee4e2557dfd463ed84c45f4600ad9723-744x1039.png",
+			"ability": {
+				"effects": {
+					"onKill": [
+						{
+							"eventMultiplicity": "perBatch",
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "team"
+							},
+							"effect": {
+								"addBuff": 1,
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "team",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-132",
 			"name": "Heimerdinger, Academy Instructor",
 			"types": ["unit", "champion", "piltover", "heimerdinger", "yordle"],
@@ -50350,8 +53836,7 @@
 								"replacePlay": true,
 								"spawn": {
 									"name": "mech",
-									"to": "lastLocation",
-									"baseStrength": 3
+									"to": "lastLocation"
 								},
 								"optional": true,
 								"routing": {
@@ -50364,9 +53849,142 @@
 			}
 		},
 		{
+			"id": "RAD-133",
+			"name": "Jarvan IV, Royal Heir",
+			"types": ["unit", "champion", "jarvan iv", "demacia"],
+			"description": "[Assault] (+1 [S] while I'm attacking.)\n\n[Tank] (I must be assigned combat damage first.)\n\nWhen I attack, you may move a unit you control to my battlefield.",
+			"strength": 7,
+			"manaTap": 7,
+			"manaRecycle": 1,
+			"colors": ["Y"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/967de7aa18d5833896825bfd7d78b234e088ae73-744x1039.png",
+			"variants": {
+				"RAD-133a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5f1541017b1b250f11770c5fb2c84f0152e16042-744x1039.png"
+			},
+			"ability": {
+				"effects": {
+					"combat": [
+						{
+							"combatRole": "attacking",
+							"effect": {
+								"moves": {
+									"to": "here"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"source": {
+											"area": "inPlay"
+										},
+										"excludeLocation": "here"
+									},
+									"count": 1
+								},
+								"optional": true
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "assault"
+					},
+					{
+						"type": "tank"
+					}
+				]
+			}
+		},
+		{
+			"id": "RAD-134",
+			"name": "Raucous Anthem",
+			"types": ["spell"],
+			"description": "Ready your units and give them +3 [S] this turn.",
+			"strength": 0,
+			"manaTap": 7,
+			"manaRecycle": 1,
+			"colors": ["Y"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-134.webp",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"readies": {
+									"action": "ready"
+								},
+								"select": {
+									"timing": "programmatic",
+									"query": {
+										"cardTypes": ["unit"],
+										"source": {
+											"area": "inPlay"
+										}
+									}
+								},
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": 3,
+										"duration": "turn"
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-135",
+			"name": "Remember the Fallen",
+			"types": ["spell"],
+			"description": "Play up to 3 units and/or gear from your trash, each with Energy cost no more than [3] and Power cost no more than [A], ignoring their costs.",
+			"strength": 0,
+			"manaTap": 8,
+			"manaRecycle": 2,
+			"colors": ["Y"],
+			"image": "https://cdn.piltoverarchive.com/temporary/1791720452777-xcftbv6j42f.webp",
+			"ability": {
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"play": {
+									"subject": "selection"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit", "gear"],
+										"source": {
+											"area": "discard"
+										}
+									},
+									"costsThreshold": {
+										"costs": [
+											{
+												"amount": 3,
+												"type": "mana"
+											},
+											{
+												"amount": 1,
+												"type": "manaRecycle"
+											}
+										]
+									},
+									"min": 0,
+									"count": 3
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-136",
 			"name": "Dockside Lock-Up",
-			"types": ["unit", "gear", "device", "deploy"],
+			"types": ["gear", "device", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you play this, banish a unit here.\nWhen you hold here, kill this to play the banished card, ignoring its cost. (Tokens aren't cards.)",
 			"strength": 0,
 			"manaTap": 6,
@@ -50626,46 +54244,41 @@
 							}
 						],
 						"effect": {
-							"register": {
-								"onCosts": [
+							"modifierGrant": {
+								"query": {
+									"players": "self",
+									"cardTypes": ["unit"]
+								},
+								"modifiers": [
 									{
-										"targetQuery": {
-											"players": "self",
-											"cardTypes": ["unit"]
-										},
-										"remainingUses": 1,
-										"duration": "turn",
-										"effect": {
-											"costs": {
-												"costs": [
-													{
-														"type": "mana",
-														"amount": -2
-													},
-													{
-														"type": "manaRecycle",
-														"amount": -1
-													}
-												]
-											},
-											"register": {
-												"ending": [
-													{
-														"duration": "turn",
-														"consumes": true,
-														"captureTargets": true,
-														"effect": {
-															"kills": true,
-															"routing": {
-																"subject": "eventSubject"
-															}
-														}
-													}
-												]
-											}
-										}
+										"type": "mana",
+										"amount": 2
+									},
+									{
+										"type": "manaRecycle",
+										"amount": 1
 									}
-								]
+								],
+								"onPlayed": {
+									"routing": {
+										"subject": "eventSubject"
+									},
+									"grantAbilities": {
+										"effects": {
+											"ending": [
+												{
+													"effect": {
+														"kills": true
+													}
+												}
+											]
+										},
+										"duration": "turn"
+									}
+								},
+								"uses": 1,
+								"consumeOn": "finalized",
+								"duration": "turn"
 							}
 						}
 					}
@@ -50890,7 +54503,7 @@
 			"manaTap": 2,
 			"manaRecycle": 1,
 			"colors": ["R", "Y"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790980702633-o5aq7ngqyuc.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fd3b4c6939b6a80b33956da7e3a9102eba9c32a8-744x1040.png",
 			"restrictToLeader": "Mordekaiser",
 			"ability": {
 				"effects": {
@@ -51027,6 +54640,96 @@
 			}
 		},
 		{
+			"id": "RAD-146",
+			"name": "The Ball",
+			"types": ["gear", "deploy"],
+			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\n[Ganking] (While this is a unit, it can move from battlefield to battlefield.)\nWhen you play or move this, choose one —* Draw 1.* Deal 2 to enemy units here.",
+			"strength": 0,
+			"manaTap": 5,
+			"manaRecycle": 1,
+			"colors": ["G", "B"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/4b11f36bd5ce2b08677959664cda3906a04d234c-744x1040.png",
+			"restrictToLeader": "Orianna",
+			"ability": {
+				"effects": {
+					"hold": [
+						{
+							"targetQuery": {
+								"players": "opponent",
+								"source": {
+									"area": "here"
+								}
+							},
+							"effect": {
+								"kills": true,
+								"routing": {
+									"subject": "effectSource"
+								}
+							}
+						}
+					],
+					"played": [
+						{
+							"effect": {
+								"choice": {
+									"mode": "effect",
+									"options": [
+										{
+											"draw": 1
+										},
+										{
+											"damage": {
+												"amount": 2
+											},
+											"targetQuery": {
+												"cardTypes": ["unit"],
+												"players": "opponent",
+												"source": {
+													"area": "here"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					],
+					"moved": [
+						{
+							"initiatingPlayer": "self",
+							"effect": {
+								"choice": {
+									"mode": "effect",
+									"options": [
+										{
+											"draw": 1
+										},
+										{
+											"damage": {
+												"amount": 2
+											},
+											"targetQuery": {
+												"cardTypes": ["unit"],
+												"players": "opponent",
+												"source": {
+													"area": "here"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					]
+				},
+				"playModifiers": [
+					{
+						"type": "ganking"
+					}
+				]
+			}
+		},
+		{
 			"id": "RAD-147",
 			"name": "Pride of Nazumah",
 			"types": ["legend", "k'sante"],
@@ -51146,6 +54849,42 @@
 			}
 		},
 		{
+			"id": "RAD-149",
+			"name": "Riven, The Exile",
+			"types": ["legend", "riven"],
+			"description": "Units you play to battlefields you control enter ready.",
+			"strength": 0,
+			"manaTap": 0,
+			"manaRecycle": 0,
+			"colors": ["G", "P"],
+			"image": "https://cdn.piltoverarchive.com/cards/RAD-149.webp",
+			"variants": {
+				"RAD-173": "https://cdn.piltoverarchive.com/cards/RAD-173.webp"
+			},
+			"ability": {
+				"effects": {
+					"enters": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "self",
+								"source": {
+									"area": "siteControlled"
+								}
+							},
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-150",
 			"name": "Blade of the Exile",
 			"types": ["gear", "equipment"],
@@ -51159,28 +54898,32 @@
 			"strengthBonus": 3,
 			"restrictToLeader": "Riven",
 			"ability": {
-				"playModifiers": [
+				"activatableEffects": [
 					{
-						"type": "equips",
-						"costs": {
-							"chooseOne": true,
-							"costs": [
-								{
-									"type": "manaRecycle",
-									"amount": 1
-								},
-								{
-									"type": "tapSelect",
-									"amount": 1,
-									"matching": ["unit"],
-									"query": {
-										"players": "team",
-										"source": {
-											"area": "inPlay"
-										}
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "manaRecycle",
+										"amount": 1
 									}
-								}
-							]
+								]
+							},
+							{
+								"costs": [
+									{
+										"type": "tapSelect",
+										"amount": 1,
+										"matching": ["unit"]
+									}
+								],
+								"optionality": "replaces"
+							}
+						],
+						"effect": {
+							"attaches": {
+								"equipment": "affectingCard"
+							}
 						}
 					}
 				]
@@ -51341,6 +55084,7 @@
 											"zoneChanges": [
 												{
 													"to": "hand",
+													"event": "draw",
 													"source": {
 														"query": {
 															"source": {
@@ -51417,6 +55161,51 @@
 											}
 										}
 									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "RAD-154",
+			"name": "Last Caress",
+			"types": ["spell"],
+			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nThe next unit you play this turn, even from face down, can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [S] buff if it doesn't have one.)",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["O", "P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c34881b6fe2e63f6345845fe95cfe72eb9d4878c-744x1040.png",
+			"restrictToLeader": "Evelynn",
+			"ability": {
+				"actionWindows": ["contesting", "response"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"modifierGrant": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "self"
+									},
+									"modifiers": [],
+									"playTo": [
+										{
+											"action": "allow",
+											"scope": "sites"
+										}
+									],
+									"onPlayed": {
+										"addBuff": 1,
+										"routing": {
+											"subject": "eventSubject"
+										}
+									},
+									"uses": 1,
+									"consumeOn": "finalized",
+									"duration": "turn"
 								}
 							}
 						}
@@ -51511,10 +55300,10 @@
 						},
 						{
 							"targetQuery": {
-								"players": "self",
 								"source": {
 									"area": "here"
-								}
+								},
+								"players": "self"
 							},
 							"effect": {
 								"zoneChanges": [
@@ -51575,11 +55364,11 @@
 				"effects": {
 					"onHide": [
 						{
-							"initiatingPlayer": "self",
 							"targetQuery": {
 								"source": {
 									"area": "here"
-								}
+								},
+								"players": "self"
 							},
 							"effect": {
 								"spawn": {
@@ -51634,7 +55423,7 @@
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": [],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790980813364-6f0gyyr8982.jpg",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/03ce18a231c7c919875b436b06bbe4e1a99c4831-1039x744.png",
 			"ability": {
 				"effects": {
 					"onKill": [
@@ -51680,6 +55469,7 @@
 							"effect": {
 								"requirements": {
 									"cards": {
+										"min": 0,
 										"max": 0,
 										"query": {
 											"source": {
@@ -51824,7 +55614,7 @@
 			"colors": [],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f4b396780dd7a5aa1be43f763265f308ee0fe665-1039x744.png",
 			"variants": {
-				"RAD-184": "https://cdn.piltoverarchive.com/temporary/1790985089947-5pfquixslw.png"
+				"RAD-184": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a6d9ad1a2a165e5e6b5cb1e7d8133e544cf9b0b1-1039x744.png"
 			},
 			"ability": {
 				"effects": {
@@ -51940,7 +55730,7 @@
 			"id": "RAD-167",
 			"name": "Neeko, Blending In",
 			"types": ["unit", "champion", "neeko", "ixtal"],
-			"description": "(Neutral cards can go in decks of any Domain.)\n\nIf Neeko is in your deck, choose 3 different legends in addition to your starting legend. (Different means none match names.)\nWhen you play me, choose one of those legends and add it to your Legend Zone while I'm on the board.",
+			"description": "(Neutral cards can go in decks of any Domain.)\nIf Neeko is in your deck, choose up to 3 different legends in addition to your starting legend. (Different means none match names.)\nWhen you play me, choose one of those Legends and add it to your Legend Zone while I'm on the board.",
 			"strength": 4,
 			"manaTap": 6,
 			"manaRecycle": 1,
@@ -51985,62 +55775,6 @@
 						}
 					]
 				}
-			}
-		},
-		{
-			"id": "RAD-R02",
-			"name": "Calm Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["G"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34661f9fff9e12addbfa320a88b794fcffd6652f-744x1039.png",
-			"variants": {
-				"RAD-R02a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34b4e5127ca68f78ad43e824af61728cfc7fbc19-744x1039.png"
-			}
-		},
-		{
-			"id": "RAD-R03",
-			"name": "Mind Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["B"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/10804d84483e8813a6b5277e4527ac148bbabdd0-744x1039.png",
-			"variants": {
-				"RAD-R03a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7216a84b4c3c2446e9f96f1dae02cb4fd96283d8-744x1039.png"
-			}
-		},
-		{
-			"id": "RAD-R04",
-			"name": "Body Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["O"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d78f8e8cf237cc19a8546184501d4be97df29fd-744x1039.png",
-			"variants": {
-				"RAD-R04a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/90b2706af9f1eaf167065087a09a8451f303ffe1-744x1039.png"
-			}
-		},
-		{
-			"id": "RAD-R05",
-			"name": "Chaos Rune",
-			"types": ["rune"],
-			"description": "",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": ["P"],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f420625850dc43c96e29b6d85b6581c7ccb6126c-744x1039.png",
-			"variants": {
-				"RAD-R05a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8ad4d5345a7316ba76689988bcd211d63f66098-744x1039.png"
 			}
 		},
 		{
