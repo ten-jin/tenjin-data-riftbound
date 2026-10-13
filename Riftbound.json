@@ -1,6 +1,6 @@
 {
 	"name": "Riftbound",
-	"version": "4.4.0",
+	"version": "5.0.0",
 	"sets": {
 		"OGN": "2025-10-31",
 		"OGS": "2025-10-31",
@@ -124,7 +124,7 @@
 			"id": "OGN-002",
 			"name": "Brazen Buccaneer",
 			"types": ["unit", "bilgewater", "pirate"],
-			"description": "As you play me, you may discard 1 as an additional cost. If you do, reduce my cost by [2].",
+			"description": "As you play me, you may discard a card as an additional cost. If you do, reduce my cost by [2].",
 			"strength": 5,
 			"manaTap": 6,
 			"manaRecycle": 0,
@@ -269,11 +269,10 @@
 												"cards": {
 													"query": {
 														"source": {
-															"area": "discard",
 															"cards": "previousSelection"
 														},
 														"relations": {
-															"damagedBy": {
+															"killedBy": {
 																"query": {
 																	"source": {
 																		"cards": "affectingCard"
@@ -1478,6 +1477,7 @@
 									}
 								}
 							],
+							"combatRole": "attacking",
 							"effect": {
 								"addPoints": 1
 							}
@@ -1641,6 +1641,7 @@
 									"subject": "affectingCard"
 								},
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"query": {
 											"players": "self",
@@ -4971,7 +4972,7 @@
 			"id": "OGN-118",
 			"name": "Wraith of Echoes",
 			"types": ["unit", "shadow isles", "spirit"],
-			"description": "The first time a friendly unit dies each turn, draw 1.",
+			"description": "The first time another friendly unit dies each turn, draw 1.",
 			"strength": 5,
 			"manaTap": 6,
 			"manaRecycle": 1,
@@ -4990,12 +4991,14 @@
 									"event": "killed",
 									"role": "subjectController",
 									"relation": "team",
-									"cardTypes": ["unit"]
+									"cardTypes": ["unit"],
+									"exclude": "recipient"
 								}
 							],
 							"targetQuery": {
 								"cardTypes": ["unit"],
-								"players": "team"
+								"players": "team",
+								"exclude": ["affectingCard", "previousSelection"]
 							},
 							"effect": {
 								"draw": 1
@@ -5559,6 +5562,7 @@
 									}
 								],
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"query": {
 											"cardTypes": ["unit"],
@@ -5992,7 +5996,7 @@
 			"id": "OGN-145",
 			"name": "Unyielding Spirit",
 			"types": ["spell"],
-			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nPrevent all spell and ability damage this turn.",
+			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nPrevent all damage that would be dealt this turn by spells and abilities.",
 			"strength": 0,
 			"manaTap": 1,
 			"manaRecycle": 1,
@@ -6589,7 +6593,7 @@
 			"id": "OGN-158",
 			"name": "Volibear, Imposing",
 			"types": ["unit", "champion", "freljord", "volibear"],
-			"description": "[Shield 3] (+3 [S] while I'm a defender.)\n[Tank] (I must be assigned combat damage first.)\nWhen an opponent moves to a battlefield other than mine, draw 1. (Bases are not battlefield.)",
+			"description": "[Shield 3] (+3 [S] while I'm a defender.)\n[Tank] (I must be assigned combat damage first.)\nWhen an opponent moves to a battlefield other than mine, draw 1. (Bases are not battlefields.)",
 			"strength": 10,
 			"manaTap": 12,
 			"manaRecycle": 2,
@@ -7781,7 +7785,7 @@
 			"types": ["spell"],
 			"description": "Starting with the next player, each player may return a unit to its owner's hand.",
 			"strength": 0,
-			"manaTap": 3,
+			"manaTap": 4,
 			"manaRecycle": 1,
 			"colors": ["P"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/24f5e0a8811b5a0e0930c0f6476600e2a37a5f93-744x1039.png",
@@ -9342,6 +9346,7 @@
 									"subject": "selection"
 								},
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"query": {
 											"source": {
@@ -9427,7 +9432,7 @@
 			"id": "OGN-227",
 			"name": "Symbol of the Solari",
 			"types": ["gear"],
-			"description": "If a combat where you are the attacker ends in a tie, recall ALL units instead. (Send them to base. This isn't a move. Ties are calculated after combat damage is dealt.)",
+			"description": "If a combat where you are the attacker ends in a tie that would recall any of your units, recall all units at that battlefield instead. (Send them to base. This isn't a move. Ties are calculated after combat damage is dealt.)",
 			"strength": 0,
 			"manaTap": 1,
 			"manaRecycle": 0,
@@ -10325,7 +10330,7 @@
 			"id": "OGN-247",
 			"name": "Daughter of the Void",
 			"types": ["legend", "kai'sa"],
-			"description": "[T]: [Reaction] — [Add] [C]. Use only to play spells. (Abilities that add resources can't be reacted to.)",
+			"description": "[T]: [Reaction] — [Add] [A]. Use only to play spells. (Abilities that add resources can't be reacted to.)",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -10344,11 +10349,11 @@
 								"costs": [
 									{
 										"type": "manaRecycle",
-										"amount": 1,
-										"matching": ["C"]
+										"amount": 1
 									}
 								],
-								"cardTypes": ["spell"]
+								"cardTypes": ["spell"],
+								"costSource": "cardPlay"
 							}
 						},
 						"actionWindows": ["contesting", "response"]
@@ -10604,6 +10609,7 @@
 							"effect": {
 								"draw": 1,
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"min": 0,
 										"max": 1,
@@ -11265,7 +11271,7 @@
 			"id": "OGN-263",
 			"name": "Swift Scout",
 			"types": ["legend", "teemo"],
-			"description": "You may pay [1] to hide a card with [Hidden] instead of [C].\n[1], [T]: Put a Teemo unit you own into your hand from your Champion Zone or the board.",
+			"description": "You may pay [1] to hide a card with [Hidden] instead of [A].\n[1], [T]: Put a Teemo unit you own into your hand from your Champion Zone or the board.",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -11341,7 +11347,7 @@
 			"id": "OGN-264",
 			"name": "Guerilla Warfare",
 			"types": ["spell"],
-			"description": "Return up to two cards with [Hidden] from your trash to your hand. You can hide cards ignoring costs this turn.",
+			"description": "Return up to two cards with [Hidden] from your trash to your hand. You can hide ignoring costs this turn.",
 			"strength": 0,
 			"manaTap": 2,
 			"manaRecycle": 1,
@@ -11567,7 +11573,7 @@
 			"id": "OGN-268",
 			"name": "Bullet Time",
 			"types": ["spell"],
-			"description": "[Action] (Play on your turn or in showdowns.)\nPay any amount of [C] to deal that much damage to all enemy units at a battlefield.",
+			"description": "[Action] (Play on your turn or in showdowns.)\nPay any amount of [A] to deal that much damage to all enemy units at a battlefield.",
 			"strength": 0,
 			"manaTap": 1,
 			"manaRecycle": 0,
@@ -11582,7 +11588,6 @@
 						"costs": [
 							{
 								"type": "manaRecycle",
-								"matching": ["C"],
 								"amount": "infinityCost",
 								"minimumCost": 0
 							}
@@ -11618,7 +11623,7 @@
 			"id": "OGN-269",
 			"name": "The Boss",
 			"types": ["legend", "sett"],
-			"description": "If a buffed unit you control would die, you may pay [C], exhaust me, and spend its buff to heal it, exhaust it, and recall it instead. (Send it to base. This isn't a move.)\nWhen you conquer, ready me.",
+			"description": "If a buffed unit you control would die, you may pay [A], exhaust me, and spend its buff to heal it, exhaust it, and recall it instead. (Send it to base. This isn't a move.)\nWhen you conquer, ready me.",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -11662,8 +11667,7 @@
 									"costs": [
 										{
 											"type": "manaRecycle",
-											"amount": 1,
-											"matching": ["C"]
+											"amount": 1
 										},
 										{
 											"type": "tapSelf",
@@ -12624,7 +12628,7 @@
 			"id": "OGS-001",
 			"name": "Annie, Fiery",
 			"types": ["unit", "champion", "noxus", "annie"],
-			"description": "Your spells and abilities deal 1 Bonus Damage. (Each instance of damage the spell deals is increased by 1.)",
+			"description": "Your spells and abilities deal 1 Bonus Damage. (Each instance of damage they deal is increased by 1.)",
 			"strength": 4,
 			"manaTap": 5,
 			"manaRecycle": 1,
@@ -13106,7 +13110,8 @@
 										"amount": 2
 									}
 								],
-								"cardTypes": ["spell"]
+								"cardTypes": ["spell"],
+								"costSource": "cardPlay"
 							}
 						},
 						"actionWindows": ["contesting", "response"]
@@ -19361,6 +19366,7 @@
 									}
 								}
 							],
+							"combatRole": "attacking",
 							"effect": {
 								"damage": {
 									"amount": "excessDamage"
@@ -22118,6 +22124,7 @@
 									"to": "here"
 								},
 								"requirements": {
+									"timing": "resolution",
 									"sourceArea": {
 										"area": "site"
 									}
@@ -22190,7 +22197,7 @@
 		},
 		{
 			"id": "SFD-179",
-			"name": "Corinna Veraza",
+			"name": "Corina Veraza",
 			"types": ["unit", "zaun"],
 			"description": "[Accelerate] (You may pay [1] [C] as an additional cost to have me enter ready.)\nWhen I move to a battlefield, play three 1 [S] Recruit unit tokens here.",
 			"strength": 6,
@@ -22547,7 +22554,7 @@
 			"id": "SFD-186",
 			"name": "Spinning Axe",
 			"types": ["gear", "equipment"],
-			"description": "[Quick-Draw] (This has [Reaction]. When you play it, attach it to a unit you control.)\n[Equip] [C] ([C]: Attach this to a unit you control.)\n[Temporary] (If this is unattached, kill it at the start of its controller's Beginning Phase, before scoring.)",
+			"description": "[Quick-Draw] (This has [Reaction]. When you play it, attach it to a unit you control.)\n[Equip] [A] ([A]: Attach this to a unit you control.)\n[Temporary] (If this is unattached, kill it at the start of its controller's Beginning Phase, before scoring.)",
 			"strength": 0,
 			"manaTap": 2,
 			"manaRecycle": 1,
@@ -22564,8 +22571,7 @@
 								"costs": [
 									{
 										"type": "manaRecycle",
-										"amount": 1,
-										"matching": ["C"]
+										"amount": 1
 									}
 								]
 							}
@@ -22759,7 +22765,7 @@
 			"id": "SFD-190",
 			"name": "Forgefire Cape",
 			"types": ["gear", "equipment"],
-			"description": "[Unique] (Your deck can have only 1 card with this name.)\n[Equip] [C] ([C]: Attach this to a unit you control.)",
+			"description": "[Unique] (Your deck can have only 1 card with this name.)\n[Equip] [A] ([A]: Attach this to a unit you control.)",
 			"strength": 0,
 			"manaTap": 4,
 			"manaRecycle": 2,
@@ -22777,8 +22783,7 @@
 								"costs": [
 									{
 										"type": "manaRecycle",
-										"amount": 1,
-										"matching": ["C"]
+										"amount": 1
 									}
 								]
 							}
@@ -22816,7 +22821,7 @@
 			"id": "SFD-191",
 			"name": "Rabadon's Deathcrown",
 			"types": ["gear", "equipment"],
-			"description": "[Unique] (Your deck can have only 1 card with this name.)\n[Equip] [C] ([C]: Attach this to a unit you control.)",
+			"description": "[Unique] (Your deck can have only 1 card with this name.)\n[Equip] [A] ([A]: Attach this to a unit you control.)",
 			"strength": 0,
 			"manaTap": 4,
 			"manaRecycle": 2,
@@ -22834,8 +22839,7 @@
 								"costs": [
 									{
 										"type": "manaRecycle",
-										"amount": 1,
-										"matching": ["C"]
+										"amount": 1
 									}
 								]
 							}
@@ -22870,7 +22874,7 @@
 			"id": "SFD-192",
 			"name": "Shurelya's Requiem",
 			"types": ["gear", "equipment"],
-			"description": "[Unique] (Your deck can have only 1 card with this name.)\n[Equip] [C] ([C]: Attach this to a unit you control.)\nWhen you play this, ready your units.",
+			"description": "[Unique] (Your deck can have only 1 card with this name.)\n[Equip] [A] ([A]: Attach this to a unit you control.)\nWhen you play this, ready your units.",
 			"strength": 0,
 			"manaTap": 4,
 			"manaRecycle": 2,
@@ -22908,8 +22912,7 @@
 								"costs": [
 									{
 										"type": "manaRecycle",
-										"amount": 1,
-										"matching": ["C"]
+										"amount": 1
 									}
 								]
 							}
@@ -26590,7 +26593,7 @@
 			"id": "UNL-044",
 			"name": "Flurry of Feathers",
 			"types": ["spell"],
-			"description": "[Reaction]\nChoose one —* Counter a spell.* Play four 1 [S] Bird unit tokens with [Deflect]. (Opponents must pay [A] to choose them with a spell or ability.)",
+			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose one —* Counter a spell.* Play four 1 [S] Bird unit tokens with [Deflect]. (Opponents must pay [A] to choose them with a spell or ability.)",
 			"strength": 0,
 			"manaTap": 4,
 			"manaRecycle": 2,
@@ -29572,6 +29575,7 @@
 							"effect": {
 								"draw": 1,
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"count": {
 											"aggregate": {
@@ -31837,6 +31841,9 @@
 								},
 								"play": {
 									"subject": "selection",
+									"payment": {
+										"ignoreAll": true
+									},
 									"controller": "owner"
 								},
 								"routing": {
@@ -31971,6 +31978,7 @@
 									"to": "here"
 								},
 								"requirements": {
+									"timing": "resolution",
 									"sourceArea": {
 										"area": "site"
 									}
@@ -33100,6 +33108,7 @@
 						{
 							"effect": {
 								"requirements": {
+									"timing": "resolution",
 									"additionalCostPaid": true
 								},
 								"flow": {
@@ -33825,6 +33834,7 @@
 							"effect": {
 								"addPoints": 1,
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"min": 4,
 										"count": {
@@ -33849,6 +33859,7 @@
 							"effect": {
 								"addPoints": 1,
 								"requirements": {
+									"timing": "resolution",
 									"cards": {
 										"min": 4,
 										"count": {
@@ -34906,11 +34917,10 @@
 																			"query": {
 																				"players": "opponent",
 																				"source": {
-																					"area": "discard",
 																					"cards": "previousSelection"
 																				},
 																				"relations": {
-																					"damagedBy": {
+																					"killedBy": {
 																						"query": {
 																							"source": {
 																								"cards": {
@@ -34928,11 +34938,10 @@
 																			"query": {
 																				"players": "opponent",
 																				"source": {
-																					"area": "discard",
 																					"cards": "previousSelection"
 																				},
 																				"relations": {
-																					"damagedBy": {
+																					"killedBy": {
 																						"query": {
 																							"source": {
 																								"cards": {
@@ -38868,6 +38877,7 @@
 												"subject": "selection"
 											},
 											"requirements": {
+												"timing": "resolution",
 												"cards": {
 													"query": {
 														"source": {
@@ -41695,7 +41705,7 @@
 		{
 			"id": "VEN-086",
 			"name": "Gangplank, Naval",
-			"types": ["unit", "champion", "gangplank", "bilgewater"],
+			"types": ["unit", "champion", "pirate", "bilgewater", "gangplank"],
 			"description": "[Empower] [C][C] ([C][C]: Empower me. Use only if not Empowered.)\n[Empowered][>] If a spell or ability that chooses me would stun me, give me -[S], or return me to hand, give me +3 [S] this turn instead.",
 			"strength": 6,
 			"manaTap": 6,
@@ -43299,7 +43309,7 @@
 		{
 			"id": "VEN-113",
 			"name": "Kennen, Storm of Shuriken",
-			"types": ["unit", "champion", "kennen", "yordle"],
+			"types": ["unit", "champion", "yordle", "ionia", "kennen"],
 			"description": "When you play me, [Burn 2]. (Put the top 2 cards of your Main Deck into your trash.)\nWhen I conquer, give a spell in your trash [Flow] equal to its cost this turn. (You may play it from your trash for its Flow cost. Then banish it.)",
 			"strength": 4,
 			"manaTap": 3,
@@ -44328,7 +44338,7 @@
 					"passiveModifiers": [
 						{
 							"targetQuery": {
-								"players": "opponent",
+								"players": "all",
 								"cardTypes": ["spell"],
 								"named": "cardName"
 							},
@@ -44922,7 +44932,7 @@
 			"id": "VEN-139",
 			"name": "Rogue Assassin",
 			"types": ["legend", "akali"],
-			"description": "[Empower] [3] [A] ([3] [A]: Empower this. Use only if not Empowered.)\n[Action] [>] [T]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.",
+			"description": "[Empower] [3] [A] ([3] [A]: Empower me. Use only if not Empowered.)\n[Action] [>] [T]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -46171,7 +46181,7 @@
 		{
 			"id": "VEN-155",
 			"name": "Heart of the Tempest",
-			"types": ["legend", "kennen", "yordle"],
+			"types": ["legend", "kennen"],
 			"description": "When you play a card from anywhere other than your hand, empower me.\n[Action] [>] Disempower me, [T]: Give a unit [Assault 2] this turn. (+2 [S] while it's an attacker.)",
 			"strength": 0,
 			"manaTap": 0,
@@ -46722,8 +46732,8 @@
 		{
 			"id": "VEN-T05",
 			"name": "Shadow Clone",
-			"types": ["unit", "token", "shadow clone"],
-			"description": "When I attack, you may banish a unit from your trash. If you do, give me [Assault 4] this turn.",
+			"types": ["unit", "token"],
+			"description": "When I attack, you may banish a unit from your trash. If you do, give me [Assault 4] this turn. (+4 [S] while I'm an attacker.)",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
@@ -46779,12 +46789,12 @@
 		{
 			"id": "RAD-001",
 			"name": "Amateur Demolitionist",
-			"types": ["unit"],
+			"types": ["unit", "yordle", "bandle city"],
 			"description": "When you play me, play a Bomb gear token to a battlefield. (It has [Deploy]. When it dies, deal 2 to an enemy there and kill your other Bombs there.)",
 			"strength": 1,
 			"manaTap": 2,
 			"manaRecycle": 0,
-			"colors": ["P"],
+			"colors": ["R"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3dca5e04ff8dff983993f87d5a82a7fd56d7bc9c-744x1039.png",
 			"ability": {
 				"effects": {
@@ -46806,7 +46816,7 @@
 		{
 			"id": "RAD-002",
 			"name": "Banner of Conquest",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nFriendly units here have [Assault]. (+1 [S] while they're attackers.)",
 			"strength": 0,
 			"manaTap": 1,
@@ -46855,12 +46865,12 @@
 		{
 			"id": "RAD-003",
 			"name": "Bilgewater Tracker",
-			"types": ["unit"],
+			"types": ["unit", "bilgewater"],
 			"description": "When you play me, deal 1 to each of up to 2 units.",
 			"strength": 3,
 			"manaTap": 3,
 			"manaRecycle": 0,
-			"colors": ["O"],
+			"colors": ["R"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b660759a6bcb9c7ca41ea969cf11463259e284c9-744x1039.png",
 			"ability": {
 				"effects": {
@@ -46895,7 +46905,7 @@
 			"strength": 0,
 			"manaTap": 3,
 			"manaRecycle": 1,
-			"colors": ["P"],
+			"colors": ["R"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/38fd13c7522bb47dcc5ce1596aeb6a638087ee09-744x1039.png",
 			"ability": {
 				"actionWindows": ["contesting"],
@@ -46932,7 +46942,7 @@
 		{
 			"id": "RAD-005",
 			"name": "Lingering Animus",
-			"types": ["unit"],
+			"types": ["unit", "spirit", "shadow isles"],
 			"description": "I enter ready if a friendly unit or gear died this turn.",
 			"strength": 2,
 			"manaTap": 2,
@@ -47146,12 +47156,12 @@
 			"id": "RAD-010",
 			"name": "Forbidden Technique",
 			"types": ["spell"],
-			"description": "Ready a unit.\nWhen you play a card with Energy cost [7] or more, you may play this from your trash for [1] [C] [C]. Then banish this.",
+			"description": "Ready a unit.\nWhen you play a card with Energy cost [7] or more, you may play this from your trash for [1][C][C]. Then banish this.",
 			"strength": 0,
 			"manaTap": 2,
 			"manaRecycle": 0,
 			"colors": ["R"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-010.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/293518dcf6c2f9e3f59a2e259826fd813436b3a5-744x1039.png",
 			"ability": {
 				"effects": {
 					"played": [
@@ -47222,6 +47232,76 @@
 			}
 		},
 		{
+			"id": "RAD-011",
+			"name": "Incorrigible Construct",
+			"types": ["unit", "mech", "piltover"],
+			"description": "[Show Off] a Mech. (As you play me, you may reveal a Mech from hand or pick another friendly Mech.)\nI enter ready if you showed off.",
+			"strength": 4,
+			"manaTap": 4,
+			"manaRecycle": 0,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e95470d5c2fbc9f7f8ab0b1c19f32fd704918c83-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"source": {
+										"area": "hand"
+									},
+									"cardTypes": ["mech"],
+									"exclude": "effectSource"
+								}
+							},
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"players": "team",
+									"source": {
+										"area": "inPlay"
+									},
+									"cardTypes": ["mech"],
+									"exclude": "effectSource"
+								}
+							}
+						],
+						"chooseOne": true,
+						"optionality": "optional"
+					}
+				],
+				"effects": {
+					"enters": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "ready"
+									}
+								],
+								"requirements": {
+									"cards": {
+										"query": {
+											"source": {
+												"cards": {
+													"from": "costSelection",
+													"cost": "revealSelect"
+												}
+											},
+											"includeSource": true
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-012",
 			"name": "Runeblade Anvil",
 			"types": ["gear"],
@@ -47229,7 +47309,7 @@
 			"strength": 0,
 			"manaTap": 1,
 			"manaRecycle": 0,
-			"colors": ["P"],
+			"colors": ["R"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/11e2ddea70ec4dd8e562681a1ab1dfbc2b2dca0f-744x1039.png",
 			"ability": {
 				"effects": {
@@ -47381,7 +47461,7 @@
 		{
 			"id": "RAD-014",
 			"name": "Shimmering Swimmer",
-			"types": ["unit"],
+			"types": ["unit", "bilgewater"],
 			"description": "You may kill a friendly unit or gear as an additional cost to play me.\nWhen you play me, if you paid the additional cost, deal 2 to a unit.",
 			"strength": 3,
 			"manaTap": 3,
@@ -47530,12 +47610,12 @@
 		{
 			"id": "RAD-016",
 			"name": "Coalesced Energy",
-			"types": ["unit"],
+			"types": ["unit", "shurima"],
 			"description": "At the end of your turn, recycle all your runes, then channel 4 runes exhausted.",
 			"strength": 4,
 			"manaTap": 4,
 			"manaRecycle": 2,
-			"colors": ["B"],
+			"colors": ["R"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/59e551045ca75d932ff76c4820d873d4a2cde9e8-744x1039.png",
 			"ability": {
 				"effects": {
@@ -47841,7 +47921,7 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d13964c46506f9f36430dfe91ee02d258a304908-744x1039.png",
 			"variants": {
 				"RAD-021a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b4e49d03e297db4593a6ebc0d7e6c165dff6dcfe-744x1039.png",
-				"RAD-177": "https://cdn.piltoverarchive.com/temporary/1791720697892-ez2e0lxqd9l.png"
+				"RAD-177": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fb1dc5301c1dd9054e5da6d9735b8ad27ce200c4-744x1039.png"
 			},
 			"ability": {
 				"effects": {
@@ -47910,9 +47990,77 @@
 			}
 		},
 		{
+			"id": "RAD-022",
+			"name": "Whirling Twirligig",
+			"types": ["gear"],
+			"description": "[T]: Play a Gold gear token exhausted. (It has \"[Reaction] [>] Kill this, [T]: [Add] [A].\")\nKill a friendly gear, [T]: Play a 1 [S] Recruit unit token.\nKill a friendly unit, [T]: Play a 3 [S] Mech unit token.",
+			"strength": 0,
+			"manaTap": 4,
+			"manaRecycle": 1,
+			"colors": ["R"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a05ff95e5bb933664e09656973c72f4d39d8e701-744x1039.png",
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"spawn": {
+								"name": "gold",
+								"to": "base"
+							}
+						}
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "killSelect",
+										"amount": 1,
+										"matching": ["gear"]
+									}
+								]
+							}
+						],
+						"taps": true,
+						"effect": {
+							"selectLocation": {
+								"area": "controlled"
+							},
+							"spawn": {
+								"name": "recruit"
+							}
+						}
+					},
+					{
+						"costs": [
+							{
+								"costs": [
+									{
+										"type": "killSelect",
+										"amount": 1,
+										"matching": ["unit"]
+									}
+								]
+							}
+						],
+						"taps": true,
+						"effect": {
+							"selectLocation": {
+								"area": "controlled"
+							},
+							"spawn": {
+								"name": "mech"
+							}
+						}
+					}
+				]
+			}
+		},
+		{
 			"id": "RAD-023",
 			"name": "Ziggs, Short-Fused",
-			"types": ["unit", "champion", "ziggs", "bandle city"],
+			"types": ["unit", "champion", "yordle", "zaun", "ziggs"],
 			"description": "When you play me, play a Bomb gear token to a battlefield. (It has [Deploy]. When it dies, deal 2 to an enemy there and kill your other Bombs there.)\nAbilities of friendly gear deal 1 Bonus Damage.",
 			"strength": 5,
 			"manaTap": 5,
@@ -47959,12 +48107,12 @@
 		{
 			"id": "RAD-024",
 			"name": "Blossoming Dreamroot",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you win a combat here, draw 1.",
 			"strength": 0,
 			"manaTap": 2,
 			"manaRecycle": 0,
-			"colors": ["P"],
+			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5b819cc232389f3ef1438350d68c7801e181961c-744x1039.png",
 			"ability": {
 				"effects": {
@@ -48068,12 +48216,12 @@
 		{
 			"id": "RAD-026",
 			"name": "Entrenched Boar",
-			"types": ["unit"],
+			"types": ["unit", "freljord"],
 			"description": "You may have me enter ready.\nIf you do, I can't move this turn.",
 			"strength": 2,
 			"manaTap": 2,
 			"manaRecycle": 0,
-			"colors": [],
+			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8d8688f43e219f7f4b5f5fd17cff204dcebc3bdc-744x1039.png",
 			"ability": {
 				"effects": {
@@ -48309,7 +48457,7 @@
 			"manaTap": 4,
 			"manaRecycle": 0,
 			"colors": ["G"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-031.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8513fbe02a37f957b2a98bcee5badfdc56f41e82-744x1039.png",
 			"ability": {
 				"effects": {
 					"played": [
@@ -48340,6 +48488,108 @@
 						"amount": 3
 					}
 				]
+			}
+		},
+		{
+			"id": "RAD-032",
+			"name": "Battle Preparations",
+			"types": ["spell"],
+			"description": "[Reaction] (Play any time, even before spells and abilities resolve.)\n[Show Off] a gear. (As you play this, you may reveal a gear from hand or pick a friendly gear.)\nGive a unit +2 [S] this turn. If you showed off, ready up to 2 runes.",
+			"strength": 0,
+			"manaTap": 2,
+			"manaRecycle": 0,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9422caf2fcd4cfb346cf0dce48245ef13a77180f-744x1039.png",
+			"ability": {
+				"additionalCosts": [
+					{
+						"costs": [
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"source": {
+										"area": "hand"
+									},
+									"cardTypes": ["gear"],
+									"exclude": "effectSource"
+								}
+							},
+							{
+								"type": "revealSelect",
+								"amount": 1,
+								"query": {
+									"players": "team",
+									"source": {
+										"area": "inPlay"
+									},
+									"cardTypes": ["gear"],
+									"exclude": "effectSource"
+								}
+							}
+						],
+						"chooseOne": true,
+						"optionality": "optional"
+					}
+				],
+				"actionWindows": ["contesting", "response"],
+				"effects": {
+					"played": [
+						{
+							"effect": {
+								"modifiers": [
+									{
+										"type": "strength",
+										"amount": 2,
+										"duration": "turn"
+									}
+								],
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"players": "all",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								},
+								"flow": {
+									"sequence": {
+										"effect": {
+											"readies": {
+												"action": "ready"
+											},
+											"select": {
+												"query": {
+													"cardTypes": ["rune"],
+													"source": {
+														"area": "manaCards"
+													}
+												},
+												"min": 0,
+												"count": 2
+											},
+											"requirements": {
+												"cards": {
+													"query": {
+														"source": {
+															"cards": {
+																"from": "costSelection",
+																"cost": "revealSelect"
+															}
+														},
+														"includeSource": true
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
 			}
 		},
 		{
@@ -48537,7 +48787,7 @@
 		{
 			"id": "RAD-036",
 			"name": "Storm Raptor",
-			"types": ["unit"],
+			"types": ["unit", "bird", "freljord"],
 			"description": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhen a stunned enemy unit dies here, draw 1.",
 			"strength": 6,
 			"manaTap": 6,
@@ -48576,7 +48826,7 @@
 		{
 			"id": "RAD-037",
 			"name": "Watchful Curator",
-			"types": ["unit"],
+			"types": ["unit", "piltover"],
 			"description": "Your gear have [Deflect]. (Opponents must pay [A] to choose each with a spell or ability.)",
 			"strength": 4,
 			"manaTap": 3,
@@ -48837,15 +49087,15 @@
 		{
 			"id": "RAD-042",
 			"name": "Orianna, Exquisite",
-			"types": ["unit", "champion", "piltover", "orianna"],
+			"types": ["unit", "champion", "orianna", "piltover"],
 			"description": "[Shield] (+1 [S] while I'm a defender.)\nI don't deal combat damage unless there's a friendly gear here.",
 			"strength": 4,
 			"manaTap": 3,
 			"manaRecycle": 0,
 			"colors": ["G"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-042.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3e608c51698b6fb0cc6a00335dbd1bca84f57c73-744x1039.png",
 			"variants": {
-				"RAD-042a": "https://cdn.piltoverarchive.com/cards/RAD-042a.webp"
+				"RAD-042a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eeda2acfac6215104d70976c679c93f6f09fc351-744x1039.png"
 			},
 			"ability": {
 				"playModifiers": [
@@ -48960,6 +49210,77 @@
 			}
 		},
 		{
+			"id": "RAD-044",
+			"name": "Hunting Blind",
+			"types": ["gear", "deploy"],
+			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you play this, you may move an enemy unit to this battlefield.\nFriendly units here have [Shield 2]. (+2 [S] while they're defenders.)",
+			"strength": 0,
+			"manaTap": 4,
+			"manaRecycle": 2,
+			"colors": ["G"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0a625c22d828c83302132b0465dceb3ab11a08bc-744x1039.png",
+			"ability": {
+				"effects": {
+					"hold": [
+						{
+							"targetQuery": {
+								"players": "opponent",
+								"source": {
+									"area": "here"
+								}
+							},
+							"effect": {
+								"kills": true,
+								"routing": {
+									"subject": "effectSource"
+								}
+							}
+						}
+					],
+					"played": [
+						{
+							"effect": {
+								"moves": {
+									"to": "here"
+								},
+								"select": {
+									"query": {
+										"cardTypes": ["unit"],
+										"excludeLocation": "here",
+										"players": "opponent",
+										"source": {
+											"area": "inPlay"
+										}
+									},
+									"count": 1
+								},
+								"optional": true
+							}
+						}
+					],
+					"passiveModifiers": [
+						{
+							"targetQuery": {
+								"cardTypes": ["unit"],
+								"players": "team",
+								"source": {
+									"area": "here"
+								}
+							},
+							"effect": {
+								"modifiers": [
+									{
+										"type": "shield",
+										"amount": 2
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-045",
 			"name": "K'Sante, Dauntless",
 			"types": ["unit", "champion", "k'sante", "shurima"],
@@ -49011,7 +49332,7 @@
 			"id": "RAD-046",
 			"name": "Resplendent Rostrum",
 			"types": ["gear"],
-			"description": "[T]: Draw 1 and channel 1 rune exhausted.\nWhen I become exhausted, give a friendly unit +3 [S] this turn.",
+			"description": "[T]: Draw 1 and channel 1 rune exhausted.\nWhen this becomes exhausted, give a friendly unit +3 [S] this turn.",
 			"strength": 0,
 			"manaTap": 8,
 			"manaRecycle": 1,
@@ -49075,7 +49396,7 @@
 			"strength": 0,
 			"manaTap": 3,
 			"manaRecycle": 0,
-			"colors": [],
+			"colors": ["B"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/75a3d8fbfd8caeabfd5be38513a6624c61f5230f-744x1039.png",
 			"ability": {
 				"effects": {
@@ -49367,7 +49688,7 @@
 			"manaTap": 2,
 			"manaRecycle": 0,
 			"colors": ["B"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-053.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5973b5036060f29e24f8778949bf6f01f360c0a4-744x1039.png",
 			"ability": {
 				"effects": {
 					"onExhaust": [
@@ -49415,7 +49736,7 @@
 			"manaTap": 3,
 			"manaRecycle": 0,
 			"colors": ["B"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1791545467178-38suok1h2zd.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/78106b7cea441b13d108e532adc5ce063f448165-744x1039.png",
 			"ability": {
 				"effects": {
 					"combat": [
@@ -49448,7 +49769,7 @@
 		{
 			"id": "RAD-055",
 			"name": "Clanging Sentry",
-			"types": ["unit"],
+			"types": ["unit", "mech", "piltover"],
 			"description": "Your Mechs have [Disarm]. (When each of us attacks, give an enemy unit there -1 [S] this turn.)",
 			"strength": 2,
 			"manaTap": 3,
@@ -49560,7 +49881,7 @@
 		{
 			"id": "RAD-057",
 			"name": "Piltovan Guidebot",
-			"types": ["unit"],
+			"types": ["unit", "mech", "piltover"],
 			"description": "When you play a card, you may have my base Might become equal to that card's Energy cost this turn.",
 			"strength": 3,
 			"manaTap": 4,
@@ -49595,7 +49916,7 @@
 		{
 			"id": "RAD-058",
 			"name": "Riptide Mage",
-			"types": ["unit"],
+			"types": ["unit", "bilgewater"],
 			"description": "[Accelerate] (You may pay [1] [C] as an additional cost to have me enter ready.)\nWhen you play me, give an enemy unit -3 [S] this turn.",
 			"strength": 3,
 			"manaTap": 4,
@@ -49643,7 +49964,7 @@
 			"strength": 0,
 			"manaTap": 9,
 			"manaRecycle": 1,
-			"colors": ["Y"],
+			"colors": ["B"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bea8e402f99b0afb5af1b19c0ee8ea34052e736f-744x1039.png",
 			"ability": {
 				"effects": {
@@ -49680,7 +50001,7 @@
 			"id": "RAD-060",
 			"name": "The Empyrean",
 			"types": ["unit", "dragon", "ionia"],
-			"description": "[Show Off] a card. (As you play me, you may reveal a card from hand or pick another friendly one.)\nWhen you play me, if you showed off a card, [Predict] equal to its Power cost, then draw 2. (Look at that many cards from your Main Deck. Recycle any of them and put the rest back in any order.)",
+			"description": "[Show Off] a card. (As you play me, you may reveal a card from your hand or pick another friendly one.)\nWhen you play me, if you showed off a card, [Predict] equal to its Power cost, then draw 2. (Look at that many cards from your Main Deck. Recycle any of them and put the rest back in any order.)",
 			"strength": 8,
 			"manaTap": 8,
 			"manaRecycle": 0,
@@ -50047,15 +50368,15 @@
 		{
 			"id": "RAD-065",
 			"name": "Seraphine, Inspiring",
-			"types": ["unit", "champion", "piltover", "seraphine"],
+			"types": ["unit", "champion", "seraphine", "piltover"],
 			"description": "[Disarm 2] (When I attack, give an enemy unit here -2 [S] this turn.)\nOnce each turn, when you exhaust three or more friendly units at the same time, you may draw 1.",
 			"strength": 3,
 			"manaTap": 4,
 			"manaRecycle": 1,
 			"colors": ["B"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-065.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/60e0711c64958cc3a59a3bd3bf4c013758b1b92b-744x1039.png",
 			"variants": {
-				"RAD-065a": "https://cdn.piltoverarchive.com/cards/RAD-065a.webp"
+				"RAD-065a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/23b295012070c5c5071922057050dcb5c4398794-744x1039.png"
 			},
 			"ability": {
 				"effects": {
@@ -50110,7 +50431,7 @@
 			"manaTap": 6,
 			"manaRecycle": 1,
 			"colors": ["B"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1791597831855-togpgq64949.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7a1f527e5910fbc18f7cb3cddf2aa59b483393f4-744x1039.png",
 			"ability": {
 				"additionalCosts": [
 					{
@@ -50162,12 +50483,12 @@
 		{
 			"id": "RAD-067",
 			"name": "Clocktower Guardian",
-			"types": ["unit", "mech"],
+			"types": ["unit", "shurima"],
 			"description": "When you play me or when I hold, [Predict 3].\n[Deathknell] [>] Banish the top card of your Main Deck. You may play it, ignoring its Energy cost.",
 			"strength": 8,
 			"manaTap": 8,
 			"manaRecycle": 2,
-			"colors": ["R"],
+			"colors": ["B"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b846d604eee450a4ab8f457f2738b0596e7b361e-744x1039.png",
 			"ability": {
 				"effects": {
@@ -50452,7 +50773,7 @@
 			"strength": 0,
 			"manaTap": 1,
 			"manaRecycle": 0,
-			"colors": ["Y"],
+			"colors": ["O"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9d518a6db3ae174096b09cf80cece2997f685ede-744x1039.png",
 			"attachDescription": "[Shield 2] (+2 [S] while I'm a defender.)",
 			"strengthBonus": 0,
@@ -50497,7 +50818,7 @@
 		{
 			"id": "RAD-072",
 			"name": "Overloaded Traveler",
-			"types": ["unit"],
+			"types": ["unit", "yordle", "bandle city"],
 			"description": "While there's a friendly gear with [Deploy] at my battlefield, I have +1 [S].",
 			"strength": 2,
 			"manaTap": 2,
@@ -50535,12 +50856,12 @@
 		{
 			"id": "RAD-073",
 			"name": "Pillaged Armory",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you play this or when you conquer here, [Buff] a friendly unit. (Give it a +1 [S] buff if it doesn't have one.)",
 			"strength": 0,
 			"manaTap": 1,
 			"manaRecycle": 0,
-			"colors": ["G"],
+			"colors": ["O"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/374248eb65ca1e90a434652073dbbd3a12a11eda-744x1039.png",
 			"ability": {
 				"effects": {
@@ -50795,7 +51116,7 @@
 			"manaTap": 6,
 			"manaRecycle": 1,
 			"colors": ["O"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-078.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c479f2fda00506e71a57ac4e8cc297f7f3110a54-744x1039.png",
 			"ability": {
 				"effects": {
 					"moved": [
@@ -50873,7 +51194,7 @@
 			"manaTap": 8,
 			"manaRecycle": 2,
 			"colors": ["O"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1791597706495-9o06ruyxm38.jpg",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/775ccea752fb404be2433c4b870c7877e2445a8c-744x1039.png",
 			"ability": {
 				"effects": {
 					"reduceCost": [
@@ -50903,12 +51224,12 @@
 		{
 			"id": "RAD-081",
 			"name": "Elnuk Herd",
-			"types": ["unit"],
+			"types": ["unit", "freljord"],
 			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, give a friendly unit +3 [S] this turn, then recycle me if I was played from face down.",
 			"strength": 5,
 			"manaTap": 6,
 			"manaRecycle": 0,
-			"colors": ["R"],
+			"colors": ["O"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1799cd4c46fcf0243b4022de2d427b15e67a15ad-744x1039.png",
 			"ability": {
 				"canFacedown": true,
@@ -50985,7 +51306,7 @@
 			"id": "RAD-082",
 			"name": "Primordial Roar",
 			"types": ["spell"],
-			"description": "[Show Off] a unit. (As you play this, you may reveal a unit from hand or pick a friendly unit.)\nIf you showed off a unit, deal damage equal to that unit's Might to a unit.",
+			"description": "[Show Off] a unit. (As you play this, you may reveal a unit from your hand or pick a friendly unit.)\nIf you showed off a unit, deal damage equal to that unit's Might to a unit.",
 			"strength": 0,
 			"manaTap": 4,
 			"manaRecycle": 2,
@@ -51073,7 +51394,7 @@
 		{
 			"id": "RAD-083",
 			"name": "Stalwart Goatherd",
-			"types": ["unit"],
+			"types": ["unit", "mount targon"],
 			"description": "[Shield 2] (+2 [S] while I'm a defender.)\nWhen you play me, you may kill a gear with Energy cost [4] or less.",
 			"strength": 2,
 			"manaTap": 4,
@@ -51413,7 +51734,7 @@
 		{
 			"id": "RAD-090",
 			"name": "Evelynn, Consuming",
-			"types": ["unit", "champion", "evelynn"],
+			"types": ["unit", "champion", "demon", "evelynn"],
 			"description": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nWhen you play a card from face down, ready me and give me +1 [S] this turn.",
 			"strength": 5,
 			"manaTap": 5,
@@ -51526,7 +51847,7 @@
 			"manaTap": 7,
 			"manaRecycle": 0,
 			"colors": ["O"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-092.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ad1793554440d8d5017eadc565ca6c787a969de1-744x1039.png",
 			"ability": {
 				"effects": {
 					"passiveModifiers": [
@@ -51546,12 +51867,12 @@
 		{
 			"id": "RAD-093",
 			"name": "Disposal Expert",
-			"types": ["unit"],
+			"types": ["unit", "yordle", "bandle city"],
 			"description": "I enter ready if you control no other units.\n[Disarm 2] (When I attack, give an enemy unit here -2 [S] this turn.)",
 			"strength": 3,
 			"manaTap": 4,
 			"manaRecycle": 0,
-			"colors": ["R"],
+			"colors": ["P"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/79ec89753be773e7ea93b2116ea29d21c81fcef9-744x1039.png",
 			"ability": {
 				"effects": {
@@ -51608,9 +51929,37 @@
 			}
 		},
 		{
+			"id": "RAD-094",
+			"name": "Explosimian",
+			"types": ["unit", "zaun"],
+			"description": "When I hold, play three Bomb gear tokens to a single battlefield. (They have [Deploy]. When each dies, deal 2 to an enemy there and kill your other Bombs there.)",
+			"strength": 6,
+			"manaTap": 6,
+			"manaRecycle": 0,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f2590617229f3efc078aa2429f65b85101303200-744x1039.png",
+			"ability": {
+				"effects": {
+					"hold": [
+						{
+							"effect": {
+								"selectLocation": {
+									"area": "site"
+								},
+								"spawn": {
+									"name": "bomb",
+									"count": 3
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": "RAD-095",
 			"name": "Momentary Companion",
-			"types": ["unit"],
+			"types": ["unit", "demon", "shadow isles"],
 			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, if it's not your turn, give me [Temporary]. (Kill me at the start of my controller's Beginning Phase, before scoring.)",
 			"strength": 4,
 			"manaTap": 4,
@@ -51893,7 +52242,7 @@
 			"id": "RAD-101",
 			"name": "An Offer You Can't Refuse",
 			"types": ["spell"],
-			"description": "[Action] (Play on your turn or in showdowns.)\nKill a gear. Its controller plays a Gold gear token exhausted. (It has \"[Reaction] [>] Kill this, [T]: [Add] [A].\")",
+			"description": "[Action] (Play on your turn or in showdowns.)\nKill a gear. Its controller plays a Gold gear token exhausted. (Gold has \"[Reaction] Kill this, [T]: [Add] [A].\")",
 			"strength": 0,
 			"manaTap": 2,
 			"manaRecycle": 0,
@@ -52099,12 +52448,12 @@
 			"id": "RAD-103",
 			"name": "Gutter Guardian",
 			"types": ["unit", "zaun"],
-			"description": "[Hidden] (Hide now for [A] to react later for [0].)\n[Show Off] a card with [Hidden]. (As you play me, you may reveal such a card from your hand or pick another friendly one on the board.)\nWhen you play me, if you showed off, Add [A].",
+			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Show Off] a card with [Hidden]. (As you play me, you may reveal such a card from your hand or pick another friendly one on the board.)\nWhen you play me, if you showed off, [Add] [A].",
 			"strength": 3,
 			"manaTap": 3,
 			"manaRecycle": 0,
 			"colors": ["P"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-103.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/756827744317003e4992163ff9bf1dc991682de8-744x1039.png",
 			"ability": {
 				"additionalCosts": [
 					{
@@ -52189,9 +52538,45 @@
 			}
 		},
 		{
+			"id": "RAD-104",
+			"name": "Pitiless Stalker",
+			"types": ["unit", "cat", "shadow isles"],
+			"description": "[T]: [Stun] an enemy unit. (It doesn't deal combat damage this turn.)",
+			"strength": 5,
+			"manaTap": 5,
+			"manaRecycle": 1,
+			"colors": ["P"],
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fc61b244fb3ed01d61617c3c2633a71424604130-744x1039.png",
+			"ability": {
+				"activatableEffects": [
+					{
+						"taps": true,
+						"effect": {
+							"modifiers": [
+								{
+									"type": "stun",
+									"duration": "turn"
+								}
+							],
+							"select": {
+								"query": {
+									"cardTypes": ["unit"],
+									"players": "opponent",
+									"source": {
+										"area": "inPlay"
+									}
+								},
+								"count": 1
+							}
+						}
+					}
+				]
+			}
+		},
+		{
 			"id": "RAD-105",
 			"name": "Reckless Innovator",
-			"types": ["unit"],
+			"types": ["unit", "piltover"],
 			"description": "[Accelerate] (You may pay [1] [C] as an additional cost to have me enter ready.)\nWhen I become exhausted, choose one —* Play a Gold gear token exhausted. (It has \"[Reaction] [>] Kill this, [T]: [Add] [A].\")* Pay [C] to draw 1.",
 			"strength": 3,
 			"manaTap": 3,
@@ -52245,12 +52630,12 @@
 		{
 			"id": "RAD-106",
 			"name": "The Good Stuff",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you play this, discard 1, then draw 3.\nWhen you hold here, return this to its owner's hand.",
 			"strength": 0,
 			"manaTap": 3,
 			"manaRecycle": 1,
-			"colors": ["O"],
+			"colors": ["P"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e7dcc9ad059b471373f0093453a0ca7537d6aa0f-744x1039.png",
 			"ability": {
 				"effects": {
@@ -52313,7 +52698,7 @@
 		{
 			"id": "RAD-107",
 			"name": "Bedeviling Stranger",
-			"types": ["unit"],
+			"types": ["unit", "demon", "shadow isles"],
 			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, choose a battlefield. If there are 4 or more units there, you may return an enemy unit there to its owner's hand.",
 			"strength": 2,
 			"manaTap": 2,
@@ -52481,7 +52866,7 @@
 		{
 			"id": "RAD-109",
 			"name": "Evelynn, In Control",
-			"types": ["unit", "champion", "evelynn"],
+			"types": ["unit", "champion", "demon", "evelynn"],
 			"description": "[Disarm] (When I attack, give an enemy unit here -1 [S] this turn.)\nWhen I hold, if you control a facedown card here, score 1 point.",
 			"strength": 4,
 			"manaTap": 4,
@@ -52548,9 +52933,6 @@
 			"manaRecycle": 0,
 			"colors": ["P"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/defd09480671a1e394725f21b6c3448ebec77913-744x1039.png",
-			"variants": {
-				"RAD-110-Skirmish": "https://cdn.piltoverarchive.com/temporary/1791230501153-5rki33b8lj.png"
-			},
 			"ability": {
 				"effects": {
 					"moved": [
@@ -52737,12 +53119,12 @@
 			"id": "RAD-113",
 			"name": "Angler Wyrm",
 			"types": ["unit", "dragon", "bilgewater"],
-			"description": "[Deflect] (Opponents must pay [A] to choose me with a spell of ability.)\n[T]: Choose an opponent. They must move a unit they control to my battlefield.",
+			"description": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\n[T]: Choose an opponent. They must move a unit they control to my battlefield.",
 			"strength": 8,
 			"manaTap": 8,
 			"manaRecycle": 0,
 			"colors": ["P"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-113.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e805eba9add03fd3e1b1601b15c12a46fd403282-744x1039.png",
 			"ability": {
 				"activatableEffects": [
 					{
@@ -52845,7 +53227,7 @@
 		{
 			"id": "RAD-115",
 			"name": "Transpositionist",
-			"types": ["unit"],
+			"types": ["unit", "bilgewater"],
 			"description": "[C], [T]: Return a friendly unit to its owner's hand. You may play a unit with less Might than that unit had, ignoring its cost.",
 			"strength": 4,
 			"manaTap": 6,
@@ -52933,7 +53315,7 @@
 		{
 			"id": "RAD-116",
 			"name": "Concert Poster",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you play this or when you conquer here, you may pay [1] to play a 1 [S] Recruit unit token to your base.",
 			"strength": 0,
 			"manaTap": 1,
@@ -53068,7 +53450,7 @@
 		{
 			"id": "RAD-118",
 			"name": "Herald of the Emperor",
-			"types": ["unit"],
+			"types": ["unit", "shurima"],
 			"description": "When you play me, choose a friendly unit. Its base Might becomes 5 this turn.",
 			"strength": 3,
 			"manaTap": 5,
@@ -53291,7 +53673,7 @@
 			"manaTap": 2,
 			"manaRecycle": 1,
 			"colors": ["Y"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-123.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/97618bc30e9b65a2e5223e6f94db58d7098d30a6-744x1039.png",
 			"attachDescription": "[Tank] (I must be assigned combat damage first.)",
 			"strengthBonus": 1,
 			"ability": {
@@ -53345,7 +53727,7 @@
 			"manaTap": 3,
 			"manaRecycle": 1,
 			"colors": ["Y"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1791597623574-c2b4sg8s4sl.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/751629a34ee6ba6476ce2f0a821b9f84b5562acd-744x1039.png",
 			"ability": {
 				"effects": {
 					"played": [
@@ -53433,7 +53815,7 @@
 		{
 			"id": "RAD-125",
 			"name": "Dune Devourer",
-			"types": ["unit"],
+			"types": ["unit", "the void"],
 			"description": "You may kill a friendly unit as an additional cost to play me. If you do, I cost [2] less.\n[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)",
 			"strength": 7,
 			"manaTap": 7,
@@ -53469,7 +53851,7 @@
 		{
 			"id": "RAD-126",
 			"name": "Mournful Spirit",
-			"types": ["unit", "spirit"],
+			"types": ["unit", "spirit", "shadow isles"],
 			"description": "[Deathknell] [>] You may kill a unit or gear here. (When I die, get the effect.)",
 			"strength": 1,
 			"manaTap": 4,
@@ -53503,7 +53885,7 @@
 			"id": "RAD-127",
 			"name": "Rousing Display",
 			"types": ["spell"],
-			"description": "[Show Off] a card with Energy cost [7] or more. (As you play this, you may reveal such a card from hand or pick a friendly one.)\nPlay two 1 [S] Recruit unit tokens to your base. If you showed off, play four to your base instead.",
+			"description": "[Show Off] a card with Energy cost [7] or more. (As you play this, you may reveal such a card from your hand or pick a friendly one.)\nPlay two 1 [S] Recruit unit tokens to your base. If you showed off, play four to your base instead.",
 			"strength": 0,
 			"manaTap": 5,
 			"manaRecycle": 0,
@@ -53623,7 +54005,7 @@
 		{
 			"id": "RAD-128",
 			"name": "Steadfast Outrider",
-			"types": ["unit"],
+			"types": ["unit", "demacia"],
 			"description": "[Tank] (I must be assigned combat damage first.)\nWhile there are 2 or more other friendly units and/or gear at my battlefield, I have +2 [S].",
 			"strength": 3,
 			"manaTap": 4,
@@ -53668,7 +54050,7 @@
 		{
 			"id": "RAD-129",
 			"name": "Trifarian Captain",
-			"types": ["unit"],
+			"types": ["unit", "trifarian", "noxus"],
 			"description": "When you play me, look at the top 4 cards of your Main Deck. You may reveal from among them a unit or gear with Energy cost no more than [3] and with Power cost no more than [A] and draw it. Recycle the rest.",
 			"strength": 1,
 			"manaTap": 2,
@@ -53904,7 +54286,7 @@
 			"manaTap": 7,
 			"manaRecycle": 1,
 			"colors": ["Y"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-134.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0c307d5f4785efc4f0a4c8e486b53735f8cf04aa-744x1039.png",
 			"ability": {
 				"effects": {
 					"played": [
@@ -53944,7 +54326,7 @@
 			"manaTap": 8,
 			"manaRecycle": 2,
 			"colors": ["Y"],
-			"image": "https://cdn.piltoverarchive.com/temporary/1791720452777-xcftbv6j42f.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0bfd45446d5ffb816438ae2668ad4e5b7f188ad3-744x1039.png",
 			"ability": {
 				"effects": {
 					"played": [
@@ -53984,7 +54366,7 @@
 		{
 			"id": "RAD-136",
 			"name": "Dockside Lock-Up",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen you play this, banish a unit here.\nWhen you hold here, kill this to play the banished card, ignoring its cost. (Tokens aren't cards.)",
 			"strength": 0,
 			"manaTap": 6,
@@ -54056,7 +54438,7 @@
 		{
 			"id": "RAD-137",
 			"name": "Mordekaiser, Dominating",
-			"types": ["unit", "champion", "mordekaiser", "noxus"],
+			"types": ["unit", "champion", "spirit", "noxus", "mordekaiser"],
 			"description": "When you play me or when I attack, you may discard 1 to kill a unit or gear.",
 			"strength": 8,
 			"manaTap": 9,
@@ -54350,7 +54732,7 @@
 		{
 			"id": "RAD-141",
 			"name": "Hexplosives Expert",
-			"types": ["legend", "ziggs", "yordle"],
+			"types": ["legend", "ziggs"],
 			"description": "[1] [A], [T]: Play a Bomb gear token to a battlefield. (It has [Deploy]. When it dies, deal 2 to an enemy there and kill your other Bombs there.)",
 			"strength": 0,
 			"manaTap": 0,
@@ -54486,7 +54868,8 @@
 										"amount": 1
 									}
 								],
-								"cardTypes": ["unit", "gear"]
+								"cardTypes": ["unit", "gear"],
+								"costSource": "cardPlay"
 							}
 						},
 						"actionWindows": ["contesting", "response"]
@@ -54608,7 +54991,6 @@
 									"kind": "payment"
 								},
 								"select": {
-									"timing": "resolutionChoice",
 									"query": {
 										"players": "team",
 										"cardTypes": ["gear"],
@@ -54850,16 +55232,16 @@
 		},
 		{
 			"id": "RAD-149",
-			"name": "Riven, The Exile",
+			"name": "The Exile",
 			"types": ["legend", "riven"],
 			"description": "Units you play to battlefields you control enter ready.",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": ["G", "P"],
-			"image": "https://cdn.piltoverarchive.com/cards/RAD-149.webp",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/342befcaab98642a2348bd2f6fdb92c68563b6d7-744x1039.png",
 			"variants": {
-				"RAD-173": "https://cdn.piltoverarchive.com/cards/RAD-173.webp"
+				"RAD-173": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8cec0480427b3646cb48cb2e3fe3a02b629f7aeb-744x1039.png"
 			},
 			"ability": {
 				"effects": {
@@ -55273,7 +55655,7 @@
 		{
 			"id": "RAD-156",
 			"name": "Demacian Standard",
-			"types": ["gear", "device", "deploy"],
+			"types": ["gear", "deploy"],
 			"description": "[Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.)\nWhen one or more friendly units attack here, give one of them +2 [S] this turn.\nWhen you hold here, you may return this to its owner's hand.",
 			"strength": 0,
 			"manaTap": 2,
