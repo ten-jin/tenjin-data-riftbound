@@ -1,6 +1,7 @@
 {
 	"name": "Riftbound",
-	"version": "5.0.0",
+	"version": "5.1.0",
+	"sourceUrl": "https://raw.githubusercontent.com/ten-jin/tenjin-data-riftbound/main/Riftbound.json",
 	"sets": {
 		"OGN": "2025-10-31",
 		"OGS": "2025-10-31",
@@ -74,7 +75,8 @@
 	"defaultMode": {
 		"gameName": "Riftbound",
 		"name": "1v1 (bo1 unrestricted)",
-		"version": "1.0.0",
+		"version": "1.0.1",
+		"sourceUrl": "https://raw.githubusercontent.com/ten-jin/tenjin-data-riftbound/main/mode-1v1.json",
 		"sets": {},
 		"banned": {},
 		"players": 2,
@@ -20222,8 +20224,7 @@
 										],
 										"exclude": ["affectingCard", "previousSelection"]
 									},
-									"count": 1,
-									"min": 0
+									"count": 1
 								},
 								"routing": {
 									"subject": "selection"
@@ -43491,8 +43492,7 @@
 											"area": "inPlay"
 										}
 									},
-									"count": 1,
-									"min": 0
+									"count": 1
 								},
 								"routing": {
 									"subject": "selection"
@@ -52758,8 +52758,7 @@
 													},
 													"players": "opponent"
 												},
-												"count": 1,
-												"min": 0
+												"count": 1
 											},
 											"routing": {
 												"subject": "selection"
@@ -54409,6 +54408,7 @@
 									"hold": [
 										{
 											"duration": "source",
+											"initiatingPlayer": "self",
 											"captureTargets": true,
 											"costs": [
 												{
@@ -56168,7 +56168,7 @@
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": [],
-			"image": "https://cdn.piltoverarchive.com/temporary/1790379094995-j8jntogrzbo.png",
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/c1837fcea02cb2cef8ab892198dadcacb16123dd-1848x1063.jpg?rect=547,8,754,1048",
 			"ability": {
 				"effects": {
 					"hold": [

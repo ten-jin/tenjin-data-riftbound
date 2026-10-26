@@ -1,7 +1,8 @@
 {
 	"gameName": "Riftbound",
 	"name": "1v1 (bo1 unrestricted)",
-	"version": "1.0.0",
+	"version": "1.0.1",
+	"sourceUrl": "https://raw.githubusercontent.com/ten-jin/tenjin-data-riftbound/main/mode-1v1.json",
 	"sets": {},
 	"banned": {},
 	"players": 2,
