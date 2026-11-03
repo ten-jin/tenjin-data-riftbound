@@ -1,6 +1,6 @@
 {
 	"name": "Riftbound",
-	"version": "5.1.0",
+	"version": "5.1.1",
 	"sourceUrl": "https://raw.githubusercontent.com/ten-jin/tenjin-data-riftbound/main/Riftbound.json",
 	"sets": {
 		"OGN": "2025-10-31",
@@ -341,9 +341,12 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/12bcd0cde5d9ff4640e82945001e9fef863530f1-744x1039.png",
 			"variants": {
 				"OGN-007a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/09da06c69d07d4e72dde703737ef167472c715af-1488x2078.png",
+				"OGN-007b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=770,251,125,175",
 				"RAD-R01": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e0337944fa56c357ab3b9a822064a8f58ead8315-744x1039.png",
 				"RAD-R01a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/55f5b003c67cd821895bc78a0a0c36322af53e11-744x1039.png",
-				"VEN-R01": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f95ed6ba0c4d4d357c45bf5bdb1a8e540af1f85f-744x1039.png"
+				"SFD-R01b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d075da5d22fa7a9d23d3c82671720e5a7cfd788-1920x1080.jpg?rect=425,56,336,469",
+				"VEN-R01": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f95ed6ba0c4d4d357c45bf5bdb1a8e540af1f85f-744x1039.png",
+				"VEN-R01b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/175b5d32ed9d011639985afeb49b02a24bc5b561-1200x1096.jpg?rect=0,0,389,543"
 			},
 			"ability": {
 				"activatableEffects": [
@@ -1460,6 +1463,9 @@
 			"manaRecycle": 2,
 			"colors": ["R"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/124c93495c927be1baea03fdacf6c7b283cf8b6c-744x1039.png",
+			"variants": {
+				"OGN-034-promo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/f593acb71ea4b0f59c87f1dbce27eb411e7427c9-1920x1080.jpg?rect=1542,481,175,245"
+			},
 			"ability": {
 				"effects": {
 					"conquered": [
@@ -1831,9 +1837,12 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0a0e8c3d16c2595e2f8efcc2b1466226539b506c-744x1039.png",
 			"variants": {
 				"OGN-042a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/88187b586b9b3cc2f48fd20c806dd5fc5e1bfc71-1488x2078.png",
+				"OGN-042b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=1066,251,125,175",
 				"RAD-R02": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34661f9fff9e12addbfa320a88b794fcffd6652f-744x1039.png",
 				"RAD-R02a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/34b4e5127ca68f78ad43e824af61728cfc7fbc19-744x1039.png",
-				"VEN-R02": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b70aa1b334728a3e8beeea0c9154a2d0f79b1eb-744x1039.png"
+				"SFD-R02b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d075da5d22fa7a9d23d3c82671720e5a7cfd788-1920x1080.jpg?rect=796,56,336,469",
+				"VEN-R02": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/9b70aa1b334728a3e8beeea0c9154a2d0f79b1eb-744x1039.png",
+				"VEN-R02b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/175b5d32ed9d011639985afeb49b02a24bc5b561-1200x1096.jpg?rect=406,0,388,542"
 			},
 			"ability": {
 				"activatableEffects": [
@@ -2902,6 +2911,9 @@
 			"manaRecycle": 1,
 			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/654dcc4aef0a0b5a0c6e928d7aae397a52c3ab17-744x1039.png",
+			"variants": {
+				"OGN-067-promo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/f593acb71ea4b0f59c87f1dbce27eb411e7427c9-1920x1080.jpg?rect=1243,504,174,243"
+			},
 			"ability": {
 				"effects": {
 					"played": [
@@ -3745,9 +3757,12 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f99aa4874baaebd2e81798c8a3aa01c5900f6d30-744x1039.png",
 			"variants": {
 				"OGN-089a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ecf8c8632c728520b51cd4bc79036677e96ebdfd-1488x2078.png",
+				"OGN-089b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=624,251,125,175",
 				"RAD-R03": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/10804d84483e8813a6b5277e4527ac148bbabdd0-744x1039.png",
 				"RAD-R03a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7216a84b4c3c2446e9f96f1dae02cb4fd96283d8-744x1039.png",
-				"VEN-R03": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33df1c56c6e76f9cb783c19161f16fcdbdc20f98-744x1039.png"
+				"SFD-R03b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d075da5d22fa7a9d23d3c82671720e5a7cfd788-1920x1080.jpg?rect=1163,56,337,470",
+				"VEN-R03": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/33df1c56c6e76f9cb783c19161f16fcdbdc20f98-744x1039.png",
+				"VEN-R03b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/175b5d32ed9d011639985afeb49b02a24bc5b561-1200x1096.jpg?rect=812,0,388,542"
 			},
 			"ability": {
 				"activatableEffects": [
@@ -5215,7 +5230,7 @@
 			"id": "OGN-123",
 			"name": "Unchecked Power",
 			"types": ["spell"],
-			"description": "Exhaust all friendly units, then deal 12 to ALL units at battlefields.",
+			"description": "Exhaust all friendly units, then deal 12 to all units at battlefields.",
 			"strength": 0,
 			"manaTap": 7,
 			"manaRecycle": 2,
@@ -5336,9 +5351,12 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3b3c3c07626d6180457c849047e0228dc0d19539-744x1039.png",
 			"variants": {
 				"OGN-126a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/011081f82cab36f8ec0d6874492512fd7859f59e-1488x2078.png",
+				"OGN-126b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=1212,252,125,175",
 				"RAD-R04": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/6d78f8e8cf237cc19a8546184501d4be97df29fd-744x1039.png",
 				"RAD-R04a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/90b2706af9f1eaf167065087a09a8451f303ffe1-744x1039.png",
-				"VEN-R04": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3313c73c5b31daa482073bfefbf4d2255a89d7d0-744x1039.png"
+				"SFD-R04b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d075da5d22fa7a9d23d3c82671720e5a7cfd788-1920x1080.jpg?rect=425,561,336,469",
+				"VEN-R04": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3313c73c5b31daa482073bfefbf4d2255a89d7d0-744x1039.png",
+				"VEN-R04b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/175b5d32ed9d011639985afeb49b02a24bc5b561-1200x1096.jpg?rect=0,554,388,542"
 			},
 			"ability": {
 				"activatableEffects": [
@@ -6225,7 +6243,8 @@
 			"colors": ["O"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eca1aec1304de9c237751eb0aeed620b9ad0408e-744x1039.png",
 			"variants": {
-				"OGN-151a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68d9364d3138e06a25724a0aaae0b7226472cd68-744x1039.png"
+				"OGN-151a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/68d9364d3138e06a25724a0aaae0b7226472cd68-744x1039.png",
+				"OGN-151b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/7838ffad8a60f703c896dc7156c081ace55c58ca-1920x1080.jpg?rect=573,0,773,1080"
 			},
 			"ability": {
 				"effects": {
@@ -6984,9 +7003,12 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/daf23b0deaa5e1a5a5d310b59e9ad25d1bd70363-744x1039.png",
 			"variants": {
 				"OGN-166a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fbcde2f71fcc06fb8afc83855e24447a393f8943-1488x2078.png",
+				"OGN-166b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=1360,252,125,175",
 				"RAD-R05": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f420625850dc43c96e29b6d85b6581c7ccb6126c-744x1039.png",
 				"RAD-R05a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a8ad4d5345a7316ba76689988bcd211d63f66098-744x1039.png",
-				"VEN-R05": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3861fc566891a70c21cf3d3075adec716deb7080-744x1039.png"
+				"SFD-R05b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d075da5d22fa7a9d23d3c82671720e5a7cfd788-1920x1080.jpg?rect=796,561,336,469",
+				"VEN-R05": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3861fc566891a70c21cf3d3075adec716deb7080-744x1039.png",
+				"VEN-R05b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/175b5d32ed9d011639985afeb49b02a24bc5b561-1200x1096.jpg?rect=406,553,388,542"
 			},
 			"ability": {
 				"activatableEffects": [
@@ -8206,7 +8228,8 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ca8a2e11dd78dd09ad1c9ad3a23e5699254b947e-744x1039.png",
 			"variants": {
 				"OGN-197-promo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/f02161bb740972e5bb6d896ac7f0c83aa35c9b1e-744x1039.png",
-				"OGN-197a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/404a8aa0061b58611bd913b58dd01d99fdb8087d-744x1039.png"
+				"OGN-197a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/404a8aa0061b58611bd913b58dd01d99fdb8087d-744x1039.png",
+				"OGN-197b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=434,251,125,175"
 			},
 			"ability": {
 				"canFacedown": true,
@@ -8949,9 +8972,12 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/35ec6fdd2124324bb7052cba31c8c44f2e98f3ae-744x1039.png",
 			"variants": {
 				"OGN-214a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0e4904221c3bbbfcfde1734bc414dbe97c67e295-1488x2078.png",
+				"OGN-214b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/33869fc90d0a78d32be079ed1fedaf0b95b2381a-1920x1080.jpg?rect=918,251,125,175",
 				"RAD-R06": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/402fa10965dbee64aa1ddef654e4b9d9a5ccd28e-744x1039.png",
 				"RAD-R06a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/689797f63857003c7f21c478e86a811040c463c2-744x1039.png",
-				"VEN-R06": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/71e7d71ebadb81ccad7ca4cb8b3fb85d2f5fd4bf-744x1039.png"
+				"SFD-R06b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d075da5d22fa7a9d23d3c82671720e5a7cfd788-1920x1080.jpg?rect=1164,561,336,469",
+				"VEN-R06": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/71e7d71ebadb81ccad7ca4cb8b3fb85d2f5fd4bf-744x1039.png",
+				"VEN-R06b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/175b5d32ed9d011639985afeb49b02a24bc5b561-1200x1096.jpg?rect=812,553,388,542"
 			},
 			"ability": {
 				"activatableEffects": [
@@ -11744,36 +11770,19 @@
 		},
 		{
 			"id": "OGN-271",
-			"name": "Recruit (DE)",
+			"name": "Recruit",
 			"types": ["unit", "token", "recruit"],
 			"description": "",
 			"strength": 1,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": [],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7c3362dc6e6e6fb724ef31b061a44d2976f5b01f-744x1039.png"
-		},
-		{
-			"id": "OGN-272",
-			"name": "Recruit (NX)",
-			"types": ["unit", "token", "recruit"],
-			"description": "",
-			"strength": 1,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": [],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c168ca334739090a060710dfc440982c3462ac8c-744x1039.png"
-		},
-		{
-			"id": "OGN-273",
-			"name": "Recruit (ZN)",
-			"types": ["unit", "token", "recruit"],
-			"description": "",
-			"strength": 1,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": [],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d93ec9a524a2989b9d7ef23c6fc02e8ce39959c2-744x1039.png"
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7c3362dc6e6e6fb724ef31b061a44d2976f5b01f-744x1039.png",
+			"variants": {
+				"OGN-272": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c168ca334739090a060710dfc440982c3462ac8c-744x1039.png",
+				"OGN-273": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d93ec9a524a2989b9d7ef23c6fc02e8ce39959c2-744x1039.png",
+				"VEN-T04": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/08b9ccf225fc2ae9eb9b5668e5361b09789210ee-744x1039.png"
+			}
 		},
 		{
 			"id": "OGN-274",
@@ -11785,6 +11794,9 @@
 			"manaRecycle": 0,
 			"colors": [],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/055892752559d2d3d32e76f491a7a0b540e1a669-744x1039.png",
+			"variants": {
+				"UNL-T07": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a90578f055e01515ebfb069dc3dbdba08d24da0-744x1039.png"
+			},
 			"ability": {
 				"playModifiers": [
 					{
@@ -20513,7 +20525,7 @@
 			"id": "SFD-145",
 			"name": "Switcheroo",
 			"types": ["spell"],
-			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Action] (Play on your turn or in showdowns.)\nSwap the Might of two units at the same battlefield this turn.",
+			"description": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Action] (Play on your turn or in showdowns.)\nSwap the Mights of two units at the same battlefield this turn.",
 			"strength": 0,
 			"manaTap": 2,
 			"manaRecycle": 2,
@@ -24470,12 +24482,15 @@
 			"id": "SFD-T03",
 			"name": "Gold",
 			"types": ["gear", "token"],
-			"description": "Kill this, [T]: [Reaction] — [Add] [A]. (Abilities that add resources can't be reacted to.)",
+			"description": "[Reaction] [>] Kill this, [T]: [Add] [A]. (Abilities that add resources can't be reacted to.)",
 			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": [],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e878c39b562a4e870e93b819c6d85cdf3fdc5238-744x1039.png",
+			"variants": {
+				"UNL-T05": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e566605fa989e12e91cd3d3e0b7985f7a8be8e74-744x1039.png"
+			},
 			"ability": {
 				"activatableEffects": [
 					{
@@ -32897,7 +32912,7 @@
 			"id": "UNL-160",
 			"name": "Ultrasoft Poro",
 			"types": ["unit", "freljord", "poro"],
-			"description": "[T]: Play two [1] [S] Bird unit tokens with [Deflect]. Use this ability only while I'm at a battlefield. (Opponents must pay [A] to choose a [Deflect] unit with a spell or ability.)",
+			"description": "[T]: Play two 1 [S] Bird unit tokens with [Deflect]. Use this ability only while I'm at a battlefield. (Opponents must pay [A] to choose a [Deflect] unit with a spell or ability.)",
 			"strength": 5,
 			"manaTap": 5,
 			"manaRecycle": 0,
@@ -36595,50 +36610,11 @@
 			"name": "Buff",
 			"types": ["token"],
 			"description": "A unit may have no more than one buff at a time.",
-			"strength": 0,
+			"strength": 1,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": [],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/64b9df938587aa93a3d0769a349d9b0cc6942dc2-744x1039.png"
-		},
-		{
-			"id": "UNL-T05",
-			"name": "Gold",
-			"types": ["gear", "token"],
-			"description": "[Reaction] [>] Kill this, [T]: [Add] [A]. (Abilities that add resources can't be reacted to.)",
-			"strength": 0,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": [],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e566605fa989e12e91cd3d3e0b7985f7a8be8e74-744x1039.png",
-			"ability": {
-				"activatableEffects": [
-					{
-						"costs": [
-							{
-								"costs": [
-									{
-										"type": "killSelf",
-										"amount": 1
-									}
-								]
-							}
-						],
-						"taps": true,
-						"effect": {
-							"addResource": {
-								"costs": [
-									{
-										"type": "manaRecycle",
-										"amount": 1
-									}
-								]
-							}
-						},
-						"actionWindows": ["contesting", "response"]
-					}
-				]
-			}
 		},
 		{
 			"id": "UNL-T06",
@@ -36650,24 +36626,6 @@
 			"manaRecycle": 0,
 			"colors": [],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/80327b196c59841a67a65327974a93223a3c541a-744x1039.png"
-		},
-		{
-			"id": "UNL-T07",
-			"name": "Sprite",
-			"types": ["unit", "token", "fae"],
-			"description": "[Temporary] (Kill me at the start of your Beginning Phase, before scoring.)",
-			"strength": 3,
-			"manaTap": 0,
-			"manaRecycle": 0,
-			"colors": [],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/1a90578f055e01515ebfb069dc3dbdba08d24da0-744x1039.png",
-			"ability": {
-				"playModifiers": [
-					{
-						"type": "temporary"
-					}
-				]
-			}
 		},
 		{
 			"id": "UNL-T08",
@@ -39083,6 +39041,7 @@
 			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/8c16a53ee243e468f3c337de4354668665f3b386-744x1039.png",
 			"variants": {
+				"VEN-041a": "https://cdn.piltoverarchive.com/temporary/1784307810372-cx0ignwgqkr.jpg",
 				"VEN-171": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/929f7184d11756933729ab4d7e2e88547e6dd49b-744x1039.png"
 			},
 			"ability": {
@@ -40591,7 +40550,8 @@
 			"colors": ["B"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7d794234d8efef9ad647046d1e2cd3736441899f-744x1039.png",
 			"variants": {
-				"VEN-069a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2781dd135b5f42527df3bacee59ccee8684236fa-744x1039.png"
+				"VEN-069a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2781dd135b5f42527df3bacee59ccee8684236fa-744x1039.png",
+				"VEN-069b": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/3b9e86422d0856c5629abbc7c2286f62e245f020-1848x1039.jpg?rect=552,0,744,1039"
 			},
 			"ability": {
 				"effects": {
@@ -46719,15 +46679,15 @@
 			}
 		},
 		{
-			"id": "VEN-T04",
-			"name": "Recruit",
-			"types": ["unit", "token", "recruit"],
-			"description": "",
-			"strength": 1,
+			"id": "VEN-T01",
+			"name": "Empowered",
+			"types": ["token"],
+			"description": "Use to mark legends, units, and gear that are [Empowered].",
+			"strength": 0,
 			"manaTap": 0,
 			"manaRecycle": 0,
 			"colors": [],
-			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/08b9ccf225fc2ae9eb9b5668e5361b09789210ee-744x1039.png"
+			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/d8f215ab4333ecef02a472d817beada5f20d0e4f-744x1039.png"
 		},
 		{
 			"id": "VEN-T05",
@@ -47921,6 +47881,7 @@
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d13964c46506f9f36430dfe91ee02d258a304908-744x1039.png",
 			"variants": {
 				"RAD-021a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b4e49d03e297db4593a6ebc0d7e6c165dff6dcfe-744x1039.png",
+				"RAD-021b": "https://cdn.piltoverarchive.com/temporary/1792588989096-bg1q7gxckuk.png",
 				"RAD-177": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fb1dc5301c1dd9054e5da6d9735b8ad27ce200c4-744x1039.png"
 			},
 			"ability": {
@@ -48788,7 +48749,7 @@
 			"id": "RAD-036",
 			"name": "Storm Raptor",
 			"types": ["unit", "bird", "freljord"],
-			"description": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhen a stunned enemy unit dies here, draw 1.",
+			"description": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhen a stunned enemy unit here dies, draw 1.",
 			"strength": 6,
 			"manaTap": 6,
 			"manaRecycle": 0,
@@ -49095,7 +49056,8 @@
 			"colors": ["G"],
 			"image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3e608c51698b6fb0cc6a00335dbd1bca84f57c73-744x1039.png",
 			"variants": {
-				"RAD-042a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eeda2acfac6215104d70976c679c93f6f09fc351-744x1039.png"
+				"RAD-042a": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/eeda2acfac6215104d70976c679c93f6f09fc351-744x1039.png",
+				"RAD-042a-RCTop": "https://cdn.piltoverarchive.com/temporary/1792589144745-pxrwrcli6sm.png"
 			},
 			"ability": {
 				"playModifiers": [
